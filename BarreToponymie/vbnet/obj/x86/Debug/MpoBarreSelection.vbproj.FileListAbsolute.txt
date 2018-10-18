@@ -1,0 +1,13 @@
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\bin\x86\Debug\BarreSelection.dll
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\bin\x86\Debug\BarreSelection.pdb
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\bin\x86\Debug\BarreSelection.xml
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\obj\x86\Debug\MpoBarreSelection.vbproj.ResolveComReference.cache
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\obj\x86\Debug\BarreSelection.dckMenuContrainteIntegrite.resources
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\obj\x86\Debug\BarreSelection.dckMenuSelection.resources
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\obj\x86\Debug\BarreSelection.InputBoxForm.resources
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\obj\x86\Debug\BarreSelection.Resources.resources
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\obj\x86\Debug\MpoBarreSelection.vbproj.GenerateResource.Cache
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\obj\x86\Debug\BarreSelection.dll
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\obj\x86\Debug\BarreSelection.xml
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\obj\x86\Debug\BarreSelection.pdb
+C:\mpo\ArcMap10.3\MpoBarreSelection\net\bin\x86\Debug\BarreSelection.esriAddIn

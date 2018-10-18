@@ -1,0 +1,45 @@
+﻿<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>BarreToponymie</Name>
+  <AddInID>{19f523ae-8de9-442c-b7c5-158236759c31}</AddInID>
+  <Description>Outil contenant plusieurs fonctionnalités pour traiter différents problèmes de toponymie.</Description>
+  <Version>1.0</Version>
+  <Image>Images\mpoBarreToponymie.png</Image>
+  <Author>mpothier</Author>
+  <Company>MPO</Company>
+  <Date>2016-12-06</Date>
+  <Targets>
+    <Target name="Desktop" version="10.5" />
+  </Targets>
+  <AddIn language="CLR" library="BarreToponymie.dll" namespace="BarreToponymie">
+    <ArcMap>
+      <Commands>
+        <ComboBox id="MPO_BarreToponymie_cboFeatureLayerBDG" class="cboFeatureLayerBDG" message="Classe de toponymie dans laquelle les éléments BDG seront traités pour identifier les erreurs." caption="Classe de toponymie." tip="Class of toponymy in which GDB elements will be treated to identify errors." category="MPO-BarreToponymie" image="Images\cboFeatureLayerBDG.png" editable="true" sizeString="1234567890123456789012345" rows="5" itemSizeString="1234567890123456789012345" />
+        <ComboBox id="MPO_BarreToponymie_cboAction" class="cboAction" message="Action qui permet d'identifier les erreurs liées aux éléments de la classe de toponymie." caption="Type d'action à effectuer." tip="An action that identifies errors related to elements in the toponymy class." category="MPO-BarreToponymie" image="Images\cboAction.png" editable="true" sizeString="1234567890123456789012345" rows="10" itemSizeString="1234567890123456789012345" />
+        <ComboBox id="MPO_BarreToponymie_cboParametres" class="cboParametres" message="Paramètres utilisés par l'action à effectuer." caption="Paramètres de l'action." tip="Parameters used by the action to be performed." category="MPO-BarreToponymie" image="Images\cboParametres.png" editable="true" sizeString="12345678" rows="10" itemSizeString="12345678" />
+        <Button id="MPO_BarreToponymie_cmdExecuter" class="cmdExecuter" message="Exécuter l'action spécifiée et générer le fichier d'erreurs." caption="Exécuter l'action." tip="Execute the specified action and generate the error file." category="MPO-BarreToponymie" image="Images\cmdExecuter.png" onDemand="false" />
+        <ComboBox id="MPO_BarreToponymie_cboFeatureLayerErr" class="cboFeatureLayerErr" message="Classe contenant les erreurs de toponymie à corriger." caption="Classe d'erreurs de toponymie" tip="Class containing toponymy errors to be corrected." category="MPO-BarreToponymie" image="Images\cboFeatureLayerErr.png" editable="true" sizeString="1234567890123456789012345678" rows="5" itemSizeString="1234567890123456789012345678" />
+        <Button id="MPO_BarreToponymie_cmdCorriger" class="cmdCorriger" message="Corriger les erreurs identifiées selon les décisions spécifiées dans le fichier d'erreurs." caption="Corriger les erreurs." tip="Correct the errors identified according to the decisions specified in the error file." category="MPO-BarreToponymie" image="Images\cmdCorriger.png" onDemand="false" />
+        <ComboBox id="MPO_BarreToponymie_cboTableBDG" class="cboTableBDG" message="Table des toponymes BDG." caption="Table des toponymes BDG" tip="GDB table of toponyms." category="MPO-BarreToponymie" image="Images\cboTableBDG.png" editable="true" sizeString="0123456789012345678901234567890" rows="5" itemSizeString="0123456789012345678901234567890" />
+        <Button id="MPO_BarreToponymie_cmdLireTableBDG" class="cmdLireTableBDG" message="Lire la table des toponymes BDG en mémoire." caption="Lire la table des toponymes BDG" tip="Read the GDB table of toponyms in memory." category="MPO-BarreToponymie" image="Images\cmdLireTableBDG.png" onDemand="false" />
+        <ComboBox id="MPO_BarreToponymie_cboTableCGNDB" class="cboTableCGNDB" message="Table des toponymes CGNDB." caption="Table des toponymes CGNDB" tip=" CGNDB table of toponyms." category="MPO-BarreToponymie" image="Images\cboTableCGNDB.png" editable="true" sizeString="0123456789012345678901234567890" rows="5" itemSizeString="0123456789012345678901234567890" />
+        <Button id="MPO_BarreToponymie_cmdLireTableCGNDB" class="cmdLireTableCGNDB" message="Lire la table des toponymes CGNDB en mémoire." caption="Lire la table des toponymes CGNDB" tip="Read the CGNDB table of toponyms in memory." category="MPO-BarreToponymie" image="Images\cmdLireTableCGNDB.png" onDemand="false" />
+      </Commands>
+      <Toolbars>
+        <Toolbar id="MPO_BarreToponymie_MPO-BarreToponymie" caption="MPO-BarreToponymie (27 septembre 2017)" showInitially="false">
+          <Items>
+            <Button refID="MPO_BarreToponymie_cboFeatureLayerBDG" separator="true" />
+            <Button refID="MPO_BarreToponymie_cboAction" />
+            <Button refID="MPO_BarreToponymie_cboParametres" />
+            <Button refID="MPO_BarreToponymie_cmdExecuter" />
+            <Button refID="MPO_BarreToponymie_cboFeatureLayerErr" separator="true" />
+            <Button refID="MPO_BarreToponymie_cmdCorriger" />
+            <Button refID="MPO_BarreToponymie_cboTableBDG" separator="true" />
+            <Button refID="MPO_BarreToponymie_cmdLireTableBDG" />
+            <Button refID="MPO_BarreToponymie_cboTableCGNDB" separator="true" />
+            <Button refID="MPO_BarreToponymie_cmdLireTableCGNDB" />
+          </Items>
+        </Toolbar>
+      </Toolbars>
+    </ArcMap>
+  </AddIn>
+</ESRI.Configuration>
