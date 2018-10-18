@@ -1,0 +1,52 @@
+﻿<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Barre SIB</Name>
+  <AddInID>{01278bca-9107-4e44-b73d-0d3e55ae0fe6}</AddInID>
+  <Description>Outil contenant les fonctionnalités nécessaires à la gestion et la visualisation de SIB (Système d'Information des Bases de données).</Description>
+  <Version>1.0</Version>
+  <Image>Images\mpoBarreSIB.png</Image>
+  <Author>mpothier</Author>
+  <Company>MPO</Company>
+  <Date>2015-03-27</Date>
+  <Targets>
+    <Target name="Desktop" version="10.5" />
+  </Targets>
+  <AddIn language="CLR" library="BarreSIB.dll" namespace="BarreSIB">
+    <ArcMap>
+      <Commands>
+        <Button id="MPO_BarreSIB_cmdActiverMenuRelations" class="cmdActiverMenuRelations" message="Activer le menu des relations afin de montrer les relations entre toutes les tables, faciliter la construction des requêtes attributive et effectuer des recherches à partir des tables en relation." caption="Activer le menu des relations" tip="Activer le menu des relations." category="MPO-BarreSIB" image="Images\cmdActiverMenuRelations.png" />
+        <Button id="MPO_BarreSIB_cmdActiverMenuIdentification" class="cmdActiverMenuIdentification" message="Activer le menu d'identification des éléments sélectionnés afin de pouvoir montrer leurs attributs et les divers liens avec d'autres tables et leurs attributs via les relations." caption="Activer le menu d'identification" tip="Activer le menu d'identification des éléments sélectionnés." category="MPO-BarreSIB" image="Images\cmdActiverMenuIdentification.png" />
+        <Button id="MPO_BarreSIB_cmdAjouterSelectionLayer" class="cmdAjouterSelectionLayer" message="Ajouter un nouveau FeatureLayer de sélection pour chaque FeatureLayer visible pour lequel des éléments sont sélectionnés." caption="Ajouter un nouveau FeatureLayer de sélection" tip="Ajouter un nouveau FeatureLayer de sélection." category="MPO-BarreSIB" image="Images\cmdAjouterSelectionLayer.png" onDemand="false" />
+        <Button id="MPO_BarreSIB_cmdIdentifierSelection" class="cmdIdentifierSelection" message="Identifier les éléments sélectionnés en remplissant le menu d'identification." caption="Identifier sélection" tip="Identifier les éléments sélectionnés." category="MPO-BarreSIB" image="Images\cmdIdentifierSelection.png" onDemand="false" />
+        <Tool id="MPO_BarreSIB_tooIdentifierEnveloppe" class="tooIdentifierEnveloppe" message="Identifieret sélectionner des éléments selon une enveloppe et remplir le menu d'identification." caption="Identifier enveloppe" tip="Identifier des éléments selon une enveloppe." category="MPO-BarreSIB" image="Images\tooIdentifierEnveloppe.png" cursor="Images\tooIdentifierEnveloppe.cur" />
+        <Button id="MPO_BarreSIB_cmdConnecterSIB" class="cmdConnecterSIB" message="Commande qui permet de se connecter à SIB afin de pouvoir utiliser tous les outils reliés à SIB." caption="Connecter à SIB" tip="Connecter à SIB." category="MPO-BarreSIB" image="Images\cmdConnecterSIB.png" onDemand="false" />
+        <ComboBox id="MPO_BarreSIB_cboEnvCatalogue" class="cboEnvCatalogue" message="Nom de l'environnement de la base de données des catalogues." caption="Env de la BD des catalogues" tip="Environnement de la base de données des catalogues." category="MPO-BarreSIB" image="Images\cboEnvCatalogue.png" sizeString="CATREL_PRO" itemSizeString="CATREL_PRO" />
+        <ComboBox id="MPO_BarreSIB_cboTypeCatalogue" class="cboTypeCatalogue" message="Permet de définir le nom du catalogue (Type) utilisé pour afficher la description des valeurs d'attributs codés." caption="Nom du catalogue" tip="Nom de catalogue." category="MPO-BarreSIB" image="Images\cboTypeCatalogue.png" sizeString="BDRS_EXPL_MISST_Multi" itemSizeString="BDRS_EXPL_MISST_Multi" />
+      </Commands>
+      <Toolbars>
+        <Toolbar id="MPO_BarreSIB_MPO-BarreSIB" caption="MPO-BarreSIB (19 septembre 2017)" showInitially="false">
+          <Items>
+            <Button refID="MPO_BarreSIB_cmdActiverMenuRelations" />
+            <Button refID="MPO_BarreSIB_cmdActiverMenuIdentification" />
+            <Button refID="MPO_BarreSIB_cmdAjouterSelectionLayer" separator="true" />
+            <Button refID="MPO_BarreSIB_cmdIdentifierSelection" separator="true" />
+            <Button refID="MPO_BarreSIB_tooIdentifierEnveloppe" />
+            <Button refID="MPO_BarreSIB_cmdConnecterSIB" separator="true" />
+            <Button refID="MPO_BarreSIB_cboEnvCatalogue" />
+            <Button refID="MPO_BarreSIB_cboTypeCatalogue" />
+          </Items>
+        </Toolbar>
+      </Toolbars>
+      <DockableWindows>
+        <DockableWindow id="MPO_BarreSIB_dckMenuRelations" class="dckMenuRelations+AddinImpl" caption="Menu des relations" image="Images\dckMenuRelations.png">
+          <InitialPlacement height="300" width="300" state="pinned" position="left" />
+        </DockableWindow>
+        <DockableWindow id="MPO_BarreSIB_dckMenuIdentification" class="dckMenuIdentification+AddinImpl" caption="Menu d'identification" image="Images\dckMenuIdentification.png">
+          <InitialPlacement height="330" width="300" state="pinned" position="left" />
+        </DockableWindow>
+        <DockableWindow id="MPO_BarreSIB_dckMenuConnexion" class="dckMenuConnexion+AddinImpl" caption="Menu de connexion" image="Images\dckMenuConnexion.png">
+          <InitialPlacement height="300" width="300" state="hidden" position="float" />
+        </DockableWindow>
+      </DockableWindows>
+    </ArcMap>
+  </AddIn>
+</ESRI.Configuration>

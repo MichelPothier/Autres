@@ -1,0 +1,84 @@
+DROP VIEW SIBDBA.V_STANDARD_ORDER_PROCESS;
+
+/* Formatted on 2013/12/23 11:04:01 (QP5 v5.240.12305.39446) */
+CREATE OR REPLACE FORCE VIEW SIBDBA.V_STANDARD_ORDER_PROCESS
+(
+   TY_PRODUIT,
+   IDENTIFIANT,
+   ED,
+   VER,
+   NO_SEQ_DI,
+   NO_SEQ_SOP,
+   FEE,
+   INSTRUCTION,
+   TURNAROUND,
+   NO_SEQ_DF,
+   FORMAT_NAME,
+   NO_SEQ_OO,
+   NOM,
+   LIEN_SOP
+)
+AS
+   SELECT A.TY_PRODUIT,
+          A.IDENTIFIANT,
+          A.ED,
+          A.VER,
+          A.NO_SEQ_DI,
+          A.NO_SEQ_SOP,
+          A.FEE,
+          A.INSTRUCTION,
+          A.TURNAROUND,
+          B.NO_SEQ_DF,
+          B.FORMAT_NAME,
+          C.NO_SEQ_OO,
+          D.NOM,
+             A.TY_PRODUIT
+          || '-'
+          || A.IDENTIFIANT
+          || '-'
+          || A.ED
+          || '.'
+          || A.VER
+          || '-'
+          || A.NO_SEQ_DI
+     FROM F235_OP A,
+          F235_DF B,
+          F235_OO C,
+          F235_NR D
+    WHERE     A.TY_PRODUIT = B.TY_PRODUIT(+)
+          AND A.IDENTIFIANT = B.IDENTIFIANT(+)
+          AND A.ED = B.ED(+)
+          AND A.VER = B.VER(+)
+          AND A.NO_SEQ_DI = B.NO_SEQ_DI(+)
+          AND A.NO_SEQ_SOP = B.NO_SEQ_SOP(+)
+          AND B.TY_PRODUIT = C.TY_PRODUIT(+)
+          AND B.IDENTIFIANT = C.IDENTIFIANT(+)
+          AND B.ED = C.ED(+)
+          AND B.VER = C.VER(+)
+          AND B.NO_SEQ_DI = C.NO_SEQ_DI(+)
+          AND B.NO_SEQ_SOP = C.NO_SEQ_SOP(+)
+          AND B.NO_SEQ_DF = C.NO_SEQ_DF(+)
+          AND C.TY_PRODUIT = D.TY_PRODUIT(+)
+          AND C.IDENTIFIANT = D.IDENTIFIANT(+)
+          AND C.ED = D.ED(+)
+          AND C.VER = D.VER(+)
+          AND C.NO_SEQ_DI = D.NO_SEQ_DI(+)
+          AND C.NO_SEQ_SOP = D.NO_SEQ_SOP(+)
+          AND C.NO_SEQ_DF = D.NO_SEQ_DF(+)
+          AND C.NO_SEQ_OO = D.NO_SEQ_OO(+);
+
+COMMENT ON TABLE SIBDBA.V_STANDARD_ORDER_PROCESS IS 'COMMENTAIRE:
+Vue permettant de montrer les métadonnées de type STANDARD_ORDER_PROCESS.';
+
+
+
+CREATE OR REPLACE PUBLIC SYNONYM V_STANDARD_ORDER_PROCESS FOR SIBDBA.V_STANDARD_ORDER_PROCESS;
+
+
+GRANT SELECT ON SIBDBA.V_STANDARD_ORDER_PROCESS TO MDDTN;
+
+GRANT SELECT ON SIBDBA.V_STANDARD_ORDER_PROCESS TO SIBLIRE;
+
+GRANT SELECT ON SIBDBA.V_STANDARD_ORDER_PROCESS TO SIBLIREDIFF;
+
+GRANT SELECT ON SIBDBA.V_STANDARD_ORDER_PROCESS TO SIBMAJ;

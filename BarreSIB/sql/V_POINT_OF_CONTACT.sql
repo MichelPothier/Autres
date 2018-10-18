@@ -1,0 +1,80 @@
+DROP VIEW SIBDBA.V_POINT_OF_CONTACT;
+
+/* Formatted on 2013/12/23 11:02:11 (QP5 v5.240.12305.39446) */
+CREATE OR REPLACE FORCE VIEW SIBDBA.V_POINT_OF_CONTACT
+(
+   TY_PRODUIT,
+   IDENTIFIANT,
+   ED,
+   VER,
+   ORGANISATION,
+   PERSONNE,
+   HOURS,
+   NO_SEQ_AD,
+   TYPE,
+   ADDRESS,
+   CITY,
+   STATE,
+   POSTAL,
+   COUNTRY,
+   NO_TEL,
+   NO_FAX,
+   EMAIL,
+   LIEN
+)
+AS
+   SELECT A.TY_PRODUIT,
+          A.IDENTIFIANT,
+          A.ED,
+          A.VER,
+          A.ORGANISATION,
+          A.PERSONNE,
+          A.HOURS,
+          B.NO_SEQ_AD,
+          B.TYPE,
+          B.ADDRESS,
+          B.CITY,
+          B.STATE,
+          B.POSTAL,
+          B.COUNTRY,
+          C.NO_TEL,
+          D.NO_FAX,
+          E.EMAIL,
+          A.TY_PRODUIT || '-' || A.IDENTIFIANT || '-' || A.ED || '.' || A.VER
+     FROM F235_PT A,
+          F235_AD B,
+          F235_TE C,
+          F235_FA D,
+          F235_EM E
+    WHERE     A.TY_PRODUIT = B.TY_PRODUIT(+)
+          AND A.IDENTIFIANT = B.IDENTIFIANT(+)
+          AND A.ED = B.ED(+)
+          AND A.VER = B.VER(+)
+          AND A.TY_PRODUIT = C.TY_PRODUIT(+)
+          AND A.IDENTIFIANT = C.IDENTIFIANT(+)
+          AND A.ED = C.ED(+)
+          AND A.VER = C.VER(+)
+          AND A.TY_PRODUIT = D.TY_PRODUIT(+)
+          AND A.IDENTIFIANT = D.IDENTIFIANT(+)
+          AND A.ED = D.ED(+)
+          AND A.VER = D.VER(+)
+          AND A.TY_PRODUIT = E.TY_PRODUIT(+)
+          AND A.IDENTIFIANT = E.IDENTIFIANT(+)
+          AND A.ED = E.ED(+)
+          AND A.VER = E.VER(+);
+
+COMMENT ON TABLE SIBDBA.V_POINT_OF_CONTACT IS 'COMMENTAIRE:
+Vue permettant de montrer les métadonnées de type POINT_OF_CONTACT.';
+
+
+
+CREATE OR REPLACE PUBLIC SYNONYM V_POINT_OF_CONTACT FOR SIBDBA.V_POINT_OF_CONTACT;
+
+
+GRANT SELECT ON SIBDBA.V_POINT_OF_CONTACT TO MDDTN;
+
+GRANT SELECT ON SIBDBA.V_POINT_OF_CONTACT TO SIBLIRE;
+
+GRANT SELECT ON SIBDBA.V_POINT_OF_CONTACT TO SIBLIREDIFF;
+
+GRANT SELECT ON SIBDBA.V_POINT_OF_CONTACT TO SIBMAJ;

@@ -1,0 +1,98 @@
+DROP VIEW SIBDBA.V_DISTRIBUTION_INFORMATION;
+
+/* Formatted on 2013/12/23 10:52:34 (QP5 v5.240.12305.39446) */
+CREATE OR REPLACE FORCE VIEW SIBDBA.V_DISTRIBUTION_INFORMATION
+(
+   TY_PRODUIT,
+   IDENTIFIANT,
+   ED,
+   VER,
+   LIABILITY,
+   ORGANISATION,
+   PERSONNE,
+   HOURS,
+   NO_SEQ_DI,
+   NO_SEQ_DA,
+   TYPE,
+   ADDRESS,
+   CITY,
+   STATE,
+   POSTAL,
+   COUNTRY,
+   NO_TEL,
+   NO_FAX,
+   EMAIL,
+   LIEN,
+   LIEN_SOP
+)
+AS
+   SELECT A.TY_PRODUIT,
+          A.IDENTIFIANT,
+          A.ED,
+          A.VER,
+          A.LIABILITY,
+          A.ORGANISATION,
+          A.PERSONNE,
+          A.HOURS,
+          A.NO_SEQ_DI,
+          B.NO_SEQ_DA,
+          B.TYPE,
+          B.ADDRESS,
+          B.CITY,
+          B.STATE,
+          B.POSTAL,
+          B.COUNTRY,
+          C.NO_TEL,
+          D.NO_FAX,
+          E.EMAIL,
+          A.TY_PRODUIT || '-' || A.IDENTIFIANT || '-' || A.ED || '.' || A.VER,
+             A.TY_PRODUIT
+          || '-'
+          || A.IDENTIFIANT
+          || '-'
+          || A.ED
+          || '.'
+          || A.VER
+          || '-'
+          || A.NO_SEQ_DI
+     FROM F235_DI A,
+          F235_DA B,
+          F235_DT C,
+          F235_DX D,
+          F235_DE E
+    WHERE     A.TY_PRODUIT = B.TY_PRODUIT(+)
+          AND A.IDENTIFIANT = B.IDENTIFIANT(+)
+          AND A.ED = B.ED(+)
+          AND A.VER = B.VER(+)
+          AND A.NO_SEQ_DI = B.NO_SEQ_DI(+)
+          AND A.TY_PRODUIT = C.TY_PRODUIT(+)
+          AND A.IDENTIFIANT = C.IDENTIFIANT(+)
+          AND A.ED = C.ED(+)
+          AND A.VER = C.VER(+)
+          AND A.NO_SEQ_DI = C.NO_SEQ_DI(+)
+          AND A.TY_PRODUIT = D.TY_PRODUIT(+)
+          AND A.IDENTIFIANT = D.IDENTIFIANT(+)
+          AND A.ED = D.ED(+)
+          AND A.VER = D.VER(+)
+          AND A.NO_SEQ_DI = D.NO_SEQ_DI(+)
+          AND A.TY_PRODUIT = E.TY_PRODUIT(+)
+          AND A.IDENTIFIANT = E.IDENTIFIANT(+)
+          AND A.ED = E.ED(+)
+          AND A.VER = E.VER(+)
+          AND A.NO_SEQ_DI = E.NO_SEQ_DI(+);
+
+COMMENT ON TABLE SIBDBA.V_DISTRIBUTION_INFORMATION IS 'COMMENTAIRE:
+Vue permettant de montrer les métadonnées de type DISTRIBUTION_INFORMATION.';
+
+
+
+CREATE OR REPLACE PUBLIC SYNONYM V_DISTRIBUTION_INFORMATION FOR SIBDBA.V_DISTRIBUTION_INFORMATION;
+
+
+GRANT SELECT ON SIBDBA.V_DISTRIBUTION_INFORMATION TO MDDTN;
+
+GRANT SELECT ON SIBDBA.V_DISTRIBUTION_INFORMATION TO SIBLIRE;
+
+GRANT SELECT ON SIBDBA.V_DISTRIBUTION_INFORMATION TO SIBLIREDIFF;
+
+GRANT SELECT ON SIBDBA.V_DISTRIBUTION_INFORMATION TO SIBMAJ;
