@@ -14,11 +14,15 @@ BarreSib (ArcGis 10.5 / ArcMap / Add-in / Vb.Net)
  For more details, see the documentation file "BarreSib.doc" present in this repository.
 
 BarreToponymie (ArcGis 10.5 / ArcMap / Add-in / Vb.Net)
--Barre de menu utilisée dans dans ArcMap pour corriger les erreurs de toponymie de type CITS. 
+-Barre de menu utilisée dans dans ArcMap pour corriger les erreurs de toponymie de type CITS.
  Pour plus de détails, voir le fichier de documentation "BarreToponymie.doc" présent dans ce dépôt.
 -Menu bar used in in ArcMap to correct CITS toponymy errors.
  For more details, see the documentation file "BarreToponymie.doc" present in this repository.
 
 CreerStatistiquesClassesSpatiales (ArcGis 10.5 / ArcMap / Exe / Vb.Net)
--Programme exécutable qui permet de remplir une table d'attribut dans laquelle on retrouve les statistiques du nombre d'éléments et de sommets par classe et par identifiant de découpage. 
+-Programme exécutable qui permet de remplir une table d'attribut dans laquelle on retrouve les statistiques du nombre d'éléments et de sommets par classe et par identifiant de découpage.
 -Executable program that can be used to fill an attribute table in which we find the statistics of the number of elements and vertices by class and by clipping identifier.
+
+ExporterClasseSpatiale (ArcGis 10.5 / ArcMap / Exe / Vb.Net)
+-Programme exécutable qui permet d'exporter une classe spatiale d'une Géodatabase vers une autre Géodatabase.
+-Executable program that allows you to export a spatial class from one Geodatabase to another Geodatabase.

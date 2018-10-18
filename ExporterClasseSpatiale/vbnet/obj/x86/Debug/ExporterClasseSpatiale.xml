@@ -1,0 +1,173 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ExporterClasseSpatiale
+</name>
+</assembly>
+<members>
+<member name="F:ExporterClasseSpatiale.modExecuter.m_AOLicenseInitializer">
+	<summary> Interface d'initialisation des licences ESRI.</summary>
+</member><member name="F:ExporterClasseSpatiale.modExecuter.m_NomClasseSpatialeEntree">
+	<summary>Nom de la classe spatiale d'entrée.</summary>
+</member><member name="F:ExporterClasseSpatiale.modExecuter.m_NomClasseSpatialeSortie">
+	<summary>Nom de la classe spatiale de sortie.</summary>
+</member><member name="F:ExporterClasseSpatiale.modExecuter.m_NomFichierJournal">
+	<summary>Nom du fichier journal dans lequel l'exécution du traitement sera inscrit.</summary>
+</member><member name="F:ExporterClasseSpatiale.modExecuter.m_NombreTotalElements">
+	<summary>Nombre total d'éléments traités.</summary>
+</member><member name="F:ExporterClasseSpatiale.modExecuter.m_TrackCancel">
+	<summary>Interface qui permet d'annuler l'exécution du traitement en inteactif.</summary>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.Executer">
+	<summary>
+Routine qui permet de valider et définir les paramètres du programme.
+</summary>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.Exporter(System.String,System.String)">
+	<summary>
+Routine qui permet d'exporter la classe d'entrée vers la classe de sortie.
+</summary>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.CreateInMemoryFeatureClass(System.String,ESRI.ArcGIS.Carto.IFeatureLayer,ESRI.ArcGIS.Geometry.esriGeometryType)">
+	<summary>
+ Fonction qui permet de créer une FeatureClass en mémoire.
+</summary>
+	<param name="sNom">Nom de la classe à créer.</param>
+	<param name="pFeatureLayer">Interface contenant la FeatureClass des éléments traités.</param>
+	<param name="pEsriGeometryType">Indique le type de géométrie de la FeatureClass.</param>
+	<returns>"IFeatureClass" contenant la description et la géométrie trouvées.</returns>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.EcrireFeatureErreur(ESRI.ArcGIS.Geodatabase.IFeatureClass@,ESRI.ArcGIS.Geodatabase.IFeatureCursor@,System.String,ESRI.ArcGIS.Geometry.IGeometry,System.Single)">
+	<summary>
+ Routine qui permet d'afficher la FeatureClass d'erreur dans la Map et dans le TableWindow d'attributs.
+</summary>
+	<param name="sDescription"> Description de l'erreur à écrire.</param>
+	<param name="pGeometry"> Géométrie de l'erreur à écrire.</param>
+	<param name="dValeur"> Valeur obtenue de l'erreur à écrire.</param>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.CreerGeodatabaseErreurs(System.String)">
+	<summary>
+Routine qui permet de créer un répertoire ou une Géodatabase dans lequel les erreurs seront écrites.
+</summary>
+	<param name="sNomGeodatabaseErreurs">Nom du répertoire ou de la Géodatabase dans lequel les erreurs seront écrites.</param>
+	<returns>"IWorkspace" correspondants à une Géodatabase, Nothing si c'est un répertoire qui est créé.</returns>
+	<remarks>
+ Une Géodatabase est créée seulement si le nom contient .mdb ou .gdb, sinon un répertoire sera créé.
+</remarks>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.ConvertFeatureClass(ESRI.ArcGIS.Geodatabase.IFeatureClass,ESRI.ArcGIS.Geodatabase.IWorkspace2,System.String)">
+	<summary>
+Fonction qui permet de convertir une FeatureClass d'un format vers un autre format.
+</summary>
+	<param name="pSourceClass">Interface contenant la featureClass de départ.</param>
+	<param name="pTargetWorkspace">Interface contenant la géodatabase d'arrivée.</param>
+	<param name="sTargetName">Nom de la featureClass d'arrivée.</param>
+	<return>IEnumInvalidObject contenant les éléments invalides qui n'ont pas été transférés.</return>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.DefinirClasseSpatiale(System.String)">
+	<summary>
+Fonction qui permet de définir et retourner une classe spatiale.
+</summary>
+	<param name="sNomClasseSpatiale"> Nom de la table contenant les statistiques d'erreurs et de traitement.</param>
+	<returns>"IFeatureClass" contenant une classe spatiale. Si le nom de la table est invalide, Nothing sera retourné.</returns>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.DefinirGeodatabase(System.String@)">
+	<summary>
+Routine qui permet d'ouvrir et retourner la Geodatabase à partir d'un nom de Géodatabase.
+</summary>
+	<param name="sNomGeodatabase"> Nom de la géodatabase à ouvrir.</param>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.ValiderParametres">
+	<summary>
+Routine qui permet de valider et définir les paramètres du programme.
+</summary>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.ValiderParametreClasseSpatialeEntree(System.String[])">
+	<summary>
+Routine qui permet de valider le paramètre du nom de la Geodatabase des classes à valider.
+</summary>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.ValiderParametreClasseSpatialeSortie(System.String[])">
+	<summary>
+Routine qui permet de valider le paramètre de la table des contraintes d'intégrité.
+</summary>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.ValiderParametreFichierJournal(System.String[])">
+	<summary>
+Routine qui permet de valider le paramètre du fichier journal dans lequel l'information sur l'exécution du traitement sera écrite.
+</summary>
+</member><member name="M:ExporterClasseSpatiale.modExecuter.EcrireMessage(System.String)">
+	<summary>
+ Routine qui permet d'écrire le message d'exécution dans  un fichier journal et/ou dans la console.
+</summary>
+	<param name="sMessage"> Message à écrire dans un fichier journal et/ou dans la console.</param>
+</member><member name="T:ExporterClasseSpatiale.modExecuter">
+	<summary>
+ Module principale permettant l'exécution de l'export d'une classe spatiale.
+ 
+ Les 3 paramètres de la ligne de commande du programme sont les suivants:
+ -------------------------------------------------------------------------
+ 1-Classe spatiale à exporter : Nom complet de la classe spatiale à exporter.
+                                Obligatoire, Défaut : 
+ 2-Nouvelle classe spatiale   : Nom complet de la nouvelle classe spatiale.
+                                Obligatoire, Défaut : 
+ 3-Nom du fichier journal     : Nom complet du fichier contenant le journal de l'exécution du traitement.
+                                Obligatoire, Défaut : 
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+ Date : 20 octobre 2016
+</remarks>
+</member><member name="E:ExporterClasseSpatiale.LicenseInitializer.ResolveBindingEvent">
+	<summary>
+ Raised when ArcGIS runtime binding hasn't been established. 
+ </summary>
+</member><member name="M:ExporterClasseSpatiale.LicenseInitializer.InitializeApplication(ESRI.ArcGIS.esriSystem.esriLicenseProductCode[],ESRI.ArcGIS.esriSystem.esriLicenseExtensionCode[])">
+	<summary>
+ Initialize the application with the specified product and extension license code.
+ </summary>
+	<returns>Initialization is successful.</returns>
+	<remarks>
+ Make sure an active ArcGIS runtime has been bound before license initialization.
+</remarks>
+</member><member name="M:ExporterClasseSpatiale.LicenseInitializer.LicenseMessage">
+	<summary>
+ A summary of the status of product and extensions initialization.
+ </summary>
+</member><member name="M:ExporterClasseSpatiale.LicenseInitializer.ShutdownApplication">
+	<summary>
+ Shuts down AoInitialize object and check back in extensions to ensure
+ any ESRI libraries that have been used are unloaded in the correct order.
+ </summary>
+	<remarks>Once Shutdown has been called, you cannot re-initialize the product license
+ and should not make any ArcObjects call.</remarks>
+</member><member name="M:ExporterClasseSpatiale.LicenseInitializer.IsExtensionCheckedOut(ESRI.ArcGIS.esriSystem.esriLicenseExtensionCode)">
+	<summary>
+ Indicates if the extension is currently checked out.
+ </summary>
+</member><member name="M:ExporterClasseSpatiale.LicenseInitializer.AddExtensions(ESRI.ArcGIS.esriSystem.esriLicenseExtensionCode[])">
+	<summary>
+ Set the extension(s) to be checked out for your ArcObjects code. 
+ </summary>
+</member><member name="M:ExporterClasseSpatiale.LicenseInitializer.RemoveExtensions(ESRI.ArcGIS.esriSystem.esriLicenseExtensionCode[])">
+	<summary>
+ Check in extension(s) when no longer needed.
+ </summary>
+</member><member name="P:ExporterClasseSpatiale.LicenseInitializer.InitializeLowerProductFirst">
+	<summary>
+ Get/Set the ordering of product code checking. If true, check from lowest to 
+ highest license. True by default.
+ </summary>
+</member><member name="P:ExporterClasseSpatiale.LicenseInitializer.InitializedProduct">
+	<summary>
+ Retrieves the product code initialized in the ArcObjects application
+ </summary>
+</member><member name="T:ExporterClasseSpatiale.LicenseInitializer">
+	<summary>
+ Initialize ArcObjects runtime environment for this application
+ </summary>
+</member><member name="P:ExporterClasseSpatiale.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:ExporterClasseSpatiale.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:ExporterClasseSpatiale.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>
