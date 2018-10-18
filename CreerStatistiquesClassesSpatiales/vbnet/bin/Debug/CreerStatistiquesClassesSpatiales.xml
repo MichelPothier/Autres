@@ -1,0 +1,304 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+CreerStatistiquesClassesSpatiales
+</name>
+</assembly>
+<members>
+<member name="P:CreerStatistiquesClassesSpatiales.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:CreerStatistiquesClassesSpatiales.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.gsNomTableStatistiques">
+	<summary>Contient le nom de la table des statistiques.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.gsNomGeodatabaseClasses">
+	<summary>Contient le nom de la géodatabase contenant les classes à traiter.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.gsListeClasses">
+	<summary>Contient la liste des classes à traiter.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.gsNomAttributDecoupage">
+	<summary>Interface contenant le nom de l'attribut de découpage à traiter.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.gsListeIdentifiants">
+	<summary>Contient la liste des identifiants à traiter.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.gsNomFichierJournal">
+	<summary>Nom du fichier journal d'éxécution du traitement.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.gsInformation">
+	<summary>Contient l'information de traitement.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.giCodeErreur">
+	<summary>Contient le code d'erreur d'exécution.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.giNombreTotalClasses">
+	<summary>Contient le nombre total de classes traitées.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.giNombreTotalIdentifiants">
+	<summary>Contient le nombre total d'identifiants de découpage traitées.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.giNombreTotalSommets">
+	<summary>Contient le nombre total de sommets.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.giNombreTotalElements">
+	<summary>Contient le nombre total d'éléments.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.gpTableStatistiques">
+	<summary>Interface contenant la table des statistiques.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.gpGeodatabaseClasses">
+	<summary>Interface contenant la géodatabase des classes à traiter.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.gpGeodatabaseStatistiques">
+	<summary>Interface contenant la géodatabase de la table des statistiques.</summary>
+</member><member name="T:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.Stats">
+	<summary>Structure contenant l'information des statistiques.</summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+ Routine qui permet d'instancier un objet qui permet l'initialisation du traitement de création des statistiques.
+</summary>
+	<param name="sNomTableStatistiques"> Contient le nom de la table des statistiques.</param>
+	<param name="sNomGeodatabaseClasses"> Contient le nom de la Géodatabase des classes à traiter.</param>
+	<param name="sListeClasses"> Contient la liste des classes à traiter.</param>
+	<param name="sNomAttributDecoupage"> Contient le nom de l'attribut de découpage à traiter.</param>
+	<param name="sListeIdentifiants"> Contient la liste des identifiants à traiter.</param>
+	<param name="sNomFichierJournal"> Contient le nom du fichier journal.</param>
+</member><member name="M:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.Finalize">
+	<summary>
+ Routine qui permet de vider la mémoire.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.NomTableStatistiques">
+	<summary>
+ Propriété qui permet de retourner le nom de la table des statistiques.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.TableStatistiques">
+	<summary>
+ Propriété qui permet de retourner la table des statistiques.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.GeodatabaseStatistiques">
+	<summary>
+ Propriété qui permet et retourner la Géodatabase contenant la table des statistiques.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.NomGeodatabaseClasses">
+	<summary>
+ Propriété qui permet de définir et retourner le nom de la géodatabase contenant les classes à traiter.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.GeodatabaseClasses">
+	<summary>
+ Propriété qui permet de définir et retourner la Géodatabase contenant les classes des éléments à traiter.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.ListeClasses">
+	<summary>
+ Propriété qui permet de retourner la liste des classes.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.NomAttributDecoupage">
+	<summary>
+ Propriété qui permet de définir et retourner le nom de l'attribut de découpage à traiter.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.ListeIdentifiants">
+	<summary>
+ Propriété qui permet de retourner la liste des identifiants.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.NomFichierJournal">
+	<summary>
+ Propriété qui permet de définir et retourner le nom du fichier journal d'éxécution du traitement.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.Information">
+	<summary>
+ Propriété qui permet de retourner l'information de l'exécution du traitement.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.CodeErreur">
+	<summary>
+ Propriété qui permet de retourner le code d'erreur d'exécution des contrainte.
+  0: Aucune erreur d'exécution.
+  1: Erreur d'exécution survenue dans une requête mais sans arrêt du programme.
+ -1: Erreur d'exécution survenue avec arrêt du programme.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.NombreTotalIdentifiants">
+	<summary>
+ Propriété qui permet de retourner le nombre total de découpage traités.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.NombreTotalClasses">
+	<summary>
+ Propriété qui permet de retourner le nombre total de classes traitées.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.NombreTotalSommets">
+	<summary>
+ Propriété qui permet de retourner le nombre total de sommets trouvées.
+</summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.NombreTotalElements">
+	<summary>
+ Propriété qui permet de retourner le nombre total d'éléments traités.
+</summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.EstValide">
+	<summary>
+ Routine qui permet de vérifier si on peut exécuter le traitement de création des statistiques.
+</summary>
+	<returns>True si le traitement est valide, False sinon.</returns>
+</member><member name="M:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.Executer">
+	<summary>
+ Fonction qui permet d'exécuter la validation des contraintes d'intégrité sélectionnées de la table 
+ en fonction des découpages à traiter et retourner le résultat obtenu.
+</summary>
+	<returns>Boolean qui indique si le traitement a été exécuté avec succès.</returns>
+</member><member name="M:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.EcrireTableStatistiques(ESRI.ArcGIS.Geodatabase.ITable@,System.Collections.Generic.Dictionary{System.String,CreerStatistiquesClassesSpatiales.clsCreerStatistiques.Stats}@,System.String,System.String,System.Int64,System.Int64)">
+	<summary>
+ Routine qui permet d'écrire et afficher le nombre d'éléments et de sommets d'une classe spatiale dans la table des statistiques.
+</summary>
+	<param name="pTableStatistiques"> Tables contenant les statistiques.</param>
+	<param name="oStatsDict"> Contient le dictionaire des statistiques.</param>
+	<param name="sNomClasse"> Contient le nom de la classe spatiale.</param>
+	<param name="sUsager"> Contient le nom de l'usager.</param>
+	<param name="iNombreElements"> Contient le nombre d'éléments par classe.</param>
+	<param name="iNombreSommets"> Contient le nombre de sommets par classe.</param>
+</member><member name="M:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.DefinirListeClasses(ESRI.ArcGIS.Geodatabase.IFeatureWorkspace,System.String@)">
+	<summary>
+ Routine qui permet de définir la liste des classes spatiales contenues dans une géodatabase.
+ La liste est contruite seulement si aucune classe n'est spécifiée.
+</summary>
+	<param name="pGeodatabaseClasses"> Géodatabase contenant les classes spatiales à traiter.</param>
+	<param name="sListeClasses"> Liste des classes spatiales à traiter.</param>
+</member><member name="M:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.DefinirTableStatistiques(System.String)">
+	<summary>
+ Routine qui permet de définir la table contenant les statistiques des classes spatiales.
+</summary>
+	<param name="sNomTableStatistiques"> Nom de la tables contenant les statistiques.</param>
+</member><member name="M:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.DefinirGeodatabase(System.String@)">
+	<summary>
+ Routine qui permet d'ouvrir et retourner la Geodatabase à partir d'un nom de Géodatabase.
+</summary>
+	<param name="sNomGeodatabase"> Nom de la géodatabase à ouvrir.</param>
+</member><member name="M:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.EcrireStatistiqueUtilisation(System.String,System.String)">
+	<summary>
+ Routine qui permet d'écrire les statistiques d'utilisation d'un usager.
+ 
+<param name="sCommande"> Commande à écrire dans le fichier de statistique d'utilisation.</param>
+		<param name="sNomRepertoire"> Nom du répertoire dans lequel le fichier de statistique est présent.</param>
+	</summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.clsCreerStatistiques.EcrireMessage(System.String)">
+	<summary>
+ Routine qui permet d'écrire le message d'exécution dans la console et dans un fichier journal.
+</summary>
+	<param name="sMessage"> Message à écrire dans un RichTextBox, un fichier journal et/ou dans la console.</param>
+</member><member name="T:CreerStatistiquesClassesSpatiales.clsCreerStatistiques">
+	<summary>
+ Classe générique qui permet de créer l'information pour la table des statistiques des classes spatiales d'une géodatabase.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+ Date : 04 Octobre 2016
+</remarks>
+</member><member name="F:CreerStatistiquesClassesSpatiales.modExecuter.m_AOLicenseInitializer">
+	<summary> Interface d'initialisation des licences ESRI.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.modExecuter.m_NomTableStatistiques">
+	<summary>Nom de la table contenant l'information sur les statistiques des classes.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.modExecuter.m_NomGeodatabaseClasses">
+	<summary>Nom de la Géodatabase contenant les classes à traiter.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.modExecuter.m_ListeClasses">
+	<summary>Liste des classes à traiter.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.modExecuter.m_NomAttributDecoupage">
+	<summary>Nom de l'attribut de découpage dans lequel les identifiants seront utilisés pour effectuer le traitement.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.modExecuter.m_ListeIdentifiants">
+	<summary>Liste des identifiants de découpage à traiter.</summary>
+</member><member name="F:CreerStatistiquesClassesSpatiales.modExecuter.m_NomFichierJournal">
+	<summary>Nom du fichier journal dans lequel l'exécution du traitement sera inscrit.</summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.modExecuter.ValiderParametres">
+	<summary>
+Routine qui permet de valider et définir les paramètres du programme.
+</summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.modExecuter.ValiderParametreTableStatistiques(System.String[])">
+	<summary>
+Routine qui permet de valider le paramètre de la table des contraintes d'intégrité.
+</summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.modExecuter.ValiderParametreGeodatabaseClasses(System.String[])">
+	<summary>
+Routine qui permet de valider le paramètre du nom de la Geodatabase des classes à traiter.
+</summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.modExecuter.ValiderParametreListeClasses(System.String[])">
+	<summary>
+Routine qui permet de valider le paramètre de la liste des classes à traiter.
+</summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.modExecuter.ValiderParametreAttributDecoupage(System.String[])">
+	<summary>
+Routine qui permet de valider le paramètre du nom de l'attribut contenant l'identifiant de découpage à valider.
+</summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.modExecuter.ValiderParametreListeIdentifiants(System.String[])">
+	<summary>
+Routine qui permet de valider le paramètre de la liste des identifiants.
+</summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.modExecuter.ValiderParametreFichierJournal(System.String[])">
+	<summary>
+Routine qui permet de valider le paramètre du fichier journal dans lequel l'information sur l'exécution du traitement sera écrite.
+</summary>
+</member><member name="T:CreerStatistiquesClassesSpatiales.modExecuter">
+	<summary>
+ Module principale permettant le calcul et l'écriture de l'information pour les classes d'une Géodatabase dans une table de statistiques.
+ 
+ Les 11 paramètres de la ligne de commande du programme sont les suivants:
+ -------------------------------------------------------------------------
+ 1-Table des statistiques : Nom de la table de la table des statistiques dans laquelle l'information sera écrites.
+                            Obligatoire, Défaut : Database Connections\BDRS_PRO_BDG.sde\BDG_DBA.STATISTIQUE_IDENTIFIANT_CLASSE
+ 2-Geodatabase des classes: Nom de la Géodatabase contenant les classes à traiter.
+                            Obligatoire, Défaut : 
+ 3-Liste des classes      : Liste des classes à traiter.
+                            Obligatoire, Défaut : 
+ 4-Attribut de découpage  : Nom de l'attribut du Layer de découpage dans lequel les identifiants seront utilisés pour effectuer le traitement.
+                            Optionnel, Défaut : DATASET_NAME
+ 5-Liste des identifiants : Liste des identifiants de découpage à traiter.
+                            Optionnel, Défaut : 
+ 6-Fichier journal        : Nom du fichier journal dans lequel l'information sur l'exécution du traitement sera écrite.
+                            Optionnel, Défaut : 
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+ Date : 04 Octobre 2016
+</remarks>
+</member><member name="E:CreerStatistiquesClassesSpatiales.LicenseInitializer.ResolveBindingEvent">
+	<summary>
+ Raised when ArcGIS runtime binding hasn't been established. 
+ </summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.LicenseInitializer.InitializeApplication(ESRI.ArcGIS.esriSystem.esriLicenseProductCode[],ESRI.ArcGIS.esriSystem.esriLicenseExtensionCode[])">
+	<summary>
+ Initialize the application with the specified product and extension license code.
+ </summary>
+	<returns>Initialization is successful.</returns>
+	<remarks>
+ Make sure an active ArcGIS runtime has been bound before license initialization.
+</remarks>
+</member><member name="M:CreerStatistiquesClassesSpatiales.LicenseInitializer.LicenseMessage">
+	<summary>
+ A summary of the status of product and extensions initialization.
+ </summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.LicenseInitializer.ShutdownApplication">
+	<summary>
+ Shuts down AoInitialize object and check back in extensions to ensure
+ any ESRI libraries that have been used are unloaded in the correct order.
+ </summary>
+	<remarks>Once Shutdown has been called, you cannot re-initialize the product license
+ and should not make any ArcObjects call.</remarks>
+</member><member name="M:CreerStatistiquesClassesSpatiales.LicenseInitializer.IsExtensionCheckedOut(ESRI.ArcGIS.esriSystem.esriLicenseExtensionCode)">
+	<summary>
+ Indicates if the extension is currently checked out.
+ </summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.LicenseInitializer.AddExtensions(ESRI.ArcGIS.esriSystem.esriLicenseExtensionCode[])">
+	<summary>
+ Set the extension(s) to be checked out for your ArcObjects code. 
+ </summary>
+</member><member name="M:CreerStatistiquesClassesSpatiales.LicenseInitializer.RemoveExtensions(ESRI.ArcGIS.esriSystem.esriLicenseExtensionCode[])">
+	<summary>
+ Check in extension(s) when no longer needed.
+ </summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.LicenseInitializer.InitializeLowerProductFirst">
+	<summary>
+ Get/Set the ordering of product code checking. If true, check from lowest to 
+ highest license. True by default.
+ </summary>
+</member><member name="P:CreerStatistiquesClassesSpatiales.LicenseInitializer.InitializedProduct">
+	<summary>
+ Retrieves the product code initialized in the ArcObjects application
+ </summary>
+</member><member name="T:CreerStatistiquesClassesSpatiales.LicenseInitializer">
+	<summary>
+ Initialize ArcObjects runtime environment for this application
+ </summary>
+</member>
+</members>
+</doc>
