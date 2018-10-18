@@ -1,0 +1,52 @@
+﻿<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>MpoBarreNonConformite</Name>
+  <AddInID>{ee460513-ca0a-463e-97cd-2673f287e4ec}</AddInID>
+  <Description>Barre qui permet de gérer les données en non-conformité, leurs réplicas, leurs conflits et leurs différences.</Description>
+  <Version>1.0</Version>
+  <Image>Images\MpoBarreNonConformite.png</Image>
+  <Author>mpothier</Author>
+  <Company>MPO</Company>
+  <Date>2018-09-12</Date>
+  <Targets>
+    <Target name="Desktop" version="10.5" />
+  </Targets>
+  <AddIn language="CLR" library="BarreNonConformite.dll" namespace="BarreNonConformite">
+    <ArcMap>
+      <Toolbars>
+        <Toolbar id="MPO_BarreNonConformite_BarreNonConformite" caption="MPO-BarreNonConformite (18 Octobre 2018)" showInitially="false">
+          <Items>
+            <Button refID="MPO_BarreNonConformite_cmdActiverMenu" />
+            <Button refID="MPO_BarreNonConformite_cmdReserver" separator="true" />
+            <Button refID="MPO_BarreNonConformite_cmdAnnulerReservation" />
+            <Button refID="MPO_BarreNonConformite_cmdFermerReservation" />
+            <Button refID="MPO_BarreNonConformite_cmdCreerGdbEnfant" />
+            <ComboBox refID="MPO_BarreNonConformite_cboNomGdbEnfant" separator="true" />
+            <Button refID="MPO_BarreNonConformite_cmdReplica" />
+            <Button refID="MPO_BarreNonConformite_cmdConflit" />
+            <Button refID="MPO_BarreNonConformite_cmdDifference" />
+            <Button refID="MPO_BarreNonConformite_cmdDeposer" />
+            <Button refID="MPO_BarreNonConformite_cmdAnnulerReplica" />
+          </Items>
+        </Toolbar>
+      </Toolbars>
+      <Commands>
+        <Button id="MPO_BarreNonConformite_cmdActiverMenu" class="cmdActiverMenu" message="Permet de gérer les réplicas de non-conformités et traiter les conflits et les différences de données répliquées à déposer." caption="Activer le menu" tip="Activer/désactiver le menu de gestion des non-conformités et de réplica." category="MPO-BarreNonConformite" image="Images\cmdActiverMenu.png" onDemand="false" />
+        <Button id="MPO_BarreNonConformite_cmdReserver" class="cmdReserver" message="Un numéro de mise a programme (NO_MAP) est assigné à tous les identifiants/classes de la non-conformité sélectionnés." caption="Réserver les données" tip="Réserver les données de la Géodatabase-Parent (.sde)." category="MPO-BarreNonConformite" image="Images\cmdReserver.png" onDemand="false" />
+        <Button id="MPO_BarreNonConformite_cmdAnnulerReservation" class="cmdAnnulerReservation" message="Permet de détruire le numéro de mise a programme (NO_MAP) assigné à tous les identifiants/classes de la non-conformité sélectionnés." caption="Annuler la réservation" tip="Annuler la réservation des données de la Géodatabase-Parent (.sde)." category="MPO-BarreNonConformite" image="Images\cmdAnnuler.png" onDemand="false" />
+        <Button id="MPO_BarreNonConformite_cmdFermerReservation" class="cmdFermerReservation" message="L'état des NO_MAP des identifiants est mis à T:Terminé, le numéro de version des métadonnéés est incrémenté, la version et l'édition de fin est mise à jour dans la table des NC." caption="Fermer la réservation" tip="Fermer la réservation des identifiants et des classes dans SIB." category="MPO-BarreNonConformite" image="Images\cmdFermerReservation.png" onDemand="false" />
+        <Button id="MPO_BarreNonConformite_cmdCreerGdbEnfant" class="cmdCreerGdbEnfant" message="Les identifiants/classes de la non-conformité sélectionnés de la Géodatabase-Parent (.sde) seront répliquées (CheckOut) dans une Géodatabase-Enfant (.mdb/.gdb) et dans une Géodatabase d'archive (.mdb/.gdb)." caption="Créer la Géodatabase-Enfant" tip="Créer la Géodatabase-Enfant (.mdb/.gdb) et son archive à partir de la Géodatabase-Parent (.sde)." category="MPO-BarreNonConformite" image="Images\cmdCreerGdbEnfant.png" onDemand="false" />
+        <ComboBox id="MPO_BarreNonConformite_cboNomGdbEnfant" class="cboNomGdbEnfant" message="La Géodatabase d'archive est une copie de la Géodatabase-Enfant (.mdb/.gdb) nommé 'nom_archive'." caption="Nom de la Géodatabase-Enfant (.mdb/.gdb)" tip="Nom de la Géodatabase-Enfant (.mdb/.gdb) dans laquelle une archive peut être présente." category="MPO-BarreNonConformite" image="Images\cboNomGdbEnfant.png" editable="true" sizeString="012345678901234567890123456789012345" itemSizeString="012345678901234567890123456789012345" />
+        <Button id="MPO_BarreNonConformite_cmdConflit" class="cmdConflit" message="Les conflits sont présents lorsque les données sont différentes entre la Géodatabase-Parent (.sde) et l'archive de la Géodatabase-Enfant (.mdb/.gdb)." caption="Identifier les conflits." tip="Identifier les conflits entre la Géodatabase-Parent (.sde) et l'archive de la Géodatabase-Enfant (.mdb/.gdb)." category="MPO-BarreNonConformite" image="Images\cmdConflit.png" onDemand="false" />
+        <Button id="MPO_BarreNonConformite_cmdDifference" class="cmdDifference" message="Les différences sont présentes entre la Géodatabase-Enfant (.mdb/.gdb) et son archive et correspondent aux données à déposer." caption="Identifier les différences" tip="Identifier les différences entre la Géodatabase-Enfant (.mdb/.gdb) et son archive." category="MPO-BarreNonConformite" image="Images\cmdDifference.png" onDemand="false" />
+        <Button id="MPO_BarreNonConformite_cmdReplica" class="cmdReplica" message="Une description complète du réplica est présente dans la Géodatabase-Enfant (.mdb/.gdb) et dans la Géodatabase-Parent (.sde)." caption="Afficher la description du réplica" tip="Afficher la description du réplica de la Géodatabase-Enfant (.mdb/.gdb) et de la Géodatabase-Parent (.sde)." category="MPO-BarreNonConformite" image="Images\cmdReplica.png" onDemand="false" />
+        <Button id="MPO_BarreNonConformite_cmdDeposer" class="cmdDeposer" message="Les différences entre les données de la Géodatabase-Enfant (.mdb/.gdb) et de son archive seront déposées (CheckIn) dans la Géodatabase-Parent (.sde). IMPORTANT : Il doit y avoir des différences mais pas de conflits pour déposer les différences." caption="Déposer les différences" tip="Déposer les différences de la Géodatabase-Enfant (.mdb/.gdb) dans la Géodatabase-Parent (.sde)." category="MPO-BarreNonConformite" image="Images\cmdDeposer.png" onDemand="false" />
+        <Button id="MPO_BarreNonConformite_cmdAnnulerReplica" class="cmdAnnulerReplica" message="Annuler le réplica dans la Géodatabase Parent et Enfant." caption="Annuler le réplica Parent et Enfant" tip="Annuler le réplica de la Géodatabase Parent et Enfant." category="MPO-BarreNonConformite" image="Images\cmdAnnulerReplica.png" onDemand="false" />
+      </Commands>
+      <DockableWindows>
+        <DockableWindow id="MPO_BarreNonConformite_dckMenuNonConformite" class="BarreNonConformite.dckMenuNonConformite+AddinImpl" caption="Menu des non-conformités" image="Images\dckMenuNonConformite.png">
+          <InitialPlacement height="300" width="300" state="hidden" position="left" />
+        </DockableWindow>
+      </DockableWindows>
+    </ArcMap>
+  </AddIn>
+</ESRI.Configuration>

@@ -1,0 +1,958 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+BarreVersion
+</name>
+</assembly>
+<members>
+<member name="F:BarreVersion.clsGererNC.gsEnv">
+	<summary>Nom de l'environnement de travail (instance de la BD) [SIB_PRO/SIB_TST/SIB_DEV/BDG_SIB_TST].</summary>
+</member><member name="F:BarreVersion.clsGererNC.gsTypeProduit">
+	<summary>Type de produit pour lesquels on veut gérer les non-conformités.</summary>
+</member><member name="P:BarreVersion.clsGererNC.Env">
+	<summary>
+ Propriété qui permet de définir et retourner l'environnement de travail (instance de la BD).
+</summary>
+</member><member name="P:BarreVersion.clsGererNC.ConnectionString">
+	<summary>
+ Propriété qui permet de retourner le texte de connexion à la Bd des catalogues.
+</summary>
+</member><member name="M:BarreVersion.clsGererNC.#ctor(System.String,System.String)">
+	<summary>
+Routine qui permet d'initialiser la classe pour gérer l'information des non-conformités.
+</summary>
+</member><member name="M:BarreVersion.clsGererNC.EstValide">
+	<summary>
+ Permet d'indiquer si la BD SIB est valide.
+</summary>
+	<returns>"Boolean" pour indiquer si la BD SIB est valide (True) ou invalide (False).</returns>
+</member><member name="M:BarreVersion.clsGererNC.ExtraireListeEnv">
+	<summary>
+ Fonction qui permet d'extraire la liste des environnements de travail.
+</summary>
+	<returns>"Dictionary(Of String, String)" correspondant à la liste des environnements possibles (Env, Env).</returns>
+</member><member name="M:BarreVersion.clsGererNC.ExtraireListeNoNC">
+	<summary>
+ Fonction qui permet d'extraire la liste des numéros de non-conformité sans édition de fin, 
+ le type et la description des non-conformités selon un type de produit.
+</summary>
+	<returns>"Dictionary(Of String, Integer)" correspondant à la liste des numéros de non-conformité sans édition de fin .</returns>
+</member><member name="M:BarreVersion.clsGererNC.ExtraireDescriptionNoNC(System.String)">
+	<summary>
+ Fonction qui permet d'extraire la DESCRIPTION d'un numéro de non-conformité spécifié.
+</summary>
+	<returns>"String" correspondant à la description du numéro de non-conformité spécifié.</returns>
+</member><member name="M:BarreVersion.clsGererNC.ExtraireListeIdentifiantsNoNC(System.String)">
+	<summary>
+ Fonction qui permet d'extraire la liste des identifiants, le numéro d'édition/Version de début et de fin et le numéro de mise au programme
+ selon un type de produit et un numéro de non-conformité spécifié.
+</summary>
+	<returns>"Dictionary(Of String, Integer)" correspondant à la liste des identifiants du numéro de non-conformité spécifié.</returns>
+</member><member name="M:BarreVersion.clsGererNC.ExtraireListeClasses(System.String)">
+	<summary>
+ Fonction qui permet d'extraire la liste des classes possibles contenues dans la BD des catalogues.
+</summary>
+	<param name="sEnv">Environnement de la base de données des catalogues 'CATREL_PRO/CATREL_TST'.</param>
+	<returns>"Collection" correspondant à la liste des classes possibles (codeClasse, nomClasse).</returns>
+</member><member name="T:BarreVersion.clsGererNC">
+	<summary>
+ Librairie de Classe qui permet de gérer l'information des non-conformités dans la Base de données SIB.
+</summary>
+	<remarks>
+Cette librairie est utilisable pour les outils interactifs ou Batch dans ArcMap (ArcGis de ESRI).
+
+Auteur : Michel Pothier
+Date : 21 février 2017
+</remarks>
+</member><member name="T:BarreVersion.cmdReplica">
+	<summary>
+ Permet d'afficher la description du réplica de la Géodatabase Enfant et Parent.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="F:BarreVersion.clsGererReplica.gpGdbParent">
+	<summary> Géodatabase parent dans laquelle les données d'origines ont été retirées et les changements doivent être déposés.</summary>
+</member><member name="F:BarreVersion.clsGererReplica.gpGdbEnfant">
+	<summary> Géodatabase enfant contenant les changements, les données ajoutées, détruites et modifiées.</summary>
+</member><member name="F:BarreVersion.clsGererReplica.gpGdbArchive">
+	<summary> Géodatabase d'archive dans laquelle les données originales ont été retirés.</summary>
+</member><member name="F:BarreVersion.clsGererReplica.gpReplicaParent">
+	<summary> Interface contenant l'information du réplica contenu dans la Géodatabase parent.</summary>
+</member><member name="F:BarreVersion.clsGererReplica.gpReplicaEnfant">
+	<summary> Interface contenant l'information du réplica contenu dans la Géodatabase enfant.</summary>
+</member><member name="F:BarreVersion.clsGererReplica.gpDataChanges">
+	<summary> Interface contenant les changements dans les données de la Géodatabase enfant.</summary>
+</member><member name="P:BarreVersion.clsGererReplica.GdbParent">
+	<summary>
+ Propriété qui permet de définir et retourner la Géodatabase parent.
+</summary>
+</member><member name="P:BarreVersion.clsGererReplica.GdbEnfant">
+	<summary>
+ Propriété qui permet de retourner la Géodatabase enfant.
+</summary>
+</member><member name="P:BarreVersion.clsGererReplica.GdbArchive">
+	<summary>
+ Propriété qui permet de définir et retourner la Géodatabase d'archive.
+</summary>
+</member><member name="P:BarreVersion.clsGererReplica.ReplicaParent">
+	<summary>
+ Propriété qui permet de retourner le réplica de la Géodatabase parent.
+</summary>
+</member><member name="P:BarreVersion.clsGererReplica.ReplicaEnfant">
+	<summary>
+ Propriété qui permet de retourner le réplica de la Géodatabase enfant.
+</summary>
+</member><member name="P:BarreVersion.clsGererReplica.DataChanges">
+	<summary>
+ Propriété qui permet de retourner les changements de la Géodatabase enfant qui contient un réplica valide.
+</summary>
+</member><member name="M:BarreVersion.clsGererReplica.CreerReplica(System.String,System.String@,System.String@,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriDataExtractionType,ESRI.ArcGIS.Geodatabase.esriReplicaModelType,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum)">
+	<summary>
+ Routine qui permet d'exécuter un réplica de type CheckOut à partir d'une géodatabase SDE en copiant les classes spécifiées dans une géodatabase .mdb ou .gdb.
+</summary>
+	<param name="sNomReplica">Nom du réplica.</param>
+	<param name="sNomGdbParent">Nom de la Géodatabase Parent .sde.</param>
+	<param name="sNomGdbEnfant">Nom de la Géodatabase enfant .mdb ou .gdb.</param>
+	<param name="sListeNomClasse">Liste des noms des classe à extraire spéparer par des virgule en incluant le nom du propriétaire.</param>
+	<param name="sRequeteAttributive">Requête attributive à appliquer sur toutes les classes à extraire.</param>
+	<param name="pTypeModel">Indique le type de model Simple ou complet.</param>
+	<param name="pEsriDataExtractionType">Indique le type d'extraction à effectuer (esriDataCheckOut ou esriDataExtraction).</param>
+	<param name="pGeometry">Indique la géométrie utiliser pour effectuer la requête spatiale.</param>
+	<param name="pSpatialRelation">Indique le type de requête spatiale à effecter.</param>
+</member><member name="M:BarreVersion.clsGererReplica.CreerDescriptionReplicaEnfant(System.String,System.String,System.String,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriDataExtractionType,ESRI.ArcGIS.Geodatabase.esriReplicaModelType,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum)">
+	<summary>
+ Routine qui permet de créer une description de réplica d'une Géodatabase enfant avec une Géodatabase d'archive externe.
+</summary>
+	<param name="sNomReplica">Nom du réplica.</param>
+	<param name="sNomGdbParent">Nom de la Géodatabase Parent .sde.</param>
+	<param name="sNomGdbArchiveCopier">Nom de la Géodatabase d'Archive .mdb ou .gdb. à copier</param>
+	<param name="sListeNomClasse">Liste des noms des classe à extraire spéparer par des virgule en incluant le nom du propriétaire.</param>
+	<param name="sRequeteAttributive">Requête attributive à appliquer sur toutes les classes à extraire.</param>
+	<param name="pTypeModel">Indique le type de model Simple ou complet.</param>
+	<param name="pEsriDataExtractionType">Indique le type d'extraction à effectuer (esriDataCheckOut ou esriDataExtraction).</param>
+	<param name="pGeometry">Indique la géométrie utiliser pour effectuer la requête spatiale.</param>
+	<param name="pSpatialRelation">Indique le type de requête spatiale à effecter.</param>
+	<remarks>
+ La description du réplica est ajouter dans la Géodatabase enfant mais pas dans la Geodatabase parent.
+ La Géodatabase d'archive sera créée à partir du nom de la Géodatabase à copier.
+ </remarks>
+</member><member name="M:BarreVersion.clsGererReplica.AjouterDescriptionReplicaEnfant(System.String,ESRI.ArcGIS.Geodatabase.IReplicaDescription4@,ESRI.ArcGIS.Geodatabase.IWorkspace@)">
+	<summary>
+ Routine qui permet d'ajouter une description de réplica dans une Géodatabase enfant.
+</summary>
+	<param name="sNomReplica"> Nom du réplica à ajouter.</param>
+	<param name="pReplicaDescription"> Interface contenant la description des Datasets ajoutés dans la Géodatabase.</param>
+	<param name="pGeodatabase"> Interface contenant la Géodatabase enfant dans laquelle le réplica sera ajouté.</param>
+</member><member name="M:BarreVersion.clsGererReplica.Init(ESRI.ArcGIS.Geodatabase.IWorkspace)">
+	<summary>
+ Routine qui permet d'initialiser la classe à partir de la géodatabase enfant.
+</summary>
+	<param name="pGdbEnfant"> Interface contenant la Géodatabase enfant.</param>
+</member><member name="M:BarreVersion.clsGererReplica.Init(System.String)">
+	<summary>
+ Routine qui permet d'initialiser la classe à partir des noms de la géodatabase enfant.
+</summary>
+	<param name="sGdbEnfant"> Nom de la Géodatabase enfant.</param>
+</member><member name="M:BarreVersion.clsGererReplica.EstValide(System.String@)">
+	<summary>
+ Fonction qui permet de valider le traitement de gestion du réplica.
+</summary>
+	<param name="sMessage"> Message qui indique pourquoi le traitement est valide ou invalide.</param>
+	<remarks>
+ Par défaut, les différences seront identifiées à partir de l'information du réplica de la Géodatabase enfant dans laquelle l'archive interne est présente.
+ Si le réplica de la Géodatabase enfant est invalide, les différences seront identifiées à partir de la Géodatabase d'archive externe.
+ La Géodatabase d'archive externe correspond à la copie initiale de la Géodatabase enfant.
+ </remarks>
+</member><member name="M:BarreVersion.clsGererReplica.DefinirGeodatabase(System.String)">
+	<summary>
+Fonction qui permet de définir une Géodatabase de type .sde, .mdb ou .gdb à partir d'un nom de Géodatabase.
+</summary>
+	<param name="sNomGeodatabase">Nom complet la Géodatabase.</param>
+	<returns>"IWorkspace" correspondants à une Géodatabase , Nothing sinon.</returns>
+</member><member name="M:BarreVersion.clsGererReplica.CreerGeodatabaseLocale(System.String)">
+	<summary>
+Fonction qui permet de créer une Géodatabase locale de type .mdb ou .gdb.
+</summary>
+	<param name="sNomGeodatabase">Nom complet la Géodatabase locale à créer.</param>
+	<returns>"IWorkspace" correspondants à une Géodatabase locale , Nothing sinon.</returns>
+	<remarks>
+ Une Géodatabase est créée seulement si le nom contient .mdb ou .gdb, sinon une erreur est retournée.
+</remarks>
+</member><member name="M:BarreVersion.clsGererReplica.DefinirReplicaEnfant">
+	<summary>
+ Routine qui permet de définir le réplica de la Géodatabase enfant.
+</summary>
+</member><member name="M:BarreVersion.clsGererReplica.DefinirDataChanges">
+	<summary>
+ Routine qui permet de définir l'interface des changements de la Géodatabase enfant.
+</summary>
+</member><member name="M:BarreVersion.clsGererReplica.DefinirGdbParent">
+	<summary>
+ Routine qui permet de définir la Géodatabase parent à partir de l'interface de changements.
+</summary>
+</member><member name="M:BarreVersion.clsGererReplica.DefinirReplicaParent">
+	<summary>
+ Routine qui permet de définir le réplica de la Géodatabase parent à partir de l'interface de changements.
+</summary>
+</member><member name="M:BarreVersion.clsGererReplica.DefinirGdbArchive">
+	<summary>
+ Routine qui permet de définir la Géodatabase d'archive à partir du nom de la Géodatabase enfant.
+</summary>
+	<remarks>Le nom de la géodatabase d'archive est le même que celui de l'enfant mais contient le suffixe "_archive" à la fin du nom sans l'extension.</remarks>
+</member><member name="M:BarreVersion.clsGererReplica.CreerGdbArchiveExterne">
+	<summary>
+ Routine qui permet de créer la Géodatabase d'archive à partir de la Géodatabase enfant.
+</summary>
+	<remarks>Le nom de la géodatabase d'archive est le même que celui de l'enfant mais contient le suffixe "_archive" à la fin du nom sans l'extension.</remarks>
+</member><member name="M:BarreVersion.clsGererReplica.DescriptionReplica(ESRI.ArcGIS.Geodatabase.IReplica3,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Fonction qui permet de retourner la description complète d'un réplica dans un noeud de TreeView.
+</summary>
+	<param name="pReplica">Interface contenant l'information d'un réplica de Géodatabase.</param>
+	<param name="pNodeGdb">Noeud d'un TreeView dans lequel la description du réplica de la Géodatabase sera inscrite.</param>
+</member><member name="M:BarreVersion.clsGererReplica.CreerReplicaExtraction(System.String,System.String,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriReplicaModelType,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum)">
+	<summary>
+ Fonction qui permet de créer un réplica d'extraction de données dans une géodatabase .mdb ou .gdb à partir d'une géodatabase SDE.
+</summary>
+	<param name="sNomGdbParent">Nom de la Géodatabase parent .sde.</param>
+	<param name="sNomGdbEnfant">Nom de la Géodatabase enfant .mdb ou .gdb.</param>
+	<param name="sListeNomClasse">Liste des noms des classe à extraire spéparer par des virgule en incluant le nom du propriétaire.</param>
+	<param name="sRequeteAttributive">Requête attributive à appliquer sur toutes les classes à extraire.</param>
+	<param name="pTypeModel">Indique le type de model Simple ou complet.</param>
+	<param name="pGeometry">Indique la géométrie utiliser pour effectuer la requête spatiale.</param>
+	<param name="pSpatialRelation">Indique le type de requête spatiale à effecter.</param>
+	<remarks>Si une des classe est déjà présente, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreVersion.clsGererReplica.InitGeoDataServerFromFile(System.String)">
+	<summary>
+ Fonction qui permet de définir une géodatabase utilisée dans un réplica à partir d'un nom de géodatabase.
+ 
+ Exemple: sNomGeodatabase = "C:\arcgis\ArcTutor\DatabaseServers\buildings.mdb".
+          sNomGeodatabase = "C:\arcgis\ArcTutor\DatabaseServers\hazards.gdb".
+</summary>
+	<param name="sNomGeodatabase">Nom complet d'une Géodatabase.</param>
+	<returns>IGeoDataServer contenant l'information de la géodatabase utilisée pour un réplica.</returns>
+</member><member name="M:BarreVersion.clsGererReplica.ExtraireElementArchive(System.Int32,System.String)">
+	<summary>
+ Fonction qui permet d'extraire un élément d'archive interne ou externe à partir d'un OBJECTID et d'un nom de classe.
+</summary>
+	<param name="iOid">ObjectId de l'élément.</param>
+	<param name="sNomClasse">Nom de la classe de l'élément.</param>
+	<returns>IRow contenant l'élément demandé, sinon nothing</returns>
+</member><member name="M:BarreVersion.clsGererReplica.ExtraireElementArchiveInterne(System.Int32,System.String)">
+	<summary>
+ Fonction qui permet d'extraire un élément de la Géodatabase d'archive interne à la Géodatabase enfant à partir d'un OBJECTID et d'un nom de classe.
+</summary>
+	<param name="iOid">ObjectId de l'élément.</param>
+	<param name="sNomClasse">Nom de la classe de l'élément.</param>
+	<returns>IRow contenant l'élément demandé, sinon nothing</returns>
+</member><member name="M:BarreVersion.clsGererReplica.ExtraireElementArchiveExterne(System.Int32,System.String)">
+	<summary>
+ Fonction qui permet d'extraire un élément de la Géodatabase d'archive externe à partir d'un OBJECTID et d'un nom de classe.
+</summary>
+	<param name="iOid">ObjectId de l'élément.</param>
+	<param name="sNomClasse">Nom de la classe de l'élément.</param>
+	<returns>IRow contenant l'élément demandé, sinon nothing</returns>
+</member><member name="M:BarreVersion.clsGererReplica.ExtraireElementEnfant(System.Int32,System.String)">
+	<summary>
+ Fonction qui permet d'extraire un élément de la Géodatabase enfant à partir d'un OBJECTID, d'un nom de classe.
+</summary>
+	<param name="iOid">ObjectId de l'élément.</param>
+	<param name="sNomClasse">Nom de la classe de l'élément.</param>
+	<returns>IRow contenant l'élément demandé, sinon nothing</returns>
+</member><member name="M:BarreVersion.clsGererReplica.ExtraireElementParent(System.Int32,System.String)">
+	<summary>
+ Fonction qui permet d'extraire un élément de la Géodatabase parent à partir d'un OBJECTID, d'un nom de classe.
+</summary>
+	<param name="iOid">ObjectId de l'élément.</param>
+	<param name="sNomClasse">Nom de la classe de l'élément.</param>
+	<returns>IRow contenant l'élément demandé, sinon nothing</returns>
+</member><member name="M:BarreVersion.clsGererReplica.DescriptionReplica(System.Windows.Forms.TreeView@)">
+	<summary>
+ Fonction qui permet de remplir la description du réplica de la Géodatabase enfant et parent dans le TreewView.
+</summary>
+	<param name="treReplica">TreeView dans lequel la description du réplica de la Géodatabase enfant et parent seront inscrite.</param>
+</member><member name="M:BarreVersion.clsGererReplica.finalize">
+	<summary>
+Routine qui permet de vider la mémoire des objets de la classe.
+</summary>
+</member><member name="M:BarreVersion.clsGererReplica.IdentifierConflits(System.Windows.Forms.TreeView@,System.Boolean)">
+	<summary>
+ Routine qui permet d'identifier les conflits dans un TreeView entre la Géodatabase parent (.sde) et l'archive interne ou externe de la Géodatabase enfant (.mdb ou .gdb).
+</summary>
+	<param name="treConflits"> TreeView dans lequel les conflits seront identifiées.</param>
+	<param name="bExterne">Indique si l'archive externe est utilisée pour identifier les différences.</param>
+	<remarks>
+ Par défaut, les conflits seront identifiées à partir de l'information du réplica de la Géodatabase enfant dans laquelle l'archive interne est présente.
+ La Géodatabase d'archive externe correspond à la copie initiale de la Géodatabase enfant.
+ </remarks>
+</member><member name="M:BarreVersion.clsGererReplica.IdentifierConflitsArchiveExterne(System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet d'identifier les conflits dans un TreeView entre la Géodatabase parent (.sde) et l'archive externe de la Géodatabase enfant (.mdb ou .gdb).
+</summary>
+	<param name="treConflits">TreeView dans lequel les conflits seront identifiées.</param>
+	<remarks>L'archive des données est externe à la Géodatabase enfant. Elle est donc présente dans une autre Géodatabase .mdb ou .gdb.</remarks>
+</member><member name="M:BarreVersion.clsGererReplica.IdentifierConflitsArchiveExterneDataset(ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.ITable,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les conflits dans un TreerView entre une table d'une Géodatabase parent et une table d'une Géodatabase d'archive externe.
+ L'archive des données est externe à la Géodatabase enfant. Elle est donc présente dans une autre Géodatabase .mdb ou .gdb.
+</summary>
+	<param name="pTableParent">Interface contenant la table de la Géodatabase enfant.</param>
+	<param name="pTableArchive">Interface contenant la table de la Géodatabase d'archive.</param>
+</member><member name="M:BarreVersion.clsGererReplica.ReplicaTable2SelectionSet(ESRI.ArcGIS.Geodatabase.IWorkspace,ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.IReplicaFilterDescription,ESRI.ArcGIS.Geodatabase.IReplicaDataset2,System.Int32)">
+	<summary>
+ Fonction qui permet d'extraire le SelectionSet correspondant au réplica du dataset à traiter.
+</summary>
+	<param name="pGeodatabase">Interface contenant la Géodatabase.</param>
+	<param name="pTable">Interface contenant la table.</param>
+	<param name="pRepFilterDesc">Interface contenant un Dataset d'un réplica.</param>
+	<param name="pReplicaDataset">Interface contenant un Dataset d'un réplica.</param>
+	<param name="iIndexDataset">Contient le numéro d'indexe du Dataset.</param>
+	<remarks>Si aucun réplica n'est présent dans la géodatabase enfant, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreVersion.clsGererReplica.IdentifierConflitsArchiveInterne(System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet d'identifier les conflits dans un TreeView entre la Géodatabase parent (.sde) et l'archive interne de la Géodatabase enfant (.mdb ou .gdb).
+ L'archive est présente directement dans la Géodatabase enfant (.mdb ou .gdb) via l'information d'un réplica de type checkOut.
+</summary>
+	<param name="treConflits">TreeView dans lequel les conflits seront identifiés.</param>
+	<remarks>Si aucun réplica n'est présent dans la géodatabase enfant, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreVersion.clsGererReplica.ConflitsElementsArchive(ESRI.ArcGIS.Geodatabase.IFIDSet,ESRI.ArcGIS.GeoDatabaseDistributed.IDataChanges,System.String,ESRI.ArcGIS.Geodatabase.ITable,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les conflits d'attributs dans un noeud de TreeView pour un ensemble de OID d'éléments Parent/Enfant-Archive.
+ L'archive est présente directement dans la Géodatabase enfant (.mdb ou .gdb) via l'information d'un réplica de type checkOut.
+</summary>
+	<param name="pFidSet">Interface contenant l'ensemble des OIDs à traiter.</param>
+	<param name="pDataChanges">Interface contenant les changements.</param>
+	<param name="sNomClasse">Nom de la classe à traiter.</param>
+	<param name="pNodeReplica">Noeud du TreeView pour un Réplica de Géodatabase .</param>
+	<param name="pNodeClasse">Noeud du TreeView pour une classe.</param>
+	<param name="pNodeAjouter">Noeud du TreeView pour tous les éléments ajouter d'une classe.</param>
+	<param name="pNodeDetruire">Noeud du TreeView pour tous les éléments détruits d'une classe.</param>
+	<param name="pNodeModifier">Noeud du TreeView pour tous les éléments modifiés d'une classe.</param>
+</member><member name="M:BarreVersion.clsGererReplica.ConflitsElementsCourant(ESRI.ArcGIS.Geodatabase.IFIDSet,ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.ITable,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les conflits d'attributs dans un noeud de TreeView pour un ensemble de OID d'éléments Parent/Enfant.
+</summary>
+	<param name="pFidSet">Interface contenant l'ensemble des OIDs à traiter.</param>
+	<param name="pTableParent">Interface contenant la table des éléments Parent.</param>
+	<param name="pTableEnfant">Interface contenant la table des éléments Enfant.</param>
+	<param name="pNodeReplica">Noeud du TreeView pour un Réplica de Géodatabase .</param>
+	<param name="pNodeClasse">Noeud du TreeView pour une classe.</param>
+	<param name="pNodeAjouter">Noeud du TreeView pour tous les éléments ajoutés d'une classe.</param>
+	<param name="pNodeDetruire">Noeud du TreeView pour tous les éléments détruits d'une classe.</param>
+	<param name="pNodeModifier">Noeud du TreeView pour tous les éléments modifiés d'une classe.</param>
+</member><member name="M:BarreVersion.clsGererReplica.ConflitsElementNoeud(ESRI.ArcGIS.Geodatabase.IRow,ESRI.ArcGIS.Geodatabase.IRow,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les conflits d'attributs dans un noeud de TreeView entre deux éléments Parent/Archive.
+</summary>
+	<param name="pRowParent">Interface contenant un élément de la table parent.</param>
+	<param name="pRowArchive">Interface contenant un élément de la table d'archive.</param>
+	<param name="pNodeClasse">Noeud d'un TreeView pour tous les éléments d'une classe.</param>
+	<param name="pNodeAjouter">Noeud du TreeView pour les éléments ajoutés d'une classe.</param>
+	<param name="pNodeDetruire">Noeud du TreeView pour les éléments détruits d'une classe.</param>
+	<param name="pNodeModifier">Noeud du TreeView pour les éléments modifiés d'une classe.</param>
+</member><member name="M:BarreVersion.clsGererReplica.SelectionSet2FidSet(ESRI.ArcGIS.Geodatabase.ISelectionSet)">
+	<summary>
+ Fonction qui permet de transformer les OIDs contenus dans une sélection d'éléments et de les retourner dans un ensemble de OIDs..
+</summary>
+	<param name="pSelectionSet">Interface contenant les OIDs à traiter.</param>
+	<return>IFIDSet contenant la liste des OIDs d'éléments à traiter.</return>
+</member><member name="M:BarreVersion.clsGererReplica.DataChangesOids(ESRI.ArcGIS.GeoDatabaseDistributed.IDataChanges,System.String,ESRI.ArcGIS.GeoDatabaseDistributed.esriDataChangeType)">
+	<summary>
+ Fonction qui permet d'extraire les OIDs dans un ensemble de OIDs selon un type de changement désiré d'un réplica.
+</summary>
+	<param name="pDataChanges">Interface contenant les changements.</param>
+	<param name="sNomClasse">Nom de la classe à traiter.</param>
+	<param name="pEsriDataChangeType">Indique le type de changement désiré.</param>
+	<return>IFIDSet contenant la liste des OIDs d'éléments à traiter.</return>
+</member><member name="M:BarreVersion.clsGererReplica.CorrigerConflits(ESRI.ArcGIS.Geodatabase.IWorkspace)">
+	<summary>
+ Routine qui permet de corriger les conflits.
+</summary>
+	<remarks>
+ Par défaut, les conflits ...
+ Si le réplica de la Géodatabase enfant est invalide, les différences seront déposées à partir de la Géodatabase d'archive externe.
+ La Géodatabase d'archive externe correspond à la copie initiale de la Géodatabase enfant.
+ </remarks>
+</member><member name="M:BarreVersion.clsGererReplica.IdentifierDifferences(System.Windows.Forms.TreeView@,System.Boolean)">
+	<summary>
+ Routine qui permet d'identifier les différences dans un TreeView entre la Géodatabase enfant (.mdb ou .gdb) et son archive interne ou externe.
+</summary>
+	<param name="treDifferences"> TreeView dans lequel les différences seront identifiées.</param>
+	<param name="bExterne">Indique si l'archive externe est utilisée pour identifier les différences.</param>
+	<remarks>
+ Par défaut, les différences seront identifiées à partir de l'information du réplica de la Géodatabase enfant dans laquelle l'archive interne est présente.
+ La Géodatabase d'archive externe correspond à la copie initiale de la Géodatabase enfant.
+ </remarks>
+</member><member name="M:BarreVersion.clsGererReplica.IdentifierDifferencesArchiveExterne(System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet d'extraire les différences entre la géodatabase enfant (.mdb ou .gdb) et la géodatabase d'archive externe.
+</summary>
+	<param name="treDifferences">TreeView dans lequel les différences seront identifiées.</param>
+	<remarks>L'archive des données est externe à la Géodatabase enfant. Elle est donc présente dans une autre Géodatabase .mdb ou .gdb.</remarks>
+</member><member name="M:BarreVersion.clsGererReplica.IdentifierDifferencesArchiveExterneOld(System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet d'extraire les différences entre la géodatabase enfant (.mdb ou .gdb) et la géodatabase d'archive externe.
+ L'archive des données est externe à la Géodatabase enfant. Elle est donc présente dans une autre Géodatabase .mdb ou .gdb.
+</summary>
+	<param name="treDifferences">TreeView dans lequel les différences seront identifiées.</param>
+</member><member name="M:BarreVersion.clsGererReplica.Table2TableSelection(ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.IReplicaFilterDescription,System.Int32)">
+	<summary>
+ Fonction qui permet de sélectionner les éléments correspondant à la description du réplica dataset à traiter.
+</summary>
+	<param name="pTable">Interface contenant la table à traiter</param>
+	<param name="pRepFilterDesc">Interface contenant un Dataset d'un réplica.</param>
+	<param name="iIndexDataset">Contient le numéro d'indexe du Dataset.</param>
+	<returns>ITable contenant la sélection des éléments de la table à traiter</returns>
+</member><member name="M:BarreVersion.clsGererReplica.IdentifierDifferencesArchiveExterneDataset(ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.ITable,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les différences dans un TreerView entre une table d'une Géodatabase enfant et une table d'une Géodatabase d'archive externe.
+</summary>
+	<param name="pTableEnfant">Interface contenant la table de la Géodatabase enfant.</param>
+	<param name="pTableArchive">Interface contenant la table de la Géodatabase d'archive.</param>
+</member><member name="M:BarreVersion.clsGererReplica.LireElementsDict(ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de lire les éléments d'une table et de les conserver par un lien de OID.
+</summary>
+	<param name="pTable"> Interface contenant la table des éléments à lire.</param>
+	<return> Dictionary(Of Integer, IRow) contenant les éléments identifiés par un lien de OID.</return>
+</member><member name="M:BarreVersion.clsGererReplica.DifferenceElementNoeud(ESRI.ArcGIS.Geodatabase.IRow,ESRI.ArcGIS.Geodatabase.IRow,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les différences d'attributs dans un noeud de TreeView entre deux éléments Enfant/Archive.
+</summary>
+	<param name="pRowEnfant">Interface contenant un élément de la table enfant.</param>
+	<param name="pRowArchive">Interface contenant un élément de la table d'archive.</param>
+	<param name="pNodeClasse">Noeud d'un TreeView pour tous les éléments d'une classe.</param>
+	<param name="pNodeAjouter">Noeud du TreeView pour les éléments ajoutés d'une classe.</param>
+	<param name="pNodeDetruire">Noeud du TreeView pour les éléments détruits d'une classe.</param>
+	<param name="pNodeModifier">Noeud du TreeView pour les éléments modifiés d'une classe.</param>
+</member><member name="M:BarreVersion.clsGererReplica.IdentifierDifferencesArchiveInterne(System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet d'identifier les différences entre la géodatabase enfant (.mdb ou .gdb) et son archive interne via un réplica de CheckOut.
+</summary>
+	<param name="treDifferences">TreeView dans lequel les différences seront identifiées.</param>
+	<remarks>Si aucun réplica n'est présent dans la géodatabase enfant, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreVersion.clsGererReplica.DifferencesElementsDetruire(ESRI.ArcGIS.GeoDatabaseDistributed.IDataChanges,ESRI.ArcGIS.GeoDatabaseDistributed.IModifiedClassInfo,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les différences d'attributs dans un noeud de TreeView pour tous les éléments à détruire.
+</summary>
+	<param name="pDataChanges">Interface contenant les changements.</param>
+	<param name="pModifiedClassInfo">Interface contenant une classe modifiée.</param>
+	<param name="pNodeClasse">Noeud d'un TreeView dans lequel les éléments détruits seront inscrits.</param>
+</member><member name="M:BarreVersion.clsGererReplica.DifferencesElementsAjouter(ESRI.ArcGIS.GeoDatabaseDistributed.IDataChanges,ESRI.ArcGIS.GeoDatabaseDistributed.IModifiedClassInfo,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les différences d'attributs dans un noeud de TreeView pour tous les éléments à ajouter.
+</summary>
+	<param name="pDataChanges">Interface contenant les changements.</param>
+	<param name="pModifiedClassInfo">Interface contenant une classe modifiée.</param>
+	<param name="pNodeClasse">Noeud d'un TreeView dans lequel les éléments ajoutés seront inscrits.</param>
+</member><member name="M:BarreVersion.clsGererReplica.DifferencesElementsModifier(ESRI.ArcGIS.GeoDatabaseDistributed.IDataChanges,ESRI.ArcGIS.GeoDatabaseDistributed.IModifiedClassInfo,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les différences d'attributs dans un noeud de TreeView pour tous les éléments à modifier.
+</summary>
+	<param name="pDataChanges">Interface contenant les changements.</param>
+	<param name="pModifiedClassInfo">Interface contenant une classe modifiée.</param>
+	<param name="pNodeClasse">Noeud d'un TreeView dans lequel les éléments modifiés seront inscrits.</param>
+</member><member name="M:BarreVersion.clsGererReplica.DeposerDifferences">
+	<summary>
+ Routine qui permet de déposer les différences dans la Géodatabase Parent.
+</summary>
+	<remarks>
+ Par défaut, les différences seront déposées à partir de l'information du réplica de la Géodatabase enfant dans laquelle l'archive interne est présente.
+ Si le réplica de la Géodatabase enfant est invalide, les différences seront déposées à partir de la Géodatabase d'archive externe.
+ La Géodatabase d'archive externe correspond à la copie initiale de la Géodatabase enfant.
+ </remarks>
+</member><member name="T:BarreVersion.clsGererReplica">
+	<summary>
+ Classe qui permet de gérer un réplica d'une Géodatabase locale afin de pouvoir définir ou extraire l'information liées aux divers changements effectués aux données.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="M:BarreVersion.cboGeodatabaseEnfant.RemplirComboBox">
+	<summary>
+ Routine qui permet de remplir le ComboBox à partir des noms de Géodatabase contenus dans la Map active.
+</summary>
+</member><member name="T:BarreVersion.cboGeodatabaseEnfant">
+	<summary>
+ Commande qui permet de définir la Géodatabase-Enfant (.mdb/.gdb) contenant les données retirées à modifier et à retourner dans la Géodatabase-Parent (.sde).
+</summary>
+	<remarks>
+ Ce traitement est utilisable en mode interactif à l'aide de ses interfaces graphiques et doit être utilisé dans ArcMap (ArcGisESRI).
+
+ Auteur : Michel Pothier
+ Date : 17 janvier 2017
+</remarks>
+</member><member name="T:BarreVersion.cmdActiverMenu">
+	<summary>
+Permet d'activer un menu pour afficher et modifier les paramètres de la barre de version.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="P:BarreVersion.dckMenuVersion.Hook">
+	<summary>
+ Host object of the dockable window
+ </summary>
+</member><member name="T:BarreVersion.dckMenuVersion.AddinImpl">
+	<summary>
+ Implementation class of the dockable window add-in. It is responsible for
+ creating and disposing the user interface class for the dockable window.
+ </summary>
+</member><member name="M:BarreVersion.dckMenuVersion.Initialiser">
+	<summary>
+ Permet d'initialiser le menu pour l'affichage et la modification des paramètres de la barre de version.
+</summary>
+</member><member name="M:BarreVersion.dckMenuVersion.AfficherInfoConflits(System.Windows.Forms.TreeNode)">
+	<summary>
+ Routine qui permet d'afficher/dessiner l'information sur les conflits à partir d'un noeud sélectionné d'un TreeView.
+</summary>
+	<param name="pSelectNode">Noeud sélectionné d'un TreeView.</param>
+</member><member name="M:BarreVersion.dckMenuVersion.AfficherInfoDifferences(System.Windows.Forms.TreeNode)">
+	<summary>
+ Routine qui permet d'afficher/dessiner l'information sur les différences à partir d'un noeud sélectionné d'un TreeView.
+</summary>
+	<param name="pSelectNode">Noeud sélectionné d'un TreeView.</param>
+</member><member name="T:BarreVersion.dckMenuVersion">
+	<summary>
+ Designer class of the dockable window add-in. It contains user interfaces that
+ make up the dockable window.
+ </summary>
+</member><member name="F:BarreVersion.modBarreVersion.m_MenuVersion">
+	<summary> Classe contenant le menu des paramètres de la barre de version. </summary>
+</member><member name="F:BarreVersion.modBarreVersion.m_cboGeodatabaseEnfant">
+	<summary>ComboBox utilisé pour gérer les Géodatabases-Enfant (.mdb/.gdb).</summary>
+</member><member name="F:BarreVersion.modBarreVersion.m_GererReplica">
+	<summary> Objet utilisé pour gérer l'information et les traitements d'un réplica.</summary>
+</member><member name="F:BarreVersion.modBarreVersion.m_GererNC">
+	<summary> Objet utilisé pour gérer l'information des non-conformité.</summary>
+</member><member name="F:BarreVersion.modBarreVersion.m_TrackCancel">
+	<summary>Interface utilisé pour arrêter un traitement en progression.</summary>
+</member><member name="F:BarreVersion.modBarreVersion.m_Application">
+	<summary>Interface ESRI contenant l'application ArcMap.</summary>
+</member><member name="F:BarreVersion.modBarreVersion.m_MxDocument">
+	<summary>Interface ESRI contenant le document ArcMap.</summary>
+</member><member name="F:BarreVersion.modBarreVersion.m_Height">
+	<summary>Valeur initiale de la dimension en hauteur du menu.</summary>
+</member><member name="F:BarreVersion.modBarreVersion.m_Width">
+	<summary>Valeur initiale de la dimension en largeur du menu.</summary>
+</member><member name="F:BarreVersion.modBarreVersion.mpSymboleTexte">
+	<summary> Interface ESRI contenant le symbol pour la texte.</summary>
+</member><member name="F:BarreVersion.modBarreVersion.mpSymboleSommet">
+	<summary> Interface ESRI contenant le symbol pour les sommets d'une géométrie.</summary>
+</member><member name="F:BarreVersion.modBarreVersion.mpSymbolePoint">
+	<summary> Interface ESRI contenant le symbol pour la géométrie de type point.</summary>
+</member><member name="F:BarreVersion.modBarreVersion.mpSymboleLigne">
+	<summary> Interface ESRI contenant le symbol pour la géométrie de type ligne.</summary>
+</member><member name="F:BarreVersion.modBarreVersion.mpSymboleSurface">
+	<summary> Interface ESRI contenant le symbol pour la géométrie de type surface.</summary>
+</member><member name="M:BarreVersion.modBarreVersion.ZoomToGeometry(ESRI.ArcGIS.Geometry.IGeometry)">
+	<summary>
+ Routine qui permet de d'effectuer un Zoom selon une géométrie.
+</summary>
+	<param name="pGeometry">Géométrie à afficher.</param>
+</member><member name="M:BarreVersion.modBarreVersion.ExtraireDifferencesGeometrie(ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geometry.IGeometry@,ESRI.ArcGIS.Geometry.IGeometry@,System.String@)">
+	<summary>
+ Fonction qui permet d'extraire l'information sur les différences entre la géométrie d'un élément courant et la géométrie d'un élément d'archive.
+</summary>
+	<param name="pGeometryCourant">Géométrie d'un élément courant.</param>
+	<param name="pGeometryArchive">Géométrie d'un élément d'archive.</param>
+	<param name="pDiffCourant">Différence de géométrie de l'élément courant.</param>
+	<param name="pDiffArchive">Géométrie de géométrie de l'élément d'archive.</param>
+	<param name="sMessage">Message contenant les différences de composantes et de sommets entre les géométries.</param>
+</member><member name="M:BarreVersion.modBarreVersion.bDifferenceGeometrie(ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geometry.IGeometry)">
+	<summary>
+ Fonction qui permet d'indiquer si les géométries sont différentes.
+</summary>
+	<param name="pGeometryCourant">Géométrie d'un élément courant.</param>
+	<param name="pGeometryArchive">Géométrie d'un élément d'archive.</param>
+	<returns>Boolean qui indique si les géométries sont différentes</returns>
+</member><member name="M:BarreVersion.modBarreVersion.CopyReplica(ESRI.ArcGIS.Geodatabase.IWorkspace,ESRI.ArcGIS.Geodatabase.IWorkspace)">
+	<summary>
+ Fonction qui permet de copier un réplica enfant (Parent) dans une autre Géodatabase enfant.
+</summary>
+	<param name="pEnfantGDB">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<remarks>Si aucun réplica n'est présent, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreVersion.modBarreVersion.CopyInfoReplica(ESRI.ArcGIS.Geodatabase.IWorkspace,ESRI.ArcGIS.Geodatabase.IWorkspace)">
+	<summary>
+ Fonction qui permet de réparer un réplica parent à partir d'un réplica enfant existant.
+</summary>
+	<param name="pEnfantGDB">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<remarks>Si aucun réplica n'est présent, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreVersion.modBarreVersion.RepairReplica(ESRI.ArcGIS.Geodatabase.IWorkspace)">
+	<summary>
+ Fonction qui permet de réparer un réplica parent à partir d'un réplica enfant existant.
+</summary>
+	<param name="pEnfantGDB">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<remarks>Si aucun réplica n'est présent, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreVersion.modBarreVersion.AfficherInfoReplica(ESRI.ArcGIS.Geodatabase.IReplica3,ESRI.ArcGIS.Geodatabase.IReplica3)">
+	<summary>
+ Routine qui permet d'afficher l'information du réplica parent et enfant.
+</summary>
+	<param name="pParentReplica">Interface contenant l'information du réplica de la Géodatabase-Parent sde.</param>
+	<param name="pEnfantReplica">Interface contenant l'information du réplica de la Géodatabase-Enfant mdb ou gdb.</param>
+	<remarks>Si aucun réplica n'est présent, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreVersion.modBarreVersion.InitGeoDataServerFromFile(System.String)">
+	<summary>
+ Fonction qui permet de définir une géodatabase utilisée dans un réplica à partir d'un nom de géodatabase.
+ 
+ Exemple: sNomGeodatabase = "C:\arcgis\ArcTutor\DatabaseServers\buildings.mdb".
+          sNomGeodatabase = "C:\arcgis\ArcTutor\DatabaseServers\hazards.gdb".
+</summary>
+	<param name="sNomGeodatabase">Nom complet d'une Géodatabase.</param>
+	<returns>IGeoDataServer contenant l'information de la géodatabase utilisée pour un réplica.</returns>
+</member><member name="M:BarreVersion.modBarreVersion.InitGeoDataServerFromConnectionString(System.String)">
+	<summary>
+ Fonction qui permet de définir une géodatabase SDE utilisée dans un réplica à partir d'une chaine de caractères de connexion.
+</summary>
+	<param name="sConnectionString">Chaine de caractères de connexion à une Base de données SDE. Ex: "SERVER=bobmk;INSTANCE=5151;VERSION=sde.DEFAULT;USER=gdb;PASSWORD=gdb"</param>
+	<returns>IGeoDataServer contenant l'information de la géodatabase utilisée pour un réplica.</returns>
+</member><member name="M:BarreVersion.modBarreVersion.InitGeoDataServerFromWorkspace(ESRI.ArcGIS.Geodatabase.IWorkspace)">
+	<summary>
+ Fonction qui permet de définir une géodatabase utilisée dans un réplica à partir d'un Workspace.
+</summary>
+	<param name="pWorkspace">Interface contenant une Géodatabase.</param>
+	<returns>IGeoDataServer contenant l'information de la géodatabase utilisée pour un réplica.</returns>
+</member><member name="M:BarreVersion.modBarreVersion.ExtractDataReplica(ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriReplicaModelType,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum)">
+	<summary>
+ Fonction qui permet de créer un réplica d'extraction de données dans une géodatabase .mdb ou .gdb à partir d'une géodatabase SDE.
+</summary>
+	<param name="pParentGDS">Interface contenant l'information de la Géodatabase SDE.</param>
+	<param name="pChildGDS">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<param name="sListeNomClasse">Liste des noms des classe à extraire spéparer par des virgule en incluant le nom du propriétaire.</param>
+	<param name="sRequeteAttributive">Requête attributive à appliquer sur toutes les classes à extraire.</param>
+	<param name="pTypeModel">Indique le type de model Simple ou complet.</param>
+	<param name="pGeometry">Indique la géométrie utiliser pour effectuer la requête spatiale.</param>
+	<param name="pSpatialRelation">Indique le type de requête spatiale à effecter.</param>
+	<remarks>Si une des classe est déjà présente, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreVersion.modBarreVersion.CheckOutReplica(System.String,ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriReplicaModelType,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum)">
+	<summary>
+ Fonction qui permet de créer un réplica de type CheckOut dans une géodatabase .mdb ou .gdb à partir d'une géodatabase SDE.
+</summary>
+	<param name="pParentGDS">Interface contenant l'information de la Géodatabase SDE.</param>
+	<param name="pChildGDS">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<param name="sListeNomClasse">Liste des noms des classe à extraire spéparer par des virgule en incluant le nom du propriétaire.</param>
+	<param name="sRequeteAttributive">Requête attributive à appliquer sur toutes les classes à extraire.</param>
+	<param name="pTypeModel">Indique le type de model Simple ou complet.</param>
+	<param name="pGeometry">Indique la géométrie utiliser pour effectuer la requête spatiale.</param>
+	<param name="pSpatialRelation">Indique le type de requête spatiale à effecter.</param>
+	<remarks>Si une des classe est déjà présente, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreVersion.modBarreVersion.CheckInReplica(System.String,ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,ESRI.ArcGIS.GeoDatabaseDistributed.esriReplicationAgentReconcilePolicy,System.Boolean)">
+	<summary>
+ Fonction qui permet de synchroniser un réplica de type CheckOut d'une géodatabase SDE à partir d'une géodatabase .mdb ou .gdb.
+</summary>
+	<param name="sReplicaName">Nom du réplica à traiter.</param>
+	<param name="pParentGDS">Interface contenant l'information de la Géodatabase SDE.</param>
+	<param name="pChildGDS">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<param name="pConflictPolicy">Méthode de traitement des conflits.</param>
+	<param name="bColumnLevel">Indique si les conflits sont extrait par colonne.</param>
+	<remarks>Si le réplica est absent, une erreur est retournée.</remarks>
+</member><member name="M:BarreVersion.modBarreVersion.AddDatasetToReplica(ESRI.ArcGIS.Geodatabase.IWorkspace,System.String,System.String,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriDatasetType,ESRI.ArcGIS.Geodatabase.esriRowsType,System.Boolean,System.String)">
+	<summary>
+ Routine qui permet d'ajouter une classe ou une table dans un réplica existant de destination.
+</summary>
+	<param name="pWorkspaceChild">Interface contenant la géodatabase de destination.</param>
+	<param name="sReplicaName">Nom du réplica à traiter.</param>
+	<param name="sDatasetName">Nom du dataset à ajouter dans le réplica existant.</param>
+	<param name="sParentDatabase">Nom de la géodatabase SDE source.</param>
+	<param name="sParentOwner">Nom du propriétaire du dataset dans la géodatabase SDE source.</param>
+	<param name="pDatasetType">Type de dataset à ajouter.</param>
+	<param name="pRowsType">Critère qui permet de déterminer quel colonne doit être extrait dans le dataset à ajouter.</param>
+	<param name="bUseGeometry">Indique si on utilise une géométrie pour extraire.</param>
+	<param name="sQueryDef">Requête attributive utilisée pour extraire les données dans le dataset à ajouter dans le réplica de destination.</param>
+	<remarks>Si le réplica est absent, une erreur est retournée.</remarks>
+</member><member name="M:BarreVersion.modBarreVersion.AddGlobalID(ESRI.ArcGIS.Geodatabase.ITable,System.String)">
+	<summary>
+ Routine qui permet d'ajouter l'attribut GlobalId dans une table d'une Géodatabase.
+</summary>
+	<param name="pTable">Interface contenant la table dans laquelle l'attribut GlobalId sera ajouté.</param>
+	<param name="sGlobalIdFieldName">Nom de l'attribut GlobalId.</param>
+</member><member name="M:BarreVersion.modBarreVersion.RemoveGlobalID(ESRI.ArcGIS.Geodatabase.ITable)">
+	<summary>
+ Routine qui permet de détruire l'attribut GlobalId dans une table d'une Géodatabase.
+</summary>
+	<param name="pTable">Interface contenant la table dans laquelle l'attribut GlobalId sera détruit.</param>
+</member><member name="M:BarreVersion.modBarreVersion.bDessinerGeometrie(ESRI.ArcGIS.Geometry.IGeometry,System.Boolean,System.Boolean,System.Boolean)">
+	<summary>
+ Fonction qui permet de dessiner dans la vue active les géométries Point, MultiPoint, 
+ Polyline et/ou Polygon. Ces géométries peuvent être contenu dans un GeometryBag. 
+ Un point est représenté par un carré, une ligne est représentée par une ligne pleine 
+ et la surface est représentée par une ligne pleine pour la limite et des lignes à
+ 45 dégrés pour l'intérieur. On peut afficher le numéro de la géométrie pour un GeometryBag.
+</summary>
+	<param name="pGeometry"> Interface ESRI contenant la géométrie èa dessiner.</param>
+	<param name="bRafraichir"> Indique si on doit rafraîchir la vue active.</param>
+	<param name="bGeometrie"> Indique si on doit dessiner la géométrie.</param>
+	<param name="bSommet"> Indique si on doit dessiner les sommets de la géométrie.</param>
+	<return>Un booleen est retourner pour indiquer la fonction s'est bien exécutée.</return>
+</member><member name="M:BarreVersion.modBarreVersion.bDessinerSommet(ESRI.ArcGIS.Geometry.IGeometry,System.Boolean)">
+	<summary>
+ Fonction qui permet de dessiner dans la vue active les sommets des géométries Point, MultiPoint, Polyline et/ou Polygon.
+ Ces géométries peuvent être contenu dans un GeometryBag. Les sommets sont représentés par un cercle.
+</summary>
+	<param name="pGeometry"> Interface ESRI contenant la géométrie utilisée pour dessiner les sommets.</param>
+	<param name="bRafraichir"> Indique si on doit rafraîchir la vue active.</param>
+	<return>Un booleen est retourner pour indiquer la fonction s'est bien exécutée.</return>
+</member><member name="M:BarreVersion.modBarreVersion.InitSymbole">
+	<summary>
+ Initialiser les couleurs par défaut pour le texte qui sera affiché avec les
+ géométries déssiné et initialiser les 3 couleurs pour les géométries de type
+ point, ligne et surface.
+</summary>
+</member><member name="M:BarreVersion.modBarreVersion.InitSymboleCourant">
+	<summary>
+ Initialiser les couleurs par défaut pour dessiner la symbologie des éléments courants.
+</summary>
+</member><member name="M:BarreVersion.modBarreVersion.InitSymboleArchive">
+	<summary>
+ Initialiser les couleurs par défaut pour dessiner la symbologie des éléments d'archive.
+</summary>
+</member><member name="M:BarreVersion.modBarreVersion.GeometrieToMultiPoint(ESRI.ArcGIS.Geometry.IGeometry)">
+	<summary>
+ Routine qui permet de créer un Multipoint à partir d'une géométrie.
+ 
+<param name="pGeometry"> Interface contenant la géométrie utilisée pour créer le Multipoint.</param>
+		<return>Le Multipoint contenant les points de la géométrie spécifiée.</return>
+	</summary>
+</member><member name="T:BarreVersion.modBarreVersion">
+	<summary>
+ Librairies de routines contenant toutes les variables, routines et fonctions globales.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+ Date : 16 janvier 2017
+</remarks>
+</member><member name="T:BarreVersion.cmdDifference">
+	<summary>
+Permet d'identifier les différences entre la Géodatabase SDE et la version de travail.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="P:BarreVersion.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:BarreVersion.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:BarreVersion.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="T:BarreVersion.cmdRetirer">
+	<summary>
+ Commande qui permet de retirer les données de la Géodatabase SDE dans une Géodatabase locale (Checkout).
+</summary>
+	<remarks>
+ Ce traitement est utilisable en mode interactif à l'aide de ses interfaces graphiques et doit être utilisé dans ArcMap (ArcGisESRI).
+
+ Auteur : Michel Pothier
+ Date : 16 janvier 2017
+</remarks>
+</member><member name="F:BarreVersion.clsGererMapLayer.gpMap">
+	<summary>Interface contenant la Map à Gérer.</summary>
+</member><member name="F:BarreVersion.clsGererMapLayer.gqGeodatabaseCollection">
+	<summary>Collection des Géodatabase de la Map.</summary>
+</member><member name="F:BarreVersion.clsGererMapLayer.gqFeatureLayerCollection">
+	<summary>Collection des FeatureLayers de la Map.</summary>
+</member><member name="F:BarreVersion.clsGererMapLayer.gqRasterLayerCollection">
+	<summary>Collection des RasterLayers de la Map.</summary>
+</member><member name="F:BarreVersion.clsGererMapLayer.gpEnvelope">
+	<summary>Collection des FeatureLayers de la Map.</summary>
+</member><member name="M:BarreVersion.clsGererMapLayer.#ctor(ESRI.ArcGIS.Carto.IMap,System.Boolean)">
+	<summary>
+ Routine qui permet d'initialiser la classe.
+ 
+<param name="pMap"> Interface ESRI utilisée pour extraire les FeatureLayers visible ou non.</param>
+		<param name="bNonVisible"> Indique si on doit aussi extraire les FeatureLayers non visibles.</param>
+	</summary>
+</member><member name="M:BarreVersion.clsGererMapLayer.finalize">
+	<summary>
+Routine qui permet de vider la mémoire des objets de la classe.
+</summary>
+</member><member name="P:BarreVersion.clsGererMapLayer.Map">
+	<summary>
+ Propriété qui permet de définir et retourner la Map traitée.
+</summary>
+</member><member name="P:BarreVersion.clsGererMapLayer.GeodatabaseCollection">
+	<summary>
+ Propriété qui permet de définir et retourner la collection des Géodatabase de la Map.
+</summary>
+</member><member name="P:BarreVersion.clsGererMapLayer.FeatureLayerCollection">
+	<summary>
+ Propriété qui permet de définir et retourner la collection de FeatureLayer traitée.
+</summary>
+</member><member name="P:BarreVersion.clsGererMapLayer.RasterLayerCollection">
+	<summary>
+ Propriété qui permet de définir et retourner la collection de RasterLayer traitée.
+</summary>
+</member><member name="P:BarreVersion.clsGererMapLayer.EnvelopeFeatureLayerCollection">
+	<summary>
+ Propriété qui permet de définir et retourner l'enveloppe de la collection de FeatureLayer traitée.
+</summary>
+</member><member name="M:BarreVersion.clsGererMapLayer.ExtraireFeatureLayerByName(System.String,System.Boolean)">
+	<summary>
+ Fonction qui permet d'extraire le FeatureLayer correspondant au nom spécifié.
+</summary>
+	<param name="sTexte">Texte utilisé pour trouver le FeatureLayer par défaut.</param>
+	<param name="bNonVisible"> Indique si on doit aussi extraire les FeatureLayers non visibles.</param>
+	<returns>"IFeatureLayer" correspondant au texte recherché, sinon "Nothing".</returns>
+</member><member name="M:BarreVersion.clsGererMapLayer.DefinirCollectionRasterLayer(System.Boolean)">
+	<summary>
+ Fonction qui permet de définir la collection des RasterLayers présents dans la Map.
+ On peut indiquer si on veut aussi extraire les RasterLayers non visibles.
+</summary>
+	<param name="bNonVisible"> Indique si on doit aussi extraire les RasterLayer non visibles.</param>
+	<return>"Collection" contenant les "IRasterLayer" visible ou non selon ce qui est demandé.</return>
+</member><member name="M:BarreVersion.clsGererMapLayer.DefinirCollectionFeatureLayer(System.Boolean,ESRI.ArcGIS.Geometry.esriGeometryType)">
+	<summary>
+ Fonction qui permet de définir la collection des FeatureLayers présents dans la Map.
+ On peut indiquer si on veut aussi extraire les FeatureLayers non visibles.
+</summary>
+	<param name="bNonVisible"> Indique si on doit aussi extraire les FeatureLayers non visibles.</param>
+	<param name="pEsriGeometryType"> Contient le type de géométrie des FeatureLayers recherchés.</param>
+	<return>"Collection" contenant les "IFeatureLayer" visible ou non selon ce qui est demandé.</return>
+</member><member name="M:BarreVersion.clsGererMapLayer.DefinirGroupLayer(ESRI.ArcGIS.Carto.ILayer,System.Int32@)">
+	<summary>
+ Fonction qui permet d'extraire le GroupLayer dans lequel le Layer recherché est présent.
+</summary>
+	<param name="pLayerRechercher">Interface contenant le Layer à rechercher dans la Map active.</param>
+	<param name="nPosition">Position su Layer dans le GroupLayer.</param>
+	<returns>"Collection" contenant les "IGroupLayer" recherchés.</returns>
+</member><member name="M:BarreVersion.clsGererMapLayer.EstVisible(ESRI.ArcGIS.Carto.ILayer,System.Boolean)">
+	<summary>
+ Fonction qui permet d'indiquer si le FeatureLayer est visible ou non dans la IMap.
+</summary>
+	<param name="pLayerRechercher"> Interface ESRI contenant le Layer à rechercher.</param>
+	<param name="bPresent"> Contient l'indication si le Layer à rechercher est présent dans la Map.</param>
+	<return>"Collection" contenant les "IFeatureLayer" visible ou non.</return>
+</member><member name="M:BarreVersion.clsGererMapLayer.DefinirCollectionRasterLayerGroup(Microsoft.VisualBasic.Collection@,ESRI.ArcGIS.Carto.IGroupLayer,System.Boolean)">
+	<summary>
+ Routine qui permet de définir la collection des RasterLayers contenus dans un GroupLayer.
+ On peut indiquer si on veut aussi extraire les RasterLayers non visibles.
+</summary>
+	<param name="qRasterLayerColl">Collection des RasterLayer.</param>
+	<param name="pGroupLayer">Interface ESRI contenant un group de Layers.</param>
+	<param name="bNonVisible">Indique si on doit aussi extraire les RasterLayers non visibles.</param>
+</member><member name="M:BarreVersion.clsGererMapLayer.DefinirCollectionFeatureLayerGroup(Microsoft.VisualBasic.Collection@,ESRI.ArcGIS.Carto.IGroupLayer,System.Boolean,ESRI.ArcGIS.Geometry.esriGeometryType)">
+	<summary>
+ Routine qui permet de définir la collection des FeatureLayers contenus dans un GroupLayer.
+ On peut indiquer si on veut aussi extraire les FeatureLayers non visibles.
+</summary>
+	<param name="qFeatureLayerColl">Collection des FeatureLayer.</param>
+	<param name="pGroupLayer">Interface ESRI contenant un group de Layers.</param>
+	<param name="bNonVisible">Indique si on doit aussi extraire les FeatureLayers non visibles.</param>
+	<param name="pEsriGeometryType"> Contient le type de géométrie des FeatureLayers recherchés.</param>
+</member><member name="M:BarreVersion.clsGererMapLayer.ExtraireGroupLayerGroup(ESRI.ArcGIS.Carto.IGroupLayer,ESRI.ArcGIS.Carto.ILayer,System.Int32@)">
+	<summary>
+ Routine qui permet d'extraire le GroupLayer contenant un FeatureLayer.
+ Le GroupLayer recherché est contenu dans un GroupLayer.
+</summary>
+	<param name="pGroupLayer">Interface ESRI contenant un groupe de Layers.</param>
+	<param name="pLayerRechercher">Interface ESRI contenant le Layer à rechercher.</param>
+	<param name="nPosition">Position su Layer dans le GroupLayer.</param>
+</member><member name="M:BarreVersion.clsGererMapLayer.EstVisibleGroup(ESRI.ArcGIS.Carto.IGroupLayer,ESRI.ArcGIS.Carto.ILayer,System.Boolean)">
+	<summary>
+ Fonction qui permet d'indiquer si le FeatureLayer est visible ou non dans la IMap.
+</summary>
+	<param name="pGroupLayer">Interface ESRI contenant un group de Layers.</param>
+	<param name="pLayerRechercher"> Interface ESRI contenant le Layer à rechercher.</param>
+	<param name="bPresent"> Contient l'indication si le Layer à rechercher est présent dans la Map.</param>
+	<return>"Collection" contenant les "IFeatureLayer" visible ou non.</return>
+</member><member name="T:BarreVersion.clsGererMapLayer">
+	<summary>
+ Librairie de Classe qui permet de manipuler les différents types de Layer contenu dans une Map.
+</summary>
+	<remarks>
+Cette librairie est utilisable pour les outils interactifs ou Batch dans ArcMap (ArcGis de ESRI).
+
+Auteur : Michel Pothier
+Date : 6 Mai 2011
+</remarks>
+</member><member name="T:BarreVersion.cmdAnnuler">
+	<summary>
+Permet d'annuler la réservation des données de la Géodatabase SDE.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="T:BarreVersion.cmdReserver">
+	<summary>
+Permet de réserver les données de la Géodatabse SDE.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="T:BarreVersion.cmdConflit">
+	<summary>
+Permet d'identifier les conflits entre la Géodatabase SDE et la version de travail.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="P:BarreVersion.My.ThisAddIn.IDs.cmdActiverMenu">
+	<summary>
+Returns 'MPO_BarreVersion_cmdActiverMenu', the id declared for Add-in Button class 'cmdActiverMenu'
+</summary>
+</member><member name="P:BarreVersion.My.ThisAddIn.IDs.cmdReserver">
+	<summary>
+Returns 'MPO_BarreVersion_cmdReserver', the id declared for Add-in Button class 'cmdReserver'
+</summary>
+</member><member name="P:BarreVersion.My.ThisAddIn.IDs.cmdAnnuler">
+	<summary>
+Returns 'MPO_BarreVersion_cmdAnnuler', the id declared for Add-in Button class 'cmdAnnuler'
+</summary>
+</member><member name="P:BarreVersion.My.ThisAddIn.IDs.cmdRetirer">
+	<summary>
+Returns 'MPO_BarreVersion_cmdRetirer', the id declared for Add-in Button class 'cmdRetirer'
+</summary>
+</member><member name="P:BarreVersion.My.ThisAddIn.IDs.cboGeodatabaseEnfant">
+	<summary>
+Returns 'MPO_BarreVersion_cboGeodatabaseEnfant', the id declared for Add-in ComboBox class 'cboGeodatabaseEnfant'
+</summary>
+</member><member name="P:BarreVersion.My.ThisAddIn.IDs.cmdConflit">
+	<summary>
+Returns 'MPO_BarreVersion_cmdConflit', the id declared for Add-in Button class 'cmdConflit'
+</summary>
+</member><member name="P:BarreVersion.My.ThisAddIn.IDs.cmdDifference">
+	<summary>
+Returns 'MPO_BarreVersion_cmdDifference', the id declared for Add-in Button class 'cmdDifference'
+</summary>
+</member><member name="P:BarreVersion.My.ThisAddIn.IDs.cmdReplica">
+	<summary>
+Returns 'MPO_BarreVersion_cmdReplica', the id declared for Add-in Button class 'cmdReplica'
+</summary>
+</member><member name="P:BarreVersion.My.ThisAddIn.IDs.cmdDeposer">
+	<summary>
+Returns 'MPO_BarreVersion_cmdDeposer', the id declared for Add-in Button class 'cmdDeposer'
+</summary>
+</member><member name="P:BarreVersion.My.ThisAddIn.IDs.BarreVersion_dckMenuVersion">
+	<summary>
+Returns 'MPO_BarreVersion_dckMenuVersion', the id declared for Add-in DockableWindow class 'BarreVersion.dckMenuVersion+AddinImpl'
+</summary>
+</member><member name="T:BarreVersion.My.ThisAddIn.IDs">
+	<summary>
+A class for looking up Add-in id strings declared in the associated configuration xml file (.esriaddinx).
+</summary>
+</member><member name="T:BarreVersion.My.ThisAddIn">
+	<summary>
+A class for looking up declarative information in the associated configuration xml file (.esriaddinx).
+</summary>
+</member><member name="M:BarreVersion.My.Internal.AddInStartupObject.GetThis">
+	<summary>
+ Expose this instance of Add-in class externally
+ </summary>
+</member><member name="T:BarreVersion.cmdDeposer">
+	<summary>
+Permet de déposer une version dans une Géodatabase SDE.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member>
+</members>
+</doc>

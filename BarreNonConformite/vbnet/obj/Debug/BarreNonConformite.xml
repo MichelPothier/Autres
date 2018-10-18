@@ -1,0 +1,1691 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+BarreNonConformite
+</name>
+</assembly>
+<members>
+<member name="T:BarreNonConformite.cmdFermerReservation">
+	<summary>
+Permet de fermer la réservation des données de la Géodatabase SDE.
+L'état des NO_MAP des identifiants est mis à T:Terminé, le numéro de version des métadonnéés est incrémenté, 
+la version et l'édition de fin est mise à jour dans la table des NC.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="P:BarreNonConformite.dckMenuNonConformite.Hook">
+	<summary>
+ Host object of the dockable window
+ </summary>
+</member><member name="T:BarreNonConformite.dckMenuNonConformite.AddinImpl">
+	<summary>
+ Implementation class of the dockable window add-in. It is responsible for
+ creating and disposing the user interface class for the dockable window.
+ </summary>
+</member><member name="M:BarreNonConformite.dckMenuNonConformite.Initialiser">
+	<summary>
+ Permet d'initialiser le menu pour l'affichage et la modification des paramètres de la barre de non-conformité.
+</summary>
+</member><member name="M:BarreNonConformite.dckMenuNonConformite.InitialiserNonConformite">
+	<summary>
+ Permet d'initialiser le menu pour l'information de non-conformité.
+</summary>
+</member><member name="M:BarreNonConformite.dckMenuNonConformite.InitialiserReplica">
+	<summary>
+ Permet d'initialiser le menu pour l'information sur le réplica.
+</summary>
+</member><member name="M:BarreNonConformite.dckMenuNonConformite.AfficherInfoConflits(System.Windows.Forms.TreeNode)">
+	<summary>
+ Routine qui permet d'afficher/dessiner l'information sur les conflits à partir d'un noeud sélectionné d'un TreeView.
+</summary>
+	<param name="pSelectNode">Noeud sélectionné d'un TreeView.</param>
+</member><member name="M:BarreNonConformite.dckMenuNonConformite.AfficherInfoDifferences(System.Windows.Forms.TreeNode)">
+	<summary>
+ Routine qui permet d'afficher/dessiner l'information sur les différences à partir d'un noeud sélectionné d'un TreeView.
+</summary>
+	<param name="pSelectNode">Noeud sélectionné d'un TreeView.</param>
+</member><member name="T:BarreNonConformite.dckMenuNonConformite">
+	<summary>
+ Menu de gestion des données en non-conformité, leurs réplicas, leurs conflits et leurs différences.
+ </summary>
+</member><member name="P:BarreNonConformite.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:BarreNonConformite.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:BarreNonConformite.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="T:BarreNonConformite.cmdReplica">
+	<summary>
+ Permet d'afficher la description du réplica de la Géodatabase Enfant et Parent.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="F:BarreNonConformite.clsGererMapLayer.gpMap">
+	<summary>Interface contenant la Map à Gérer.</summary>
+</member><member name="F:BarreNonConformite.clsGererMapLayer.gqGeodatabaseCollection">
+	<summary>Collection des Géodatabases de la Map.</summary>
+</member><member name="F:BarreNonConformite.clsGererMapLayer.gqFeatureLayerCollection">
+	<summary>Collection des FeatureLayers de la Map.</summary>
+</member><member name="F:BarreNonConformite.clsGererMapLayer.gqRasterLayerCollection">
+	<summary>Collection des RasterLayers de la Map.</summary>
+</member><member name="F:BarreNonConformite.clsGererMapLayer.gpEnvelope">
+	<summary>Collection des FeatureLayers de la Map.</summary>
+</member><member name="M:BarreNonConformite.clsGererMapLayer.#ctor(ESRI.ArcGIS.Carto.IMap,System.Boolean,ESRI.ArcGIS.Geometry.esriGeometryType,ESRI.ArcGIS.Geodatabase.esriWorkspaceType)">
+	<summary>
+ Routine qui permet d'initialiser la classe.
+ 
+<param name="pMap"> Interface ESRI utilisée pour extraire les FeatureLayers visible ou non.</param>
+		<param name="bNonVisible"> Indique si on doit aussi extraire les FeatureLayers non visibles.</param>
+		<param name="pEsriGeometryType"> Contient le type de géométrie des FeatureLayers recherchés.</param>
+		<param name="pEsriWorkspaceType"> Contient le type de géodatabases recherchées.</param>
+	</summary>
+</member><member name="M:BarreNonConformite.clsGererMapLayer.finalize">
+	<summary>
+Routine qui permet de vider la mémoire des objets de la classe.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererMapLayer.Map">
+	<summary>
+ Propriété qui permet de définir et retourner la Map traitée.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererMapLayer.GeodatabaseCollection">
+	<summary>
+ Propriété qui permet de définir et retourner la collection des Géodatabase de la Map.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererMapLayer.FeatureLayerCollection">
+	<summary>
+ Propriété qui permet de définir et retourner la collection de FeatureLayer traitée.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererMapLayer.RasterLayerCollection">
+	<summary>
+ Propriété qui permet de définir et retourner la collection de RasterLayer traitée.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererMapLayer.EnvelopeFeatureLayerCollection">
+	<summary>
+ Propriété qui permet de définir et retourner l'enveloppe de la collection de FeatureLayer traitée.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererMapLayer.ExtraireFeatureLayerByName(System.String,System.Boolean)">
+	<summary>
+ Fonction qui permet d'extraire le FeatureLayer correspondant au nom spécifié.
+</summary>
+	<param name="sTexte">Texte utilisé pour trouver le FeatureLayer par défaut.</param>
+	<param name="bNonVisible"> Indique si on doit aussi extraire les FeatureLayers non visibles.</param>
+	<returns>"IFeatureLayer" correspondant au texte recherché, sinon "Nothing".</returns>
+</member><member name="M:BarreNonConformite.clsGererMapLayer.DefinirCollectionRasterLayer(System.Boolean)">
+	<summary>
+ Fonction qui permet de définir la collection des RasterLayers présents dans la Map.
+ On peut indiquer si on veut aussi extraire les RasterLayers non visibles.
+</summary>
+	<param name="bNonVisible"> Indique si on doit aussi extraire les RasterLayer non visibles.</param>
+	<return>"Collection" contenant les "IRasterLayer" visible ou non selon ce qui est demandé.</return>
+</member><member name="M:BarreNonConformite.clsGererMapLayer.DefinirCollectionFeatureLayer(System.Boolean,ESRI.ArcGIS.Geometry.esriGeometryType,ESRI.ArcGIS.Geodatabase.esriWorkspaceType)">
+	<summary>
+ Fonction qui permet de définir la collection des FeatureLayers présents dans la Map.
+ On peut indiquer si on veut aussi extraire les FeatureLayers non visibles.
+</summary>
+	<param name="bNonVisible"> Indique si on doit aussi extraire les FeatureLayers non visibles.</param>
+	<param name="pEsriGeometryType"> Contient le type de géométrie des FeatureLayers recherchés.</param>
+	<param name="pEsriWorkspaceType"> Contient le type de géodatabases recherchées.</param>
+	<return>"Collection" contenant les "IFeatureLayer" visible ou non selon ce qui est demandé.</return>
+</member><member name="M:BarreNonConformite.clsGererMapLayer.DefinirGroupLayer(ESRI.ArcGIS.Carto.ILayer,System.Int32@)">
+	<summary>
+ Fonction qui permet d'extraire le GroupLayer dans lequel le Layer recherché est présent.
+</summary>
+	<param name="pLayerRechercher">Interface contenant le Layer à rechercher dans la Map active.</param>
+	<param name="nPosition">Position su Layer dans le GroupLayer.</param>
+	<returns>"Collection" contenant les "IGroupLayer" recherchés.</returns>
+</member><member name="M:BarreNonConformite.clsGererMapLayer.EstVisible(ESRI.ArcGIS.Carto.ILayer,System.Boolean)">
+	<summary>
+ Fonction qui permet d'indiquer si le FeatureLayer est visible ou non dans la IMap.
+</summary>
+	<param name="pLayerRechercher"> Interface ESRI contenant le Layer à rechercher.</param>
+	<param name="bPresent"> Contient l'indication si le Layer à rechercher est présent dans la Map.</param>
+	<return>"Collection" contenant les "IFeatureLayer" visible ou non.</return>
+</member><member name="M:BarreNonConformite.clsGererMapLayer.DefinirCollectionRasterLayerGroup(Microsoft.VisualBasic.Collection@,ESRI.ArcGIS.Carto.IGroupLayer,System.Boolean)">
+	<summary>
+ Routine qui permet de définir la collection des RasterLayers contenus dans un GroupLayer.
+ On peut indiquer si on veut aussi extraire les RasterLayers non visibles.
+</summary>
+	<param name="qRasterLayerColl">Collection des RasterLayer.</param>
+	<param name="pGroupLayer">Interface ESRI contenant un group de Layers.</param>
+	<param name="bNonVisible">Indique si on doit aussi extraire les RasterLayers non visibles.</param>
+</member><member name="M:BarreNonConformite.clsGererMapLayer.DefinirCollectionFeatureLayerGroup(Microsoft.VisualBasic.Collection@,ESRI.ArcGIS.Carto.IGroupLayer,System.Boolean,ESRI.ArcGIS.Geometry.esriGeometryType,ESRI.ArcGIS.Geodatabase.esriWorkspaceType)">
+	<summary>
+ Routine qui permet de définir la collection des FeatureLayers contenus dans un GroupLayer.
+ On peut indiquer si on veut aussi extraire les FeatureLayers non visibles.
+</summary>
+	<param name="qFeatureLayerColl">Collection des FeatureLayer.</param>
+	<param name="pGroupLayer">Interface ESRI contenant un group de Layers.</param>
+	<param name="bNonVisible">Indique si on doit aussi extraire les FeatureLayers non visibles.</param>
+	<param name="pEsriGeometryType"> Contient le type de géométrie des FeatureLayers recherchés.</param>
+	<param name="pEsriWorkspaceType"> Contient le type de géodatabases recherchées.</param>
+</member><member name="M:BarreNonConformite.clsGererMapLayer.ExtraireGroupLayerGroup(ESRI.ArcGIS.Carto.IGroupLayer,ESRI.ArcGIS.Carto.ILayer,System.Int32@)">
+	<summary>
+ Routine qui permet d'extraire le GroupLayer contenant un FeatureLayer.
+ Le GroupLayer recherché est contenu dans un GroupLayer.
+</summary>
+	<param name="pGroupLayer">Interface ESRI contenant un groupe de Layers.</param>
+	<param name="pLayerRechercher">Interface ESRI contenant le Layer à rechercher.</param>
+	<param name="nPosition">Position su Layer dans le GroupLayer.</param>
+</member><member name="M:BarreNonConformite.clsGererMapLayer.EstVisibleGroup(ESRI.ArcGIS.Carto.IGroupLayer,ESRI.ArcGIS.Carto.ILayer,System.Boolean)">
+	<summary>
+ Fonction qui permet d'indiquer si le FeatureLayer est visible ou non dans la IMap.
+</summary>
+	<param name="pGroupLayer">Interface ESRI contenant un group de Layers.</param>
+	<param name="pLayerRechercher"> Interface ESRI contenant le Layer à rechercher.</param>
+	<param name="bPresent"> Contient l'indication si le Layer à rechercher est présent dans la Map.</param>
+	<return>"Collection" contenant les "IFeatureLayer" visible ou non.</return>
+</member><member name="T:BarreNonConformite.clsGererMapLayer">
+	<summary>
+ Librairie de Classe qui permet de manipuler les différents types de Layer contenu dans une Map.
+</summary>
+	<remarks>
+Cette librairie est utilisable pour les outils interactifs ou Batch dans ArcMap (ArcGis de ESRI).
+
+Auteur : Michel Pothier
+Date : 6 Mai 2011
+</remarks>
+</member><member name="T:BarreNonConformite.cmdAnnulerReservation">
+	<summary>
+Permet d'annuler la réservation des données de la Géodatabase SDE.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="T:BarreNonConformite.cmdDifference">
+	<summary>
+Permet d'identifier les différences entre la Géodatabase SDE et la version de travail.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="F:BarreNonConformite.clsGererNC.gsEnv">
+	<summary>Nom de l'environnement de travail (instance de la BD) [SIB_PRO/SIB_TST/SIB_DEV/BDG_SIB_TST].</summary>
+</member><member name="F:BarreNonConformite.clsGererNC.gsTypeProduit">
+	<summary>Type de produit pour lesquels on veut gérer les non-conformités.</summary>
+</member><member name="F:BarreNonConformite.clsGererNC.gsTypeTravail">
+	<summary>Type de travail pour lesquels on veut corriger les non-conformités.</summary>
+</member><member name="F:BarreNonConformite.clsGererNC.gqConnection">
+	<summary>Objet contenant la connexion à la base de données SIB.</summary>
+</member><member name="F:BarreNonConformite.clsGererNC.gpTrackCancel">
+	<summary> Interface pour annuler le traitement et afficher l'information.</summary>
+</member><member name="P:BarreNonConformite.clsGererNC.Env">
+	<summary>
+ Propriété qui permet de définir et retourner l'environnement de travail (instance de la BD).
+</summary>
+</member><member name="P:BarreNonConformite.clsGererNC.TypeProduit">
+	<summary>
+ Propriété qui permet de définir et retourner le type de produit.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererNC.TypeTravail">
+	<summary>
+ Propriété qui permet de retourner le type de travail.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererNC.ConnectionString">
+	<summary>
+ Propriété qui permet de retourner le texte de connexion à la Bd des catalogues.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererNC.TrackCancel">
+	<summary>
+ Propriété qui permet de définir et retourner l'interface pour annuler le traitement et afficher l'information.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererNC.#ctor(System.String,System.String,System.String)">
+	<summary>
+Routine qui permet d'initialiser la classe pour gérer l'information des non-conformités.
+</summary>
+	<param name="sEnv">Environnement de travail.</param>
+	<param name="sTypeProduit">Type de produit.</param>
+	<param name="sTypeTravail">Type de travail.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.Finalize">
+	<summary>
+Routine qui permet de fermer adéquatement l'objet pour gérer l'information des non-conformités.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererNC.EstValide">
+	<summary>
+ Permet d'indiquer si l'outil de gestion des NCs est valide.
+</summary>
+	<returns>"Boolean" pour indiquer si l'outil de gestion des NCs est valide (True) ou invalide (False).</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.CreerDictionaireEnv">
+	<summary>
+ Fonction qui permet de créer un dictionnaire des environnements de travail.
+</summary>
+	<returns>"Dictionary(Of String, String)" correspondant à la liste des environnements possibles (Env, Env).</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.CreerDictionaireTypeProduit">
+	<summary>
+ Fonction qui permet de créer un dictionnaire des types de produit.
+</summary>
+	<returns>"Dictionary(Of String, String)" correspondant à la liste des types de produit possibles (TypeProduit, TypeProduit).</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.CreerDictionnaireNoNC">
+	<summary>
+ Fonction qui permet de créer un dictionnaire des numéros de non-conformité dont l'édition de fin est 99999 selon un type de produit.
+</summary>
+	<returns>"Dictionary(Of String, Integer)" correspondant à la liste des numéros de non-conformité avec son type et sa description.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.CreerDictionnaireIdentifiantsNoNC(System.String)">
+	<summary>
+ Fonction qui permet de créer un dictionnaire des identifiants de non-conformité selon un numéro de non-conformité. 
+ Le numéro d'édition/Version de début et de fin et le nombre de classes seront contenus dans la descroption.
+</summary>
+	<param name="sNoNC">Numéro de non-conformité.</param>
+	<returns>"Dictionary(Of String, String)" correspondant à la liste des identifiants du numéro de non-conformité spécifié.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.CreerDictionnaireCodeClasseEnProduction(System.String)">
+	<summary>
+ Fonction qui permet de créer un dictionnaire des codes de classes en production à partir d'un numéro de mise au programme.
+</summary>
+	<param name="sNoMap">Contient le numéro de mise au programme.</param>
+	<returns>"Dictionary(Of String, String)" correspondant à la liste des identifiants du numéro de non-conformité spécifié.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.CreerDictionaireClasses">
+	<summary>
+ Fonction qui permet de créer un dictionnaire des classes possibles contenues dans la BD des catalogues.
+</summary>
+	<returns>"Collection" correspondant à la liste des classes possibles (codeClasse, nomClasse).</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.ExtraireDescriptionNoNC(System.String)">
+	<summary>
+ Fonction qui permet d'extraire la DESCRIPTION d'un numéro de non-conformité spécifié.
+</summary>
+	<param name="sNoNC">Numéro de non-conformité.</param>
+	<returns>"String" correspondant à la description du numéro de non-conformité spécifié.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.DefinirInfoIdentifiantsNC(System.String,System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet de remplir l'information des identifiants d'une non-conformatité dans un TreeView.
+</summary>
+	<param name="sNoNc">Contient le numéro de non-conformité.</param>
+	<param name="treIdentifiants">TreeView dans lequel l'information des identifiants d'un numéro de non-conformité sera ajouté.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.DefinirInfoClassesProduction(System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet de définir l'information pour les classes qui sont mises au programme et qui sont en production pour un noeud d'identifiant de TreeView.
+</summary>
+	<param name="qNodeIdentifiant">Noeud d'un identifiant à traiter.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.ReserverIdentifiantsClasses(System.String,System.Windows.Forms.TreeView@,System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet de réserver tous les identifiants sélectionnés d'un TreeView d'identifiants pour toutes les classes sélectionnées d'un TreeView de classes
+ selon un numéro de non-conformité.
+</summary>
+	<param name="sNoNC">Contient le numéro de non-conformité.</param>
+	<param name="treIdentifiants">TreeView contenant les identifiants à réserver.</param>
+	<param name="treClasses">TreeView contenant les classes à réserver.</param>
+	<remarks>
+Le traitement de réservation permet d'effectuer les étapes suivantes :
+ -Pour chaque identifiant sélectionné:
+   -Si l'identifiant n'est pas au programme
+     -Créer un nouveau NO_MAP.
+     -Ajouter l'info du NO_MAP dans la table F502_PS.
+     -Ajouter le lien le NO_MAP avec le NO_NC dans la table F502_NC.
+     -Ajouter le lien le NO_MAP avec le TY_TRAV dans la table F503_TR.
+     -Pour chaque classe sélectionnée:
+       -Ajouter le code de classe avec le NO_MAP dans la table F502_LE.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererNC.AnnulerReserverIdentifiantsClasses(System.String,System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet d'annuler la réservation de tous les identifiants sélectionnés d'un TreeView d'identifiants et d'un numéro de non-conformité.
+</summary>
+	<param name="sNoNC">Contient le numéro de non-conformité.</param>
+	<param name="treIdentifiants">TreeView contenant les identifiants à réserver.</param>
+	<remarks>
+Le traitement de réservation permet d'effectuer les étapes suivantes :
+ -Pour chaque identifiant sélectionné:
+   -Si l'identifiant est au programme
+     -Détruire l'info du NO_MAP dans la table F502_PS.
+     -Détruire le lien le NO_MAP avec le NO_NC dans la table F502_NC.
+     -Détruire le lien le NO_MAP avec le TY_TRAV dans la table F503_TR.
+     -Pour chaque classe sélectionnée:
+       -Détruire le code de classe avec le NO_MAP dans la table F502_LE.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererNC.FermerReserverIdentifiantsClasses(System.String,System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet de fermer la réservation de tous les identifiants sélectionnés d'un TreeView d'identifiants et d'un numéro de non-conformité.
+</summary>
+	<param name="sNoNC">Contient le numéro de non-conformité.</param>
+	<param name="treIdentifiants">TreeView contenant les identifiants à réserver.</param>
+	<remarks>
+Le traitement de réservation permet d'effectuer les étapes suivantes :
+ -Pour chaque identifiant sélectionné:
+   -Si l'identifiant est au programme
+     -Détruire l'info du NO_MAP dans la table F502_PS.
+     -Détruire le lien le NO_MAP avec le NO_NC dans la table F502_NC.
+     -Détruire le lien le NO_MAP avec le TY_TRAV dans la table F503_TR.
+     -Pour chaque classe sélectionnée:
+       -Détruire le code de classe avec le NO_MAP dans la table F502_LE.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererNC.ReservationValide(System.String,System.Windows.Forms.TreeView,System.Windows.Forms.TreeView)">
+	<summary>
+ Function qui permet d'indiquer si les identifiants et les classes de la non-conformité sont réservés en production.
+</summary>
+	<param name="sNoNc">Contient le numéro de non-conformité à traiter.</param>
+	<param name="treIdentifiants">TreeView contenant les identifiants sélectionnés.</param>
+	<param name="treClasses">TreeView contenant les classes à réserver.</param>
+	<returns>Boolean qui indique si les identifiants et les classes de la non-conformité sont réservés en production.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.NoteReplicaPresente(System.String,System.Windows.Forms.TreeView,System.String@)">
+	<summary>
+ Function qui permet d'indiquer si une note de réplica est présente pour au moins un des identifiants spécifiés.
+</summary>
+	<param name="sNoNc">Contient le numéro de non-conformité à traiter.</param>
+	<param name="treIdentifiants">TreeView contenant les identifiants sélectionnés.</param>
+	<param name="sMessage">Contient le message des identifiants dont le réplica est déjà créé.</param>
+	<returns>Boolean qui indique si les identifiants et les classes de la non-conformité sont réservés en production..</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.NoteReplicaTousPresents(System.String,System.Windows.Forms.TreeView,System.String@)">
+	<summary>
+ Function qui permet d'indiquer si une note de réplica est présente pour tous les identifiants spécifiés.
+</summary>
+	<param name="sNoNc">Contient le numéro de non-conformité à traiter.</param>
+	<param name="treIdentifiants">TreeView contenant les identifiants sélectionnés.</param>
+	<param name="sMessage">Contient le message des identifiants dont le réplica est déjà créé.</param>
+	<returns>Boolean qui indique si les identifiants et les classes de la non-conformité sont réservés en production..</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.AjouterNoteReplica(System.String,System.String,System.Windows.Forms.TreeView)">
+	<summary>
+ Routine qui permet d'ajouter une note de réplica pour tous les identifiants spécifiés dans la table F502_PS.
+</summary>
+	<param name="sNomReplica">Contient le nom du réplica.</param>
+	<param name="sNoNc">Contient le numéro de non-conformité à traiter.</param>
+	<param name="treIdentifiants">TreeView contenant les identifiants sélectionnés.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.DefinirListeIdentifiants(System.Windows.Forms.TreeView,System.Int32@)">
+	<summary>
+ Function qui permet de définir la liste des identifiants sélectionnés à partir d'un TreeView.
+</summary>
+-------------------------------------------------------------------------------------
+<param name="treIdentifiants">TreeView contenant les identifiants sélectionnés.</param>
+	<param name="iNbIdentifiants">Contient le nombre d'identifiants sélectionnés.</param>
+	<returns>String contenant le liste des identifiants séparés par des virgules et des apostrophes.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.DefinirListeCodesClasses(System.Windows.Forms.TreeView,System.Int32@)">
+	<summary>
+ Fonction qui permet définir la liste des codes des classes contenus dans un TreeView de classes.
+</summary>
+	<param name="treClasses">TreeView contenant les classes sélectionnées.</param>
+	<param name="iNbClasses">Contient le nombre de classes sélectionnées.</param>
+	<returns>"String" correspondant à la liste des codes des classes contenus dans un TreeView de classes.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.DefinirListeClasses(System.Windows.Forms.TreeView,System.Int32@)">
+	<summary>
+ Function qui permet de définir la liste des classes sélectionnées à partir d'un TreeView.
+</summary>
+	<param name="treClasses">TreeView contenant les classes sélectionnées.</param>
+	<param name="iNbClasses">Contient le nombre de classes sélectionnées.</param>
+	<returns>String contenant le liste des classes séparées par des virgules sans apostrophes.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.SelectionnerClasses(System.Windows.Forms.TreeNode,System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet de sélectionner les classes à partir de l'information d'un TreeNode.
+</summary>
+	<param name="pSelectNode">TreeNode contenant l'identifiant et les classes à sélectionner.</param>
+	<param name="treClasses">TreeView contenant les classes sélectionnées.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.ModifierDateTraitementTableF702_NC(System.String,System.String)">
+	<summary>
+ Routine qui permet de modifier la date de traitement dans la table F702_NC.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sNoNC">Contient le numéro de non-conformité.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.InsererProcDescTableF235_PS(System.String,System.String,System.Int32,System.Int32,System.String)">
+	<summary>
+ Routine qui permet d'insérer une nouvelle étiquette du Proc/Desc dans la table F235_PS.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sIdentifiant">Contient l'identifiant à traiter.</param>
+	<param name="iEdCour">Contient le numéro de l'édition courante.</param>
+	<param name="iVerCour">Contient le numéro de la version courante.</param>
+	<param name="sProcDesc">Contient l'étiquette du Processus de description (Proc/Desc).</param>
+</member><member name="M:BarreNonConformite.clsGererNC.ModifierDateMetadonneesTableF235_MR(System.String,System.String,System.Int32,System.Int32)">
+	<summary>
+ Routine qui permet de modifier la date des métadonnées dans la table F235_MR.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sIdentifiant">Contient l'identifiant à traiter.</param>
+	<param name="iEdCour">Contient le numéro de l'édition courante.</param>
+	<param name="iVerCour">Contient le numéro de la version courante.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.IncrementerVersionMetadonneesTableF235_PR(System.String,System.String,System.Int32)">
+	<summary>
+ Routine qui permet d'incrémenter le numéro de la version des métadonnées dans la table F235_PR.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sIdentifiant">Contient l'identifiant à traiter.</param>
+	<param name="iVerMeta">Contient le numéro de version des métadonnées.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.ModifierEditionVersionFinTableF705_PR(System.String,System.String,System.Int32,System.Int32,System.String)">
+	<summary>
+ Routine qui permet de modifier l'édition et version de fin dans la table F705_PR.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sIdentifiant">Contient l'identifiant à traiter.</param>
+	<param name="iEdCour">Contient le numéro de l'édition courante.</param>
+	<param name="iVerCour">Contient le numéro de la version courante.</param>
+	<param name="sNoNC">Contient le numéro de non-conformité.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.FermerNoMapTableF502_PS(System.String,System.String)">
+	<summary>
+ Routine qui permet de fermer le NO_MAP (E_PLSNRC='T') dans la table F502_PS.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sNoMap">Contient le numéro de mise au programme.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.InsererInfoNoMapTableF502_PS(System.String,System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+ Routine qui permet d'insérer l'information du NO_MAP dans la table F502_PS.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sNoMap">Contient le numéro de mise au programme.</param>
+	<param name="sIdentifiant">Contient l'identifiant de la mise au programme.</param>
+	<param name="sNote">Contient la note de la mise au programme.</param>
+	<param name="sDatePrevue">Contient la date prévue de la mise au programme.</param>
+	<param name="sNormes">Contient le numéro des normes de production.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.DetruireInfoNoMapTableF502_PS(System.String)">
+	<summary>
+ Routine qui permet de détruire l'information du NO_MAP dans la table F502_PS.
+</summary>
+	<param name="sNoMap">Contient le numéro de mise au programme.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.InsererLienNoNcNoMapTableF502_NC(System.String,System.String,System.String)">
+	<summary>
+ Routine qui permet d'insérer un lien entre le NO_MAP et le NO_NC dans la table F502_NC.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sNoMap">Contient le numéro de mise au programme.</param>
+	<param name="sNoNC">Contient le numéro de non-conformité.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.DetruireLienNoNcNoMapTableF502_NC(System.String,System.String)">
+	<summary>
+ Routine qui permet de détruire un lien entre le NO_MAP et le NO_NC dans la table F502_NC.
+</summary>
+	<param name="sNoMap">Contient le numéro de mise au programme.</param>
+	<param name="sNoNC">Contient le numéro de non-conformité.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.InsererLienTyTravNoMapTableF503_TR(System.String,System.String)">
+	<summary>
+ Routine qui permet d'insérer un lien entre le NO_MAP et le TY_TRAV dans la table F503_TR.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sNoMap">Contient le numéro de mise au programme.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.DetruireLienTyTravNoMapTableF503_TR(System.String)">
+	<summary>
+ Routine qui permet de détruire un lien entre le NO_MAP et le TY_TRAV dans la table F503_TR.
+</summary>
+	<param name="sNoMap">Contient le numéro de mise au programme.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.InsererLienCodeClasseNoMapTableF502_LE(System.String,System.String,System.String)">
+	<summary>
+ Routine qui permet d'insérer un lien entre le code de classe et le NO_NC dans la table F502_LE.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sNoMap">Contient le numéro de mise au programme.</param>
+	<param name="sCodeClasse">Contient le code de la classe à mettre au programme.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.DetruireLienCodeClasseNoMapTableF502_LE(System.String,System.String)">
+	<summary>
+ Routine qui permet de détruire un lien entre le code de classe et le NO_NC dans la table F502_LE.
+</summary>
+	<param name="sNoMap">Contient le numéro de mise au programme.</param>
+	<param name="sCodeClasse">Contient le code de la classe à mettre au programme.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.Commit">
+	<summary>
+ Routine qui permet d'effectuer un Commit afin de conserver les modifications.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererNC.Rollback">
+	<summary>
+ Routine qui permet d'effectuer un Rollback afin de ne pas conserver les modifications.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererNC.ExtraireInfoMetaIdentifiantCourant(System.String,System.Int32@,System.Int32@,System.Int32@)">
+	<summary>
+ Routine qui permet d'extraire l'nformation des metadonnees d'un identifiant courant dans la table F235_PR.
+</summary>
+	<param name="sIdentifiant">Contient l'identifiant à traiter.</param>
+	<param name="iEdCour">Contient le numéro de l'édition courante.</param>
+	<param name="iVerCour">Contient le numéro de la version courante.</param>
+	<param name="iVerMeta">Contient le numéro de la version des métadonnées de l'identifiant courant.</param>
+</member><member name="M:BarreNonConformite.clsGererNC.NbIdentifiantsNonConformesNonFermer(System.String)">
+	<summary>
+ Fonction qui permet de retourner le nombre d'identifiants non-conformes et non fermés
+</summary>
+	<param name="sNoNc">Contient le numéro de non-conformité.</param>
+	<returns>"Integer" correspondant au nombre d'identifiants non-conformes et non fermés.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.NbClassesIdentifiantEnProduction(System.String,System.String)">
+	<summary>
+ Fonction qui permet de retourner le nombre de classes en production pour un identifiant.
+</summary>
+	<param name="sIdentifiant">Contient l'identifiant en production.</param>
+	<param name="sListeCodesClasses">Contient la liste des codes de classes en production.</param>
+	<returns>"Integer" correspondant au nombre de classes d'un identifiant en production.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.IdentifiantEnProduction(System.String)">
+	<summary>
+ Fonction qui permet d'indiquer si l'identifiant est en production à partir du type de produit et du type de travail.
+</summary>
+	<param name="sIdentifiant">Contient l'identifiant en production.</param>
+	<returns>"Boolean" pour indiquer si l'identifiant est en production pour un type de travail spécifique.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.DefinirNoMapEnProduction(System.String,System.String)">
+	<summary>
+ Fonction qui permet de définir le numéro de mise au programme à partir d'un numéro de non-conformité, du type de produit et d'un identifiant.
+</summary>
+	<param name="sNoNc">Contient le numéro de non-conformité.</param>
+	<param name="sIdentifiant">Contient l'identifiant en production.</param>
+	<returns>"Integer" contenant le numéro de mise au programme, -1 sinon.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.DefinirNoMapEnProduction(System.String)">
+	<summary>
+ Fonction qui permet de définir le numéro de mise au programme à partir d'un identifiant, du type de produit et du type de travail.
+</summary>
+	<param name="sIdentifiant">Contient l'identifiant en production.</param>
+	<returns>"Integer" contenant le numéro de mise au programme, -1 sinon.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.CreerNouveauNoMap">
+	<summary>
+ Fonction qui permet de créer un nouveau numéro de mise au programme.
+</summary>
+	<returns>"Integer" correspondant au nouveau numéro de mise au programme.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.ExtraireNormesDefaut">
+	<summary>
+ Fonction qui permet d'extraire le numéro des normes par défaut.
+</summary>
+	<returns>"String" correspondant au numéro des normes par défaut.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.AccesAutoriser(System.String,System.String)">
+	<summary>
+ Fonction qui permet d'indiquer si l'accès est autorisé d'un usager pour une liste de codes de groupe de privilège.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sListeCodesGroupe">Contient la liste des codes de groupe de privilège à vérifier.</param>
+	<returns>"Boolean" qui permet d'indiquer si l'accès est autorisé.</returns>
+</member><member name="M:BarreNonConformite.clsGererNC.EnvoyerCourriel(System.String,System.String,System.String)">
+	<summary>
+ Routine qui permet d'envoyer un courriel de fin de non-conformité.
+</summary>
+	<param name="sUsager">Contient le nom de l'usager.</param>
+	<param name="sNoNc">Contient le numéro de la non-conformité.</param>
+	<param name="sResponsable">Contient le nom des responsables de la non-conformité.</param>
+</member><member name="T:BarreNonConformite.clsGererNC">
+	<summary>
+ Librairie de Classe qui permet de gérer l'information des non-conformités dans la Base de données SIB.
+</summary>
+	<remarks>
+Cette librairie est utilisable pour les outils interactifs ou Batch dans ArcMap (ArcGis de ESRI).
+
+Auteur : Michel Pothier
+Date : 21 février 2017
+</remarks>
+</member><member name="T:BarreNonConformite.AnnulerExecutionException">
+	<summary>
+ Classe qui permet d'envoyer une exception spéciale.
+</summary>
+</member><member name="T:BarreNonConformite.cmdCreerGdbEnfant">
+	<summary>
+ Commande qui permet de créer une Géodatabase Enfant et son archive à partir d'une géodatabase Parent en utilisant un réplica de type checkOut.
+</summary>
+	<remarks>
+ Ce traitement est utilisable en mode interactif à l'aide de ses interfaces graphiques et doit être utilisé dans ArcMap (ArcGisESRI).
+
+ Auteur : Michel Pothier
+ Date : 16 janvier 2017
+</remarks>
+</member><member name="T:BarreNonConformite.cmdConflit">
+	<summary>
+Permet d'identifier les conflits entre la Géodatabase SDE et la version de travail.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="T:BarreNonConformite.cmdDeposer">
+	<summary>
+Permet de déposer les différences entre la Géodatabase enfant (.mdb ou .gdb) et son archive interne ou externe dans la Géodatabase parent (.sde).
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.cmdActiverMenu">
+	<summary>
+Returns 'MPO_BarreNonConformite_cmdActiverMenu', the id declared for Add-in Button class 'cmdActiverMenu'
+</summary>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.cmdReserver">
+	<summary>
+Returns 'MPO_BarreNonConformite_cmdReserver', the id declared for Add-in Button class 'cmdReserver'
+</summary>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.cmdAnnulerReservation">
+	<summary>
+Returns 'MPO_BarreNonConformite_cmdAnnulerReservation', the id declared for Add-in Button class 'cmdAnnulerReservation'
+</summary>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.cmdFermerReservation">
+	<summary>
+Returns 'MPO_BarreNonConformite_cmdFermerReservation', the id declared for Add-in Button class 'cmdFermerReservation'
+</summary>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.cmdCreerGdbEnfant">
+	<summary>
+Returns 'MPO_BarreNonConformite_cmdCreerGdbEnfant', the id declared for Add-in Button class 'cmdCreerGdbEnfant'
+</summary>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.cboNomGdbEnfant">
+	<summary>
+Returns 'MPO_BarreNonConformite_cboNomGdbEnfant', the id declared for Add-in ComboBox class 'cboNomGdbEnfant'
+</summary>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.cmdConflit">
+	<summary>
+Returns 'MPO_BarreNonConformite_cmdConflit', the id declared for Add-in Button class 'cmdConflit'
+</summary>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.cmdDifference">
+	<summary>
+Returns 'MPO_BarreNonConformite_cmdDifference', the id declared for Add-in Button class 'cmdDifference'
+</summary>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.cmdReplica">
+	<summary>
+Returns 'MPO_BarreNonConformite_cmdReplica', the id declared for Add-in Button class 'cmdReplica'
+</summary>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.cmdDeposer">
+	<summary>
+Returns 'MPO_BarreNonConformite_cmdDeposer', the id declared for Add-in Button class 'cmdDeposer'
+</summary>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.cmdAnnulerReplica">
+	<summary>
+Returns 'MPO_BarreNonConformite_cmdAnnulerReplica', the id declared for Add-in Button class 'cmdAnnulerReplica'
+</summary>
+</member><member name="P:BarreNonConformite.My.ThisAddIn.IDs.BarreNonConformite_dckMenuNonConformite">
+	<summary>
+Returns 'MPO_BarreNonConformite_dckMenuNonConformite', the id declared for Add-in DockableWindow class 'BarreNonConformite.dckMenuNonConformite+AddinImpl'
+</summary>
+</member><member name="T:BarreNonConformite.My.ThisAddIn.IDs">
+	<summary>
+A class for looking up Add-in id strings declared in the associated configuration xml file (.esriaddinx).
+</summary>
+</member><member name="T:BarreNonConformite.My.ThisAddIn">
+	<summary>
+A class for looking up declarative information in the associated configuration xml file (.esriaddinx).
+</summary>
+</member><member name="M:BarreNonConformite.My.Internal.AddInStartupObject.GetThis">
+	<summary>
+ Expose this instance of Add-in class externally
+ </summary>
+</member><member name="F:BarreNonConformite.clsGererReplica.gpGdbParent">
+	<summary> Géodatabase parent dans laquelle les données d'origines ont été retirées et les changements doivent être déposés.</summary>
+</member><member name="F:BarreNonConformite.clsGererReplica.gpGdbEnfant">
+	<summary> Géodatabase enfant contenant les changements, les données ajoutées, détruites et modifiées.</summary>
+</member><member name="F:BarreNonConformite.clsGererReplica.gpGdbArchive">
+	<summary> Géodatabase d'archive dans laquelle les données originales ont été retirés.</summary>
+</member><member name="F:BarreNonConformite.clsGererReplica.gpReplicaParent">
+	<summary> Interface contenant l'information du réplica contenu dans la Géodatabase parent.</summary>
+</member><member name="F:BarreNonConformite.clsGererReplica.gpReplicaEnfant">
+	<summary> Interface contenant l'information du réplica contenu dans la Géodatabase enfant.</summary>
+</member><member name="F:BarreNonConformite.clsGererReplica.gpDataChanges">
+	<summary> Interface contenant les changements dans les données de la Géodatabase enfant.</summary>
+</member><member name="F:BarreNonConformite.clsGererReplica.gpTrackCancel">
+	<summary> Interface pour annuler le traitement et afficher l'information.</summary>
+</member><member name="F:BarreNonConformite.clsGererReplica.giNbConflits">
+	<summary> Contient le nombre de conflits trouvés.</summary>
+</member><member name="F:BarreNonConformite.clsGererReplica.giNbDifferences">
+	<summary> Contient le nombre de différences trouvés.</summary>
+</member><member name="P:BarreNonConformite.clsGererReplica.GdbParent">
+	<summary>
+ Propriété qui permet de définir et retourner la Géodatabase parent.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererReplica.GdbEnfant">
+	<summary>
+ Propriété qui permet de retourner la Géodatabase enfant.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererReplica.GdbArchive">
+	<summary>
+ Propriété qui permet de définir et retourner la Géodatabase d'archive.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererReplica.ReplicaParent">
+	<summary>
+ Propriété qui permet de retourner le réplica de la Géodatabase parent.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererReplica.ReplicaEnfant">
+	<summary>
+ Propriété qui permet de retourner le réplica de la Géodatabase enfant.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererReplica.DataChanges">
+	<summary>
+ Propriété qui permet de retourner les changements de la Géodatabase enfant qui contient un réplica valide.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererReplica.TrackCancel">
+	<summary>
+ Propriété qui permet de définir et retourner l'interface pour annuler le traitement et afficher l'information.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererReplica.NbConflits">
+	<summary>
+ Propriété qui permet de retourner le nombre de conflits trouvées entre la Géodatabase parent et l'archive interne ou externe de la Géodatabase enfant.
+</summary>
+</member><member name="P:BarreNonConformite.clsGererReplica.NbDifferences">
+	<summary>
+ Propriété qui permet de retourner le nombre de différences trouvées entre la Géodatabase enfant et son archive interne ou externe.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererReplica.CreerReplicaBDG(System.String,System.String@,System.String@,System.String,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriReplicaModelType,ESRI.ArcGIS.Geodatabase.esriDataExtractionType,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum)">
+	<summary>
+ Routine qui permet de créer un réplica de type CheckOut à partir d'une géodatabase SDE en copiant les classes et identifiants spécifiées de la BDG
+ dans une géodatabase locale (.mdb ou .gdb).
+</summary>
+	<param name="sNomReplica">Nom du réplica.</param>
+	<param name="sNomGdbParent">Nom de la Géodatabase Parent .sde.</param>
+	<param name="sNomGdbEnfant">Nom de la Géodatabase enfant .mdb ou .gdb.</param>
+	<param name="sListeNomClasse">Liste des noms des classe à extraire de la BDG spéparés par des virgules en incluant le nom du propriétaire.</param>
+	<param name="sListeIdentifiants">Liste des identifiants à extraire de la BDG spéparés par des virgules et apostrophes.</param>
+	<param name="sNomAttributId">Nom de l'attribut des identifiants de la BDG.</param>
+	<param name="pTypeModel">Indique le type de model Simple ou complet.</param>
+	<param name="pEsriDataExtractionType">Indique le type d'extraction à effectuer (esriDataCheckOut ou esriDataExtraction).</param>
+	<param name="pGeometry">Indique la géométrie utiliser pour effectuer la requête spatiale.</param>
+	<param name="pSpatialRelation">Indique le type de requête spatiale à effecter.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.CreerDescriptionReplicaEnfant(System.String,System.String,System.String,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriDataExtractionType,ESRI.ArcGIS.Geodatabase.esriReplicaModelType,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum)">
+	<summary>
+ Routine qui permet de créer une description de réplica d'une Géodatabase enfant avec une Géodatabase d'archive externe.
+</summary>
+	<param name="sNomReplica">Nom du réplica.</param>
+	<param name="sNomGdbParent">Nom de la Géodatabase Parent .sde.</param>
+	<param name="sNomGdbArchiveCopier">Nom de la Géodatabase d'Archive .mdb ou .gdb. à copier</param>
+	<param name="sListeNomClasse">Liste des noms des classe à extraire spéparer par des virgule en incluant le nom du propriétaire.</param>
+	<param name="sRequeteAttributive">Requête attributive à appliquer sur toutes les classes à extraire.</param>
+	<param name="pTypeModel">Indique le type de model Simple ou complet.</param>
+	<param name="pEsriDataExtractionType">Indique le type d'extraction à effectuer (esriDataCheckOut ou esriDataExtraction).</param>
+	<param name="pGeometry">Indique la géométrie utiliser pour effectuer la requête spatiale.</param>
+	<param name="pSpatialRelation">Indique le type de requête spatiale à effecter.</param>
+	<remarks>
+ La description du réplica est ajouter dans la Géodatabase enfant mais pas dans la Geodatabase parent.
+ La Géodatabase d'archive sera créée à partir du nom de la Géodatabase à copier.
+ </remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.AjouterClassesGdbEnfantMap(ESRI.ArcGIS.Carto.IMap@)">
+	<summary>
+ Routine qui permet d'ajouter toutes les classes spatiales et non spatiales d'une Géodatabase enfant dans la Map spécifiée.
+</summary>
+	<param name="pMap"> Map dans laquelle les classes seront ajoutés.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.AjouterDescriptionReplicaEnfant(System.String,ESRI.ArcGIS.Geodatabase.IReplicaDescription4@,ESRI.ArcGIS.Geodatabase.IWorkspace@)">
+	<summary>
+ Routine qui permet d'ajouter une description de réplica dans une Géodatabase enfant.
+</summary>
+	<param name="sNomReplica"> Nom du réplica à ajouter.</param>
+	<param name="pReplicaDescription"> Interface contenant la description des Datasets ajoutés dans la Géodatabase.</param>
+	<param name="pGeodatabase"> Interface contenant la Géodatabase enfant dans laquelle le réplica sera ajouté.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.AnnulerReplica">
+	<summary>
+ Routine qui permet d'annuler le réplica dans une Géodatabase Parent et Enfant.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererReplica.Init(ESRI.ArcGIS.Geodatabase.IWorkspace)">
+	<summary>
+ Routine qui permet d'initialiser la classe à partir de la géodatabase enfant.
+</summary>
+	<param name="pGdbEnfant"> Interface contenant la Géodatabase enfant.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.Init(System.String)">
+	<summary>
+ Routine qui permet d'initialiser la classe à partir des noms de la géodatabase enfant.
+</summary>
+	<param name="sGdbEnfant"> Nom de la Géodatabase enfant.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.EstValide(System.String@)">
+	<summary>
+ Fonction qui permet de valider le traitement de gestion du réplica.
+</summary>
+	<param name="sMessage"> Message qui indique pourquoi le traitement est valide ou invalide.</param>
+	<remarks>
+ Par défaut, les différences seront identifiées à partir de l'information du réplica de la Géodatabase enfant dans laquelle l'archive interne est présente.
+ Si le réplica de la Géodatabase enfant est invalide, les différences seront identifiées à partir de la Géodatabase d'archive externe.
+ La Géodatabase d'archive externe correspond à la copie initiale de la Géodatabase enfant.
+ </remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.DefinirGeodatabase(System.String)">
+	<summary>
+Fonction qui permet de définir une Géodatabase de type .sde, .mdb ou .gdb à partir d'un nom de Géodatabase.
+</summary>
+	<param name="sNomGeodatabase">Nom complet la Géodatabase.</param>
+	<returns>"IWorkspace" correspondants à une Géodatabase , Nothing sinon.</returns>
+</member><member name="M:BarreNonConformite.clsGererReplica.CreerGeodatabaseLocale(System.String)">
+	<summary>
+Fonction qui permet de créer une Géodatabase locale de type .mdb ou .gdb.
+</summary>
+	<param name="sNomGeodatabase">Nom complet la Géodatabase locale à créer.</param>
+	<returns>"IWorkspace" correspondants à une Géodatabase locale , Nothing sinon.</returns>
+	<remarks>
+ Une Géodatabase est créée seulement si le nom contient .mdb ou .gdb, sinon une erreur est retournée.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.DefinirReplicaEnfant">
+	<summary>
+ Routine qui permet de définir le réplica de la Géodatabase enfant.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererReplica.DefinirDataChanges">
+	<summary>
+ Routine qui permet de définir l'interface des changements de la Géodatabase enfant.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererReplica.DefinirGdbParent">
+	<summary>
+ Routine qui permet de définir la Géodatabase parent à partir de l'interface de changements.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererReplica.DefinirReplicaParent">
+	<summary>
+ Routine qui permet de définir le réplica de la Géodatabase parent à partir de l'interface de changements.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererReplica.DefinirGdbArchive">
+	<summary>
+ Routine qui permet de définir la Géodatabase d'archive à partir du nom de la Géodatabase enfant.
+</summary>
+	<remarks>Le nom de la géodatabase d'archive est le même que celui de l'enfant mais contient le suffixe "_archive" à la fin du nom sans l'extension.</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.CreerGdbArchiveExterne">
+	<summary>
+ Routine qui permet de créer la Géodatabase d'archive à partir de la Géodatabase enfant.
+</summary>
+	<remarks>Le nom de la géodatabase d'archive est le même que celui de l'enfant mais contient le suffixe "_archive" à la fin du nom sans l'extension.</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.DescriptionReplica(ESRI.ArcGIS.Geodatabase.IReplica3,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Fonction qui permet de retourner la description complète d'un réplica dans un noeud de TreeView.
+</summary>
+	<param name="pReplica">Interface contenant l'information d'un réplica de Géodatabase.</param>
+	<param name="pNodeGdb">Noeud d'un TreeView dans lequel la description du réplica de la Géodatabase sera inscrite.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.CreerReplicaExtraction(System.String,System.String,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriReplicaModelType,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum)">
+	<summary>
+ Fonction qui permet de créer un réplica d'extraction de données dans une géodatabase .mdb ou .gdb à partir d'une géodatabase SDE.
+</summary>
+	<param name="sNomGdbParent">Nom de la Géodatabase parent .sde.</param>
+	<param name="sNomGdbEnfant">Nom de la Géodatabase enfant .mdb ou .gdb.</param>
+	<param name="sListeNomClasse">Liste des noms des classe à extraire spéparer par des virgule en incluant le nom du propriétaire.</param>
+	<param name="sRequeteAttributive">Requête attributive à appliquer sur toutes les classes à extraire.</param>
+	<param name="pTypeModel">Indique le type de model Simple ou complet.</param>
+	<param name="pGeometry">Indique la géométrie utiliser pour effectuer la requête spatiale.</param>
+	<param name="pSpatialRelation">Indique le type de requête spatiale à effecter.</param>
+	<remarks>Si une des classe est déjà présente, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.InitGeoDataServerFromFile(System.String)">
+	<summary>
+ Fonction qui permet de définir une géodatabase utilisée dans un réplica à partir d'un nom de géodatabase.
+ 
+ Exemple: sNomGeodatabase = "C:\arcgis\ArcTutor\DatabaseServers\buildings.mdb".
+          sNomGeodatabase = "C:\arcgis\ArcTutor\DatabaseServers\hazards.gdb".
+</summary>
+	<param name="sNomGeodatabase">Nom complet d'une Géodatabase.</param>
+	<returns>IGeoDataServer contenant l'information de la géodatabase utilisée pour un réplica.</returns>
+</member><member name="M:BarreNonConformite.clsGererReplica.ExtraireElementArchive(System.Int32,System.String)">
+	<summary>
+ Fonction qui permet d'extraire un élément d'archive interne ou externe à partir d'un OBJECTID et d'un nom de classe.
+</summary>
+	<param name="iOid">ObjectId de l'élément.</param>
+	<param name="sNomClasse">Nom de la classe de l'élément.</param>
+	<returns>IRow contenant l'élément demandé, sinon nothing</returns>
+</member><member name="M:BarreNonConformite.clsGererReplica.ExtraireElementArchiveInterne(System.Int32,System.String)">
+	<summary>
+ Fonction qui permet d'extraire un élément de la Géodatabase d'archive interne à la Géodatabase enfant à partir d'un OBJECTID et d'un nom de classe.
+</summary>
+	<param name="iOid">ObjectId de l'élément.</param>
+	<param name="sNomClasse">Nom de la classe de l'élément.</param>
+	<returns>IRow contenant l'élément demandé, sinon nothing</returns>
+</member><member name="M:BarreNonConformite.clsGererReplica.ExtraireElementArchiveExterne(System.Int32,System.String)">
+	<summary>
+ Fonction qui permet d'extraire un élément de la Géodatabase d'archive externe à partir d'un OBJECTID et d'un nom de classe.
+</summary>
+	<param name="iOid">ObjectId de l'élément.</param>
+	<param name="sNomClasse">Nom de la classe de l'élément.</param>
+	<returns>IRow contenant l'élément demandé, sinon nothing</returns>
+</member><member name="M:BarreNonConformite.clsGererReplica.ExtraireElementEnfant(System.Int32,System.String)">
+	<summary>
+ Fonction qui permet d'extraire un élément de la Géodatabase enfant à partir d'un OBJECTID, d'un nom de classe.
+</summary>
+	<param name="iOid">ObjectId de l'élément.</param>
+	<param name="sNomClasse">Nom de la classe de l'élément.</param>
+	<returns>IRow contenant l'élément demandé, sinon nothing</returns>
+</member><member name="M:BarreNonConformite.clsGererReplica.ExtraireElementParent(System.Int32,System.String)">
+	<summary>
+ Fonction qui permet d'extraire un élément de la Géodatabase parent à partir d'un OBJECTID, d'un nom de classe.
+</summary>
+	<param name="iOid">ObjectId de l'élément.</param>
+	<param name="sNomClasse">Nom de la classe de l'élément.</param>
+	<returns>IRow contenant l'élément demandé, sinon nothing</returns>
+</member><member name="M:BarreNonConformite.clsGererReplica.DescriptionReplica(System.Windows.Forms.TreeView@)">
+	<summary>
+ Fonction qui permet de remplir la description du réplica de la Géodatabase enfant et parent dans le TreewView.
+</summary>
+	<param name="treReplica">TreeView dans lequel la description du réplica de la Géodatabase enfant et parent seront inscrite.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.CalculerDifferences(System.Windows.Forms.TreeNode)">
+	<summary>
+ Fonction qui permet de calculer le nombre de différences à partir d'un noeud de Réplica'un TreewView.
+</summary>
+	<param name="pNodeReplica">TreeNode contenant les différences d'un Réplica et son archive.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.CalculerDifferences(System.Windows.Forms.TreeNode,System.Int32@,System.Int32@)">
+	<summary>
+ Fonction qui permet de calculer le nombre d'éléments et d'attributs différents contenu dans un noeud de TreewView d'attributs d'éléments.
+</summary>
+	<param name="pNodeDepart">TreeNode de départ contenant les attributs d'éléments différents.</param>
+	<param name="iNbElements">Nombre d'éléments différents.</param>
+	<param name="iNbAttributs">Nombre d'attributs d'éléments différents.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.finalize">
+	<summary>
+Routine qui permet de vider la mémoire des objets de la classe.
+</summary>
+</member><member name="M:BarreNonConformite.clsGererReplica.AccepterActionEnfant(System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet d'accepter l'action effectuée pour un ou plusieurs éléments de la Géodatabase enfant à partir d'un noeud de TreeView.
+</summary>
+	<param name="pNodeTraiter"> Noeud d'un TreeView dans lequel l'identification d'un ou plusieurs attributs d'éléments à traiter sont présents.</param>
+	<param name="pNodeReplica"> Noeud d'un TreeView dans lequel l'identification complète du réplica est présente.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+	<remarks>
+ L'état de l'élément, le nom de la table, l'identifiant de l'élément et le nom de l'attribut est présent dans le noeud du TreeView.
+ Si l'état de l'élément enfant est AJOUTER, l'élément enfant ajouté sera aussi ajouté dans le parent et l'archive.
+ Si l'état de l'élément enfant est DETRUIRE, l'élément enfant détruit sera aussi détruit dans le parent et l'archive.
+ Si l'état de l'élément enfant est MODIFIER, l'élément enfant modifié sera aussi modifié dans le parent et l'archive.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.AccepterAjouterElementEnfant(System.String,System.Int32,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet d'accepter l'action pour ajouter un élément de la Géodatabase enfant.
+</summary>
+	<param name="sNomTable"> Contient le nom de la table.</param>
+	<param name="iOid"> Contient l'identifiant de l'élément.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.AccepterDetruireElementEnfant(System.String,System.Int32,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet d'accepter l'action pour détruire un élément de la Géodatabase enfant.
+</summary>
+	<param name="sNomTable"> Contient le nom de la table.</param>
+	<param name="iOid"> Contient l'identifiant de l'élément.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.AccepterModifierElementEnfant(System.Windows.Forms.TreeNode,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet d'accepter l'action pour modifier un élément de la Géodatabase enfant.
+</summary>
+	<param name="pNodeTraiter"> Contient le noeud du TreeView à traiter.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.AccepterModifierAttributEnfant(System.Windows.Forms.TreeNode,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet d'accepter l'action pour modifier un élément de la Géodatabase enfant.
+</summary>
+	<param name="pNodeTraiter"> Contient le noeud du TreeView à traiter.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.RefuserActionEnfant(System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de refuser l'action effectuée pour un ou plusieurs éléments de la Géodatabase enfant à partir d'un noeud de TreeView.
+</summary>
+	<param name="pNodeTraiter"> Noeud d'un TreeView dans lequel l'identification d'un ou plusieurs attributs d'éléments à traiter sont présents.</param>
+	<param name="pNodeReplica"> Noeud d'un TreeView dans lequel l'identification complète du réplica est présente.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+	<remarks>
+ L'état de l'élément, le nom de la table, l'identifiant de l'élément et le nom de l'attribut est présent dans le noeud du TreeView.
+ Si l'état de l'élément enfant est AJOUTER, l'élément du parent sera détruit.
+ Si l'état de l'élément enfant est DETRUIRE, l'élément d'archive sera détruit.
+ Si l'état de l'élément enfant est MODIFIER, les valeurs des attributs d'archive à traiter seront copiées dans les valeurs des attributs parent.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.RefuserAjouterElementEnfant(System.String,System.Int32,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de refuser l'action pour ajouter un élément de la Géodatabase enfant.
+</summary>
+	<param name="sNomTable"> Contient le nom de la table.</param>
+	<param name="iOid"> Contient l'identifiant de l'élément.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.RefuserDetruireElementEnfant(System.String,System.Int32,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de refuser l'action pour détruire un élément de la Géodatabase enfant.
+</summary>
+	<param name="sNomTable"> Contient le nom de la table.</param>
+	<param name="iOid"> Contient l'identifiant de l'élément.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.RefuserModifierElementEnfant(System.Windows.Forms.TreeNode,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de refuser l'action pour modifier un élément de la Géodatabase enfant.
+</summary>
+	<param name="pNodeTraiter"> Contient le noeud du TreeView à traiter.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.RefuserModifierAttributEnfant(System.Windows.Forms.TreeNode,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de refuser l'action pour modifier un élément de la Géodatabase enfant.
+</summary>
+	<param name="pNodeTraiter"> Contient le noeud du TreeView à traiter.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.AccepterActionParent(System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet d'accepter l'action effectuée pour un ou plusieurs éléments de la Géodatabase parent à partir d'un noeud de TreeView.
+</summary>
+	<param name="pNodeTraiter"> Noeud d'un TreeView dans lequel l'identification d'un ou plusieurs attributs d'éléments à traiter sont présents.</param>
+	<param name="pNodeReplica"> Noeud d'un TreeView dans lequel l'identification complète du réplica est présente.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+	<remarks>
+ L'état de l'élément, le nom de la table, l'identifiant de l'élément et le nom de l'attribut est présent dans le noeud du TreeView.
+ Si l'état de l'élément parent est AJOUTER, un nouvel élément enfant sera créé à partir de l'élément parent et l'élément parent sera détruit.
+ Si l'état de l'élément parent est DETRUIRE, l'élément enfant sera détruit.
+ Si l'état de l'élément parent est MODIFIER, les valeurs des attributs parent à traiter seront copiées dans l'élément enfant et
+                                             les valeurs des attributs d'archive à traiter seront copiées dans l'élément parent.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.AccepterAjouterElementParent(System.String,System.Int32,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet d'accepter l'action pour ajouter un élément de la Géodatabase parent.
+</summary>
+	<param name="sNomTable"> Contient le nom de la table.</param>
+	<param name="iOid"> Contient l'identifiant de l'élément.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.AccepterDetruireElementParent(System.String,System.Int32,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet d'accepter l'action pour détruire un élément de la Géodatabase parent.
+</summary>
+	<param name="sNomTable"> Contient le nom de la table.</param>
+	<param name="iOid"> Contient l'identifiant de l'élément.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.AccepterModifierElementParent(System.Windows.Forms.TreeNode,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet d'accepter l'action pour modifier un élément de la Géodatabase parent.
+</summary>
+	<param name="pNodeTraiter"> Contient le noeud du TreeView à traiter.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.AccepterModifierAttributParent(System.Windows.Forms.TreeNode,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet d'accepter l'action pour modifier un élément de la Géodatabase parent.
+</summary>
+	<param name="pNodeTraiter"> Contient le noeud du TreeView à traiter.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.RefuserActionParent(System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de refuser l'action effectuée pour un ou plusieurs éléments de la Géodatabase parent à partir d'un noeud de TreeView.
+</summary>
+	<param name="pNodeTraiter"> Noeud d'un TreeView dans lequel l'identification d'un ou plusieurs attributs d'éléments à traiter sont présents.</param>
+	<param name="pNodeReplica"> Noeud d'un TreeView dans lequel l'identification complète du réplica est présente.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+	<param name="pTableEnfant"> Interface contenant les éléments de la table enfant.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+	<remarks>
+ L'état de l'élément, le nom de la table, l'identifiant de l'élément et le nom de l'attribut est présent dans le noeud du TreeView.
+ Si l'état de l'élément parent est AJOUTER, l'élément du parent sera détruit.
+ Si l'état de l'élément parent est DETRUIRE, l'élément d'archive sera détruit.
+ Si l'état de l'élément parent est MODIFIER, les valeurs des attributs d'archive à traiter seront copiées dans les valeurs des attributs parent.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.RefuserAjouterElementParent(System.String,System.Int32,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de refuser l'action pour ajouter un élément de la Géodatabase parent.
+</summary>
+	<param name="sNomTable"> Contient le nom de la table.</param>
+	<param name="iOid"> Contient l'identifiant de l'élément.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.RefuserDetruireElementParent(System.String,System.Int32,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de refuser l'action pour détruire un élément de la Géodatabase parent.
+</summary>
+	<param name="sNomTable"> Contient le nom de la table.</param>
+	<param name="iOid"> Contient l'identifiant de l'élément.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.RefuserModifierElementParent(System.Windows.Forms.TreeNode,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de refuser l'action pour modifier un élément de la Géodatabase parent.
+</summary>
+	<param name="pNodeTraiter"> Contient le noeud du TreeView à traiter.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.RefuserModifierAttributParent(System.Windows.Forms.TreeNode,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de refuser l'action pour modifier un élément de la Géodatabase parent.
+</summary>
+	<param name="pNodeTraiter"> Contient le noeud du TreeView à traiter.</param>
+	<param name="pTableParent"> Interface contenant les éléments de la table parent.</param>
+	<param name="pTableArchive"> Interface contenant les éléments de la table d'archive.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.DetruireNoeudsParentsVides(System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet de détruire tous les noeuds vides parents du noeud à traiter.
+</summary>
+	<param name="pNodeTraiter"> Noeud d'un TreeView à traiter.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.RechercherElements(System.Windows.Forms.TreeView@,System.String,System.Boolean)">
+	<summary>
+ Routine qui permet de rechercher tous les éléments contenus dans le TreeView qui contient le texte spécifié.
+</summary>
+	<param name="pTreeView"> TreeView dans lequel l'identification d'éléments sont présents.</param>
+	<param name="sTexte">Contient le texte utilisé pour rechercher les éléments à traiter.</param>
+	<param name="bPresent">Indique si la recherche du texte doit être présent ou non.</param>
+	<remarks>
+ Un nouveau noeud de recherche contenant les éléments trouvés sera créé.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.RechercherElementsNoeud(System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode,System.String,System.Boolean)">
+	<summary>
+ Routine qui permet de rechercher tous les éléments contenus dans le TreeView qui contient le texte spécifié.
+</summary>
+	<param name="pNodeResultat">Noeud d'un TreeView contenant le résultat de la recherche.</param>
+	<param name="pNodeRecherche">Noeud d'un TreeView utilisé pour la recherche.</param>
+	<param name="sTexte">Contient le texte utilisé pour rechercher les éléments à traiter.</param>
+	<param name="bPresent">Indique si la recherche du texte doit être présent ou non.</param>
+	<remarks>
+ Un nouveau noeud de recherche contenant les éléments trouvés sera créé.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.RechercherElementsTreeView(System.String,System.Windows.Forms.TreeView@,System.Windows.Forms.TreeView@,System.Boolean)">
+	<summary>
+ Routine qui permet de rechercher tous les attributs d'éléments d'un TreeView d'attributs d'éléments contenus dans un autre TreeView d'attributs d'éléments.
+</summary>
+	<param name="sDescription">Description de la recherche à effectuer.</param>
+	<param name="pTreeViewResultat"> TreeView dans lequel le résultat des éléments sont présents.</param>
+	<param name="pTreeViewRecherche">TreeView utilisé pour rechercher les éléments dans lequel les éléments du TreeView de résultat sont présents.</param>
+	<param name="bPresent">Indique si la recherche des éléments doivent être présents ou non.</param>
+	<remarks>
+ Un nouveau noeud de recherche contenant les attributs d'éléments trouvés sera créé.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.RechercherElementsTreeViewNoeud(System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode,System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean)">
+	<summary>
+ Routine qui permet de rechercher tous les attributs d'éléments contenus dans le TreeView qui sont présents dans le dictionnaire d'attributs d'éléments.
+</summary>
+	<param name="pNodeResultat">Noeud d'un TreeView contenant le résultat de la recherche.</param>
+	<param name="pNodeRecherche">Noeud d'un TreeView utilisé pour la recherche.</param>
+	<param name="pDictAttributs">Dictionnaire contenant les éléments à rechercher..</param>
+	<param name="bPresent">Indique si la recherche du texte doit être présent ou non.</param>
+	<remarks>
+ Un nouveau noeud de recherche contenant les éléments trouvés sera créé.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.DictionnaireAttributsElements(System.Windows.Forms.TreeNode,System.Collections.Generic.Dictionary{System.String,System.String}@)">
+	<summary>
+ Routine qui permet de remplir un dictionnaire d'attributs d'éléments à partir d'un noeud de TreeView de différences ou de conflits.
+</summary>
+	<param name="pNodeRecherche">Noeud d'un TreeView utilisé pour la recherche.</param>
+	<param name="pDictAttributs">Contient le dictionnaire d'attributs pour tous les éléments d'un Noeud de TreeView.</param>
+	<remarks>
+ Le dictionnaire contient l'attribut, le OID et la classe d'un élément.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.CopierSourceDestination(System.Windows.Forms.TreeNode,ESRI.ArcGIS.Geodatabase.IFeatureWorkspace,ESRI.ArcGIS.Geodatabase.IFeatureWorkspace,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.IRow@,ESRI.ArcGIS.Geodatabase.IRow@)">
+	<summary>
+ Routine qui permet de copier tous les attributs d'éléments d'une Géodatabase source dans les éléments d'une Géodatabase de destination correspondants à partir d'un noeud de TreeView.
+</summary>
+	<param name="pNodeTraiter"> Noeud d'un TreeView dans lequel l'identification d'un ou plusieurs attributs d'éléments à traiter sont présents.</param>
+	<param name="pFeatWorkspaceA"> Interface contenant toutes les tables de la Géodatabase source.</param>
+	<param name="pFeatWorkspaceB"> Interface contenant toutes les tables de la Géodatabase de destination.</param>
+	<param name="pTableA"> Interface contenant les éléments de la table source.</param>
+	<param name="pTableB"> Interface contenant les éléments de la table de destination.</param>
+	<param name="pRowA"> Interface contenant un élément de la table source.</param>
+	<param name="pRowB"> Interface contenant un élément de la table de destination.</param>
+	<remarks>
+ L'état de l'élément, le nom de la table, l'identifiant de l'élément et le nom de l'attribut est présent dans le noeud du TreeView.
+ Si l'état de l'élément parent est DETRUIRE, l'élément d'archive sera détruit.
+ Si l'état de l'élément parent est AJOUTER, un nouvel élément d'archive sera créé et la valeur de l'attribut sera copiée.
+ Si l'état de l'élément parent est MODIFIER, la valeur de l'attribut sera copiée.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.TraiterElementEtatAttribut(System.String,System.String,System.Int32,System.String,ESRI.ArcGIS.Geodatabase.IFeatureWorkspace,ESRI.ArcGIS.Geodatabase.IFeatureWorkspace,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.IRow@,ESRI.ArcGIS.Geodatabase.IRow@)">
+	<summary>
+ Routine qui permet de traiter un élément de destination selon l'état d'un élément source en utilisant l'information d'un attribut en paramètres.
+</summary>
+	<param name="sEtatElement"> Contient l'état de l'élément (DETRUIRE/AJOUTER/MODIFIER).</param>
+	<param name="sNomTable"> Contient le nom de la table.</param>
+	<param name="iOid"> Contient l'identifiant de l'élément.</param>
+	<param name="sNomAttribut"> Contient le nom de l'attribut de l'élément.</param>
+	<param name="pFeatWorkspaceA"> Interface contenant toutes les tables de la Géodatabase source.</param>
+	<param name="pFeatWorkspaceB"> Interface contenant toutes les tables de la Géodatabase de destination.</param>
+	<param name="pTableA"> Interface contenant les éléments de la table source.</param>
+	<param name="pTableB"> Interface contenant les éléments de la table de destination.</param>
+	<param name="pRowA"> Interface contenant un élément de la table source.</param>
+	<param name="pRowB"> Interface contenant un élément de la table de destination.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.IdentifierConflits(System.Windows.Forms.TreeView@,System.Boolean)">
+	<summary>
+ Routine qui permet d'identifier les conflits dans un TreeView entre la Géodatabase parent (.sde) et l'archive interne ou externe de la Géodatabase enfant (.mdb ou .gdb).
+</summary>
+	<param name="treConflits"> TreeView dans lequel les conflits seront identifiées.</param>
+	<param name="bExterne">Indique si l'archive externe est utilisée pour identifier les conflits.</param>
+	<remarks>
+ Par défaut, les conflits seront identifiées à partir de l'information du réplica de la Géodatabase enfant dans laquelle l'archive interne est présente.
+ La Géodatabase d'archive externe correspond à la copie initiale de la Géodatabase enfant.
+</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.IdentifierConflitsArchiveExterne(System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet d'identifier les conflits dans un TreeView entre la Géodatabase parent (.sde) et l'archive externe de la Géodatabase enfant (.mdb ou .gdb).
+</summary>
+	<param name="treConflits">TreeView dans lequel les conflits seront identifiées.</param>
+	<remarks>L'archive des données est externe à la Géodatabase enfant. Elle est donc présente dans une autre Géodatabase .mdb ou .gdb.</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.IdentifierConflitsArchiveExterneDataset(ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.ITable,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les conflits dans un TreerView entre une table d'une Géodatabase parent et une table d'une Géodatabase d'archive externe.
+ L'archive des données est externe à la Géodatabase enfant. Elle est donc présente dans une autre Géodatabase .mdb ou .gdb.
+</summary>
+	<param name="pTableParent">Interface contenant la table de la Géodatabase enfant.</param>
+	<param name="pTableArchive">Interface contenant la table de la Géodatabase d'archive.</param>
+	<param name="pTableEnfant">Interface contenant la table de la Géodatabase enfant.</param>
+	<param name="pNodeReplica">Noeud d'un Treeview contenant l'inforemation du réplica.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.ReplicaTable2SelectionSet(ESRI.ArcGIS.Geodatabase.IWorkspace,ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.IReplicaFilterDescription,ESRI.ArcGIS.Geodatabase.IReplicaDataset2,System.Int32)">
+	<summary>
+ Fonction qui permet d'extraire le SelectionSet correspondant au réplica du dataset à traiter.
+</summary>
+	<param name="pGeodatabase">Interface contenant la Géodatabase.</param>
+	<param name="pTable">Interface contenant la table.</param>
+	<param name="pRepFilterDesc">Interface contenant un Dataset d'un réplica.</param>
+	<param name="pReplicaDataset">Interface contenant un Dataset d'un réplica.</param>
+	<param name="iIndexDataset">Contient le numéro d'indexe du Dataset.</param>
+	<remarks>Si aucun réplica n'est présent dans la géodatabase enfant, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.IdentifierConflitsArchiveInterne(System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet d'identifier les conflits dans un TreeView entre la Géodatabase parent (.sde) et l'archive interne de la Géodatabase enfant (.mdb ou .gdb).
+ L'archive est présente directement dans la Géodatabase enfant (.mdb ou .gdb) via l'information d'un réplica de type checkOut.
+</summary>
+	<param name="treConflits">TreeView dans lequel les conflits seront identifiés.</param>
+	<remarks>Si aucun réplica n'est présent dans la géodatabase enfant, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.ConflitsElementsArchive(ESRI.ArcGIS.Geodatabase.IFIDSet,ESRI.ArcGIS.GeoDatabaseDistributed.IDataChanges,System.String,ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.ITable,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les conflits d'attributs dans un noeud de TreeView pour un ensemble de OID d'éléments Parent/Enfant-Archive.
+ L'archive est présente directement dans la Géodatabase enfant (.mdb ou .gdb) via l'information d'un réplica de type checkOut.
+</summary>
+	<param name="pFidSet">Interface contenant l'ensemble des OIDs à traiter.</param>
+	<param name="pDataChanges">Interface contenant les changements.</param>
+	<param name="sNomClasse">Nom de la classe à traiter.</param>
+	<param name="pTableParent">Interface contenant tous les éléments de la table parent.</param>
+	<param name="pTableEnfant">Interface contenant tous les éléments de la table enfant.</param>
+	<param name="pNodeReplica">Noeud du TreeView pour un Réplica de Géodatabase.</param>
+	<param name="pNodeClasse">Noeud du TreeView pour une classe.</param>
+	<param name="pNodeAjouter">Noeud du TreeView pour tous les éléments ajouter d'une classe.</param>
+	<param name="pNodeDetruire">Noeud du TreeView pour tous les éléments détruits d'une classe.</param>
+	<param name="pNodeModifier">Noeud du TreeView pour tous les éléments modifiés d'une classe.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.ConflitsElementsCourant(ESRI.ArcGIS.Geodatabase.IFIDSet,ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.ITable,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les conflits d'attributs dans un noeud de TreeView pour un ensemble de OID d'éléments Parent/Enfant.
+</summary>
+	<param name="pFidSet">Interface contenant l'ensemble des OIDs à traiter.</param>
+	<param name="pTableParent">Interface contenant la table des éléments Parent.</param>
+	<param name="pTableEnfant">Interface contenant la table des éléments Enfant.</param>
+	<param name="pNodeReplica">Noeud du TreeView pour un Réplica de Géodatabase .</param>
+	<param name="pNodeClasse">Noeud du TreeView pour une classe.</param>
+	<param name="pNodeAjouter">Noeud du TreeView pour tous les éléments ajoutés d'une classe.</param>
+	<param name="pNodeDetruire">Noeud du TreeView pour tous les éléments détruits d'une classe.</param>
+	<param name="pNodeModifier">Noeud du TreeView pour tous les éléments modifiés d'une classe.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.ConflitsElementNoeud(ESRI.ArcGIS.Geodatabase.IRow,ESRI.ArcGIS.Geodatabase.IRow,ESRI.ArcGIS.Geodatabase.ITable,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les conflits d'attributs dans un noeud de TreeView entre deux éléments Parent/Archive.
+</summary>
+	<param name="pRowParent">Interface contenant un élément de la table parent.</param>
+	<param name="pRowArchive">Interface contenant un élément de la table d'archive.</param>
+	<param name="pTableEnfant">Interface contenant tous les éléments de la table enfant.</param>
+	<param name="pNodeClasse">Noeud d'un TreeView pour tous les éléments d'une classe.</param>
+	<param name="pNodeAjouter">Noeud du TreeView pour les éléments ajoutés d'une classe.</param>
+	<param name="pNodeDetruire">Noeud du TreeView pour les éléments détruits d'une classe.</param>
+	<param name="pNodeModifier">Noeud du TreeView pour les éléments modifiés d'une classe.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.SelectionSet2FidSet(ESRI.ArcGIS.Geodatabase.ISelectionSet)">
+	<summary>
+ Fonction qui permet de transformer les OIDs contenus dans une sélection d'éléments et de les retourner dans un ensemble de OIDs..
+</summary>
+	<param name="pSelectionSet">Interface contenant les OIDs à traiter.</param>
+	<return>IFIDSet contenant la liste des OIDs d'éléments à traiter.</return>
+</member><member name="M:BarreNonConformite.clsGererReplica.DataChangesOids(ESRI.ArcGIS.GeoDatabaseDistributed.IDataChanges,System.String,ESRI.ArcGIS.GeoDatabaseDistributed.esriDataChangeType)">
+	<summary>
+ Fonction qui permet d'extraire les OIDs dans un ensemble de OIDs selon un type de changement désiré d'un réplica.
+</summary>
+	<param name="pDataChanges">Interface contenant les changements.</param>
+	<param name="sNomClasse">Nom de la classe à traiter.</param>
+	<param name="pEsriDataChangeType">Indique le type de changement désiré.</param>
+	<return>IFIDSet contenant la liste des OIDs d'éléments à traiter.</return>
+</member><member name="M:BarreNonConformite.clsGererReplica.IdentifierDifferences(System.Windows.Forms.TreeView@,System.Boolean)">
+	<summary>
+ Routine qui permet d'identifier les différences dans un TreeView entre la Géodatabase enfant (.mdb ou .gdb) et son archive interne ou externe.
+</summary>
+	<param name="treDifferences"> TreeView dans lequel les différences seront identifiées.</param>
+	<param name="bExterne">Indique si l'archive externe est utilisée pour identifier les différences.</param>
+	<remarks>
+ Par défaut, les différences seront identifiées à partir de l'information du réplica de la Géodatabase enfant dans laquelle l'archive interne est présente.
+ La Géodatabase d'archive externe correspond à la copie initiale de la Géodatabase enfant.
+ </remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.IdentifierDifferencesArchiveExterne(System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet d'extraire les différences entre la géodatabase enfant (.mdb ou .gdb) et la géodatabase d'archive externe.
+</summary>
+	<param name="treDifferences">TreeView dans lequel les différences seront identifiées.</param>
+	<remarks>L'archive des données est externe à la Géodatabase enfant. Elle est donc présente dans une autre Géodatabase .mdb ou .gdb.</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.IdentifierDifferencesArchiveExterneDataset(ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.ITable,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les différences dans un TreerView entre une table d'une Géodatabase enfant et une table d'une Géodatabase d'archive externe.
+</summary>
+	<param name="pTableEnfant">Interface contenant la table de la Géodatabase enfant.</param>
+	<param name="pTableArchive">Interface contenant la table de la Géodatabase d'archive.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.Table2TableSelection(ESRI.ArcGIS.Geodatabase.ITable,ESRI.ArcGIS.Geodatabase.IReplicaFilterDescription,System.Int32)">
+	<summary>
+ Fonction qui permet de sélectionner les éléments correspondant à la description du réplica dataset à traiter.
+</summary>
+	<param name="pTable">Interface contenant la table à traiter</param>
+	<param name="pRepFilterDesc">Interface contenant un Dataset d'un réplica.</param>
+	<param name="iIndexDataset">Contient le numéro d'indexe du Dataset.</param>
+	<returns>ITable contenant la sélection des éléments de la table à traiter</returns>
+</member><member name="M:BarreNonConformite.clsGererReplica.ReplicaFilter2QueryFilter(ESRI.ArcGIS.Geodatabase.IReplicaFilterDescription,System.Int32)">
+	<summary>
+ Fonction qui permet de créer un filtre pour extraire les éléments correspondant à la description du réplica dataset à traiter.
+</summary>
+	<param name="pRepFilterDesc">Interface contenant un Dataset d'un réplica.</param>
+	<param name="iIndexDataset">Contient le numéro d'indexe du Dataset.</param>
+	<returns>IQueryFilter contenant le filtre des éléments de la table à traiter</returns>
+</member><member name="M:BarreNonConformite.clsGererReplica.LireElementsDict(ESRI.ArcGIS.Geodatabase.ITable@)">
+	<summary>
+ Routine qui permet de lire les éléments d'une table et de les conserver par un lien de OID.
+</summary>
+	<param name="pTable"> Interface contenant la table des éléments à lire.</param>
+	<return> Dictionary(Of Integer, IRow) contenant les éléments identifiés par un lien de OID.</return>
+</member><member name="M:BarreNonConformite.clsGererReplica.LireElementsDict(ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.IQueryFilter)">
+	<summary>
+ Routine qui permet de lire les éléments d'une table et de les conserver par un lien de OID.
+</summary>
+	<param name="pTable"> Interface contenant la table des éléments à lire.</param>
+	<param name="pQueryFilter"> Interface contenant le filtre des éléments à lire.</param>
+	<return> Dictionary(Of Integer, IRow) contenant les éléments identifiés par un lien de OID.</return>
+</member><member name="M:BarreNonConformite.clsGererReplica.DifferenceElementNoeud(ESRI.ArcGIS.Geodatabase.IRow,ESRI.ArcGIS.Geodatabase.IRow,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les différences d'attributs dans un noeud de TreeView entre deux éléments Enfant/Archive.
+</summary>
+	<param name="pRowEnfant">Interface contenant un élément de la table enfant.</param>
+	<param name="pRowArchive">Interface contenant un élément de la table d'archive.</param>
+	<param name="pNodeClasse">Noeud d'un TreeView pour tous les éléments d'une classe.</param>
+	<param name="pNodeAjouter">Noeud du TreeView pour les éléments ajoutés d'une classe.</param>
+	<param name="pNodeDetruire">Noeud du TreeView pour les éléments détruits d'une classe.</param>
+	<param name="pNodeModifier">Noeud du TreeView pour les éléments modifiés d'une classe.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.IdentifierDifferencesArchiveInterne(System.Windows.Forms.TreeView@)">
+	<summary>
+ Routine qui permet d'identifier les différences entre la géodatabase enfant (.mdb ou .gdb) et son archive interne via un réplica de CheckOut.
+</summary>
+	<param name="treDifferences">TreeView dans lequel les différences seront identifiées.</param>
+	<remarks>Si aucun réplica n'est présent dans la géodatabase enfant, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.DifferencesElementsDetruire(ESRI.ArcGIS.GeoDatabaseDistributed.IDataChanges,ESRI.ArcGIS.GeoDatabaseDistributed.IModifiedClassInfo,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les différences d'attributs dans un noeud de TreeView pour tous les éléments à détruire.
+</summary>
+	<param name="pDataChanges">Interface contenant les changements.</param>
+	<param name="pModifiedClassInfo">Interface contenant une classe modifiée.</param>
+	<param name="pNodeClasse">Noeud d'un TreeView dans lequel les éléments détruits seront inscrits.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.DifferencesElementsAjouter(ESRI.ArcGIS.GeoDatabaseDistributed.IDataChanges,ESRI.ArcGIS.GeoDatabaseDistributed.IModifiedClassInfo,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les différences d'attributs dans un noeud de TreeView pour tous les éléments à ajouter.
+</summary>
+	<param name="pDataChanges">Interface contenant les changements.</param>
+	<param name="pModifiedClassInfo">Interface contenant une classe modifiée.</param>
+	<param name="pNodeClasse">Noeud d'un TreeView dans lequel les éléments ajoutés seront inscrits.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.DifferencesElementsModifier(ESRI.ArcGIS.GeoDatabaseDistributed.IDataChanges,ESRI.ArcGIS.GeoDatabaseDistributed.IModifiedClassInfo,System.Windows.Forms.TreeNode@)">
+	<summary>
+ Routine qui permet d'identifier les différences d'attributs dans un noeud de TreeView pour tous les éléments à modifier.
+</summary>
+	<param name="pDataChanges">Interface contenant les changements.</param>
+	<param name="pModifiedClassInfo">Interface contenant une classe modifiée.</param>
+	<param name="pNodeClasse">Noeud d'un TreeView dans lequel les éléments modifiés seront inscrits.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.DeposerDifferences(System.Boolean)">
+	<summary>
+ Routine qui permet de déposer les différences dans la Géodatabase Parent en utilisant l'archive interne ou externe.
+</summary>
+	<param name="bExterne">Indique si l'archive externe est utilisée pour identifier les différences.</param>
+	<remarks>
+ Par défaut, les différences seront déposées à partir de l'information du réplica de la Géodatabase enfant dans laquelle l'archive interne est présente.
+ La Géodatabase d'archive externe correspond à la copie initiale de la Géodatabase enfant.
+ </remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.DeposerDifferencesArchiveInterne(System.Boolean)">
+	<summary>
+ Routine qui permet de déposer les différences entre une Géodatabase enfant (.mdb ou .gdb) et son archive interne dans la Géodatabase parent (.sde)
+ en utilisant le CheckIn ESRI.
+</summary>
+	<param name="bReconcile">Indique si une réconciliation doit être effectuée.</param>
+	<remarks>Si aucun réplica ou archive interne n'est présent, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.DeposerDifferencesArchiveExterne">
+	<summary>
+ Routine qui permet d'extraire les différences entre la géodatabase enfant (.mdb ou .gdb) et la géodatabase d'archive externe.
+</summary>
+	<remarks>L'archive des données est externe à la Géodatabase enfant. Elle est donc présente dans une autre Géodatabase .mdb ou .gdb.</remarks>
+</member><member name="M:BarreNonConformite.clsGererReplica.DeposerDifferencesArchiveExterneTable(ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.IQueryFilter)">
+	<summary>
+ Routine qui permet déposer les différences entre une table d'une Géodatabase enfant et une table d'une Géodatabase d'archive externe dans la Géodatabase parent (.sde).
+</summary>
+	<param name="pTableEnfant">Interface contenant la table de la Géodatabase enfant.</param>
+	<param name="pTableArchive">Interface contenant la table de la Géodatabase d'archive.</param>
+	<param name="pTableParent">Interface contenant la table de la Géodatabase parent.</param>
+	<param name="pQueryfilter">Interface contenant le filtre utilisé pour extraire les éléments de la table parent.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.DeposerDifferencesArchiveExterneElement(ESRI.ArcGIS.Geodatabase.IRow,ESRI.ArcGIS.Geodatabase.IRow,ESRI.ArcGIS.Geodatabase.IRow@,ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ICursor@)">
+	<summary>
+ Routine qui permet de déposer les différences d'attributs entre deux éléments spatiales Enfant/Archive dans la Géodatabase parent.
+</summary>
+	<param name="pRowEnfant">Interface contenant un élément de la table enfant.</param>
+	<param name="pRowArchive">Interface contenant un élément de la table d'archive.</param>
+	<param name="pRowParent">Interface contenant un élément de la table parent.</param>
+	<param name="pTableParent">Interface contenant tous les éléments de la table parent.</param>
+	<param name="pCursorParent">Interface utilisé pour modifier les éléments de la table parent.</param>
+</member><member name="M:BarreNonConformite.clsGererReplica.DeposerDifferencesArchiveExterneElement(ESRI.ArcGIS.Geodatabase.IFeature,ESRI.ArcGIS.Geodatabase.IFeature,ESRI.ArcGIS.Geodatabase.IFeature@,ESRI.ArcGIS.Geodatabase.IFeatureClass@,ESRI.ArcGIS.Geodatabase.IFeatureCursor@)">
+	<summary>
+ Routine qui permet de déposer les différences d'attributs entre deux éléments spatiales Enfant/Archive dans la Géodatabase parent.
+</summary>
+	<param name="pFeatureEnfant">Interface contenant un élément de la table enfant.</param>
+	<param name="pFeatureArchive">Interface contenant un élément de la table d'archive.</param>
+	<param name="pFeatureParent">Interface contenant un élément de la table parent.</param>
+	<param name="pFeatureClassParent">Interface contenant tous les éléments de la table parent.</param>
+	<param name="pFeatureCursorParent">Interface utilisé pour modifier les éléments de la table parent.</param>
+</member><member name="T:BarreNonConformite.clsGererReplica">
+	<summary>
+ Classe qui permet de gérer un réplica d'une Géodatabase locale afin de pouvoir définir ou extraire l'information liées aux divers changements effectués aux données.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="T:BarreNonConformite.cmdReserver">
+	<summary>
+Permet de réserver les données de la Géodatabse SDE.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_MenuNonConformite">
+	<summary> Classe contenant le menu des paramètres de la barre de NonConformite. </summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_cboGeodatabaseEnfant">
+	<summary>ComboBox utilisé pour gérer les Géodatabases-Enfant (.mdb/.gdb).</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_GererReplica">
+	<summary> Objet utilisé pour gérer l'information et les traitements d'un réplica.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_GererNC">
+	<summary> Objet utilisé pour gérer l'information des non-conformité.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_TrackCancel">
+	<summary>Interface utilisé pour arrêter un traitement en progression.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_Application">
+	<summary>Interface ESRI contenant l'application ArcMap.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_MxDocument">
+	<summary>Interface ESRI contenant le document ArcMap.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_NbIdentifiants">
+	<summary>Contient le nombre d'identifiants de la non-conformité sélectionnés.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_NbClasses">
+	<summary>Contient le nombre de classes de la non-conformité sélectionnées.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_NbConflits">
+	<summary>Contient le nombre de conflits trouvés.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_NbDifferences">
+	<summary>Contient le nombre de différences trouvées.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_Height">
+	<summary>Valeur initiale de la dimension en hauteur du menu.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.m_Width">
+	<summary>Valeur initiale de la dimension en largeur du menu.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.mpSymboleTexte">
+	<summary> Interface ESRI contenant le symbol pour la texte.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.mpSymboleSommet">
+	<summary> Interface ESRI contenant le symbol pour les sommets d'une géométrie.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.mpSymbolePoint">
+	<summary> Interface ESRI contenant le symbol pour la géométrie de type point.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.mpSymboleLigne">
+	<summary> Interface ESRI contenant le symbol pour la géométrie de type ligne.</summary>
+</member><member name="F:BarreNonConformite.modBarreNonConformite.mpSymboleSurface">
+	<summary> Interface ESRI contenant le symbol pour la géométrie de type surface.</summary>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.ZoomToGeometry(ESRI.ArcGIS.Geometry.IGeometry)">
+	<summary>
+ Routine qui permet de d'effectuer un Zoom selon une géométrie.
+</summary>
+	<param name="pGeometry">Géométrie à afficher.</param>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.ExtraireDifferencesGeometrie(ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geometry.IGeometry@,ESRI.ArcGIS.Geometry.IGeometry@,System.String@)">
+	<summary>
+ Fonction qui permet d'extraire l'information sur les différences entre la géométrie d'un élément courant et la géométrie d'un élément d'archive.
+</summary>
+	<param name="pGeometryCourant">Géométrie d'un élément courant.</param>
+	<param name="pGeometryArchive">Géométrie d'un élément d'archive.</param>
+	<param name="pDiffCourant">Différence de géométrie de l'élément courant.</param>
+	<param name="pDiffArchive">Géométrie de géométrie de l'élément d'archive.</param>
+	<param name="sMessage">Message contenant les différences de composantes et de sommets entre les géométries.</param>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.bDifferenceGeometrie(ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geometry.IGeometry)">
+	<summary>
+ Fonction qui permet d'indiquer si les géométries sont différentes.
+</summary>
+	<param name="pGeometryCourant">Géométrie d'un élément courant.</param>
+	<param name="pGeometryArchive">Géométrie d'un élément d'archive.</param>
+	<returns>Boolean qui indique si les géométries sont différentes</returns>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.CopyReplica(ESRI.ArcGIS.Geodatabase.IWorkspace,ESRI.ArcGIS.Geodatabase.IWorkspace)">
+	<summary>
+ Fonction qui permet de copier un réplica enfant (Parent) dans une autre Géodatabase enfant.
+</summary>
+	<param name="pEnfantGDB">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<remarks>Si aucun réplica n'est présent, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.CopyInfoReplica(ESRI.ArcGIS.Geodatabase.IWorkspace,ESRI.ArcGIS.Geodatabase.IWorkspace)">
+	<summary>
+ Fonction qui permet de réparer un réplica parent à partir d'un réplica enfant existant.
+</summary>
+	<param name="pEnfantGDB">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<remarks>Si aucun réplica n'est présent, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.RepairReplica(ESRI.ArcGIS.Geodatabase.IWorkspace)">
+	<summary>
+ Fonction qui permet de réparer un réplica parent à partir d'un réplica enfant existant.
+</summary>
+	<param name="pEnfantGDB">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<remarks>Si aucun réplica n'est présent, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.AfficherInfoReplica(ESRI.ArcGIS.Geodatabase.IReplica3,ESRI.ArcGIS.Geodatabase.IReplica3)">
+	<summary>
+ Routine qui permet d'afficher l'information du réplica parent et enfant.
+</summary>
+	<param name="pParentReplica">Interface contenant l'information du réplica de la Géodatabase-Parent sde.</param>
+	<param name="pEnfantReplica">Interface contenant l'information du réplica de la Géodatabase-Enfant mdb ou gdb.</param>
+	<remarks>Si aucun réplica n'est présent, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.InitGeoDataServerFromFile(System.String)">
+	<summary>
+ Fonction qui permet de définir une géodatabase utilisée dans un réplica à partir d'un nom de géodatabase.
+ 
+ Exemple: sNomGeodatabase = "C:\arcgis\ArcTutor\DatabaseServers\buildings.mdb".
+          sNomGeodatabase = "C:\arcgis\ArcTutor\DatabaseServers\hazards.gdb".
+</summary>
+	<param name="sNomGeodatabase">Nom complet d'une Géodatabase.</param>
+	<returns>IGeoDataServer contenant l'information de la géodatabase utilisée pour un réplica.</returns>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.InitGeoDataServerFromConnectionString(System.String)">
+	<summary>
+ Fonction qui permet de définir une géodatabase SDE utilisée dans un réplica à partir d'une chaine de caractères de connexion.
+</summary>
+	<param name="sConnectionString">Chaine de caractères de connexion à une Base de données SDE. Ex: "SERVER=bobmk;INSTANCE=5151;VERSION=sde.DEFAULT;USER=gdb;PASSWORD=gdb"</param>
+	<returns>IGeoDataServer contenant l'information de la géodatabase utilisée pour un réplica.</returns>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.InitGeoDataServerFromWorkspace(ESRI.ArcGIS.Geodatabase.IWorkspace)">
+	<summary>
+ Fonction qui permet de définir une géodatabase utilisée dans un réplica à partir d'un Workspace.
+</summary>
+	<param name="pWorkspace">Interface contenant une Géodatabase.</param>
+	<returns>IGeoDataServer contenant l'information de la géodatabase utilisée pour un réplica.</returns>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.ExtractDataReplica(ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriReplicaModelType,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum)">
+	<summary>
+ Fonction qui permet de créer un réplica d'extraction de données dans une géodatabase .mdb ou .gdb à partir d'une géodatabase SDE.
+</summary>
+	<param name="pParentGDS">Interface contenant l'information de la Géodatabase SDE.</param>
+	<param name="pChildGDS">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<param name="sListeNomClasse">Liste des noms des classe à extraire spéparer par des virgule en incluant le nom du propriétaire.</param>
+	<param name="sRequeteAttributive">Requête attributive à appliquer sur toutes les classes à extraire.</param>
+	<param name="pTypeModel">Indique le type de model Simple ou complet.</param>
+	<param name="pGeometry">Indique la géométrie utiliser pour effectuer la requête spatiale.</param>
+	<param name="pSpatialRelation">Indique le type de requête spatiale à effecter.</param>
+	<remarks>Si une des classe est déjà présente, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.CheckOutReplica(System.String,ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriReplicaModelType,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum)">
+	<summary>
+ Fonction qui permet de créer un réplica de type CheckOut dans une géodatabase .mdb ou .gdb à partir d'une géodatabase SDE.
+</summary>
+	<param name="pParentGDS">Interface contenant l'information de la Géodatabase SDE.</param>
+	<param name="pChildGDS">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<param name="sListeNomClasse">Liste des noms des classe à extraire spéparer par des virgule en incluant le nom du propriétaire.</param>
+	<param name="sRequeteAttributive">Requête attributive à appliquer sur toutes les classes à extraire.</param>
+	<param name="pTypeModel">Indique le type de model Simple ou complet.</param>
+	<param name="pGeometry">Indique la géométrie utiliser pour effectuer la requête spatiale.</param>
+	<param name="pSpatialRelation">Indique le type de requête spatiale à effecter.</param>
+	<remarks>Si une des classe est déjà présente, une erreur de traitement sera retournée.</remarks>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.CheckInReplica(System.String,ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,ESRI.ArcGIS.GeoDatabaseDistributed.IGeoDataServer,ESRI.ArcGIS.GeoDatabaseDistributed.esriReplicationAgentReconcilePolicy,System.Boolean)">
+	<summary>
+ Fonction qui permet de synchroniser un réplica de type CheckOut d'une géodatabase SDE à partir d'une géodatabase .mdb ou .gdb.
+</summary>
+	<param name="sReplicaName">Nom du réplica à traiter.</param>
+	<param name="pParentGDS">Interface contenant l'information de la Géodatabase SDE.</param>
+	<param name="pChildGDS">Interface contenant l'information de la Géodatabase mdb ou gdb.</param>
+	<param name="pConflictPolicy">Méthode de traitement des conflits.</param>
+	<param name="bColumnLevel">Indique si les conflits sont extrait par colonne.</param>
+	<remarks>Si le réplica est absent, une erreur est retournée.</remarks>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.AddDatasetToReplica(ESRI.ArcGIS.Geodatabase.IWorkspace,System.String,System.String,System.String,System.String,ESRI.ArcGIS.Geodatabase.esriDatasetType,ESRI.ArcGIS.Geodatabase.esriRowsType,System.Boolean,System.String)">
+	<summary>
+ Routine qui permet d'ajouter une classe ou une table dans un réplica existant de destination.
+</summary>
+	<param name="pWorkspaceChild">Interface contenant la géodatabase de destination.</param>
+	<param name="sReplicaName">Nom du réplica à traiter.</param>
+	<param name="sDatasetName">Nom du dataset à ajouter dans le réplica existant.</param>
+	<param name="sParentDatabase">Nom de la géodatabase SDE source.</param>
+	<param name="sParentOwner">Nom du propriétaire du dataset dans la géodatabase SDE source.</param>
+	<param name="pDatasetType">Type de dataset à ajouter.</param>
+	<param name="pRowsType">Critère qui permet de déterminer quel colonne doit être extrait dans le dataset à ajouter.</param>
+	<param name="bUseGeometry">Indique si on utilise une géométrie pour extraire.</param>
+	<param name="sQueryDef">Requête attributive utilisée pour extraire les données dans le dataset à ajouter dans le réplica de destination.</param>
+	<remarks>Si le réplica est absent, une erreur est retournée.</remarks>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.AddGlobalID(ESRI.ArcGIS.Geodatabase.ITable,System.String)">
+	<summary>
+ Routine qui permet d'ajouter l'attribut GlobalId dans une table d'une Géodatabase.
+</summary>
+	<param name="pTable">Interface contenant la table dans laquelle l'attribut GlobalId sera ajouté.</param>
+	<param name="sGlobalIdFieldName">Nom de l'attribut GlobalId.</param>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.RemoveGlobalID(ESRI.ArcGIS.Geodatabase.ITable)">
+	<summary>
+ Routine qui permet de détruire l'attribut GlobalId dans une table d'une Géodatabase.
+</summary>
+	<param name="pTable">Interface contenant la table dans laquelle l'attribut GlobalId sera détruit.</param>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.bDessinerGeometrie(ESRI.ArcGIS.Geometry.IGeometry,System.Boolean,System.Boolean,System.Boolean)">
+	<summary>
+ Fonction qui permet de dessiner dans la vue active les géométries Point, MultiPoint, 
+ Polyline et/ou Polygon. Ces géométries peuvent être contenu dans un GeometryBag. 
+ Un point est représenté par un carré, une ligne est représentée par une ligne pleine 
+ et la surface est représentée par une ligne pleine pour la limite et des lignes à
+ 45 dégrés pour l'intérieur. On peut afficher le numéro de la géométrie pour un GeometryBag.
+</summary>
+	<param name="pGeometry"> Interface ESRI contenant la géométrie èa dessiner.</param>
+	<param name="bRafraichir"> Indique si on doit rafraîchir la vue active.</param>
+	<param name="bGeometrie"> Indique si on doit dessiner la géométrie.</param>
+	<param name="bSommet"> Indique si on doit dessiner les sommets de la géométrie.</param>
+	<return>Un booleen est retourner pour indiquer la fonction s'est bien exécutée.</return>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.bDessinerSommet(ESRI.ArcGIS.Geometry.IGeometry,System.Boolean)">
+	<summary>
+ Fonction qui permet de dessiner dans la vue active les sommets des géométries Point, MultiPoint, Polyline et/ou Polygon.
+ Ces géométries peuvent être contenu dans un GeometryBag. Les sommets sont représentés par un cercle.
+</summary>
+	<param name="pGeometry"> Interface ESRI contenant la géométrie utilisée pour dessiner les sommets.</param>
+	<param name="bRafraichir"> Indique si on doit rafraîchir la vue active.</param>
+	<return>Un booleen est retourner pour indiquer la fonction s'est bien exécutée.</return>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.InitSymbole">
+	<summary>
+ Initialiser les couleurs par défaut pour le texte qui sera affiché avec les
+ géométries déssiné et initialiser les 3 couleurs pour les géométries de type
+ point, ligne et surface.
+</summary>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.InitSymboleCourant">
+	<summary>
+ Initialiser les couleurs par défaut pour dessiner la symbologie des éléments courants.
+</summary>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.InitSymboleArchive">
+	<summary>
+ Initialiser les couleurs par défaut pour dessiner la symbologie des éléments d'archive.
+</summary>
+</member><member name="M:BarreNonConformite.modBarreNonConformite.GeometrieToMultiPoint(ESRI.ArcGIS.Geometry.IGeometry)">
+	<summary>
+ Routine qui permet de créer un Multipoint à partir d'une géométrie.
+ 
+<param name="pGeometry"> Interface contenant la géométrie utilisée pour créer le Multipoint.</param>
+		<return>Le Multipoint contenant les points de la géométrie spécifiée.</return>
+	</summary>
+</member><member name="T:BarreNonConformite.modBarreNonConformite">
+	<summary>
+ Librairies de routines contenant toutes les variables, routines et fonctions globales.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+ Date : 16 janvier 2017
+</remarks>
+</member><member name="M:BarreNonConformite.cboNomGdbEnfant.Init">
+	<summary>
+ Routine qui permet d'initialiser le comboBox.
+</summary>
+</member><member name="M:BarreNonConformite.cboNomGdbEnfant.DefinirGdbEnfant(BarreNonConformite.clsGererReplica)">
+	<summary>
+ Routine qui permet de définir le réplica de la Géodatabase enfant.
+</summary>
+</member><member name="M:BarreNonConformite.cboNomGdbEnfant.RemplirComboBox">
+	<summary>
+ Routine qui permet de remplir le ComboBox à partir des noms de Géodatabase contenus dans la Map active.
+</summary>
+</member><member name="T:BarreNonConformite.cboNomGdbEnfant">
+	<summary>
+ Commande qui permet de définir la Géodatabase-Enfant (.mdb/.gdb) contenant les données retirées à modifier et à retourner dans la Géodatabase-Parent (.sde).
+</summary>
+	<remarks>
+ Ce traitement est utilisable en mode interactif à l'aide de ses interfaces graphiques et doit être utilisé dans ArcMap (ArcGisESRI).
+
+ Auteur : Michel Pothier
+ Date : 17 janvier 2017
+</remarks>
+</member><member name="T:BarreNonConformite.cmdActiverMenu">
+	<summary>
+Permet d'activer un menu pour afficher et modifier les paramètres de la barre de version.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member><member name="T:BarreNonConformite.cmdAnnulerReplica">
+	<summary>
+ Permet d'annuler le réplica de la Géodatabase Parent et Enfant.
+</summary>
+	<remarks>
+ Auteur : Michel Pothier
+</remarks>
+</member>
+</members>
+</doc>

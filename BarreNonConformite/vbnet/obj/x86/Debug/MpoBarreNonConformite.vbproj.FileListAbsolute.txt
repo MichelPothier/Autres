@@ -1,0 +1,10 @@
+C:\mpo\ArcGis10.5\MpoBarreNonConformite\net\obj\x86\Debug\BarreNonConformite.dckMenuNonConformite.resources
+C:\mpo\ArcGis10.5\MpoBarreNonConformite\net\obj\x86\Debug\BarreNonConformite.Resources.resources
+C:\mpo\ArcGis10.5\MpoBarreNonConformite\net\obj\x86\Debug\MpoBarreNonConformite.vbproj.GenerateResource.Cache
+C:\mpo\ArcGis10.5\MpoBarreNonConformite\net\bin\x86\Debug\BarreNonConformite.dll
+C:\mpo\ArcGis10.5\MpoBarreNonConformite\net\bin\x86\Debug\BarreNonConformite.pdb
+C:\mpo\ArcGis10.5\MpoBarreNonConformite\net\bin\x86\Debug\BarreNonConformite.xml
+C:\mpo\ArcGis10.5\MpoBarreNonConformite\net\obj\x86\Debug\BarreNonConformite.dll
+C:\mpo\ArcGis10.5\MpoBarreNonConformite\net\obj\x86\Debug\BarreNonConformite.xml
+C:\mpo\ArcGis10.5\MpoBarreNonConformite\net\obj\x86\Debug\BarreNonConformite.pdb
+C:\mpo\ArcGis10.5\MpoBarreNonConformite\net\bin\x86\Debug\BarreNonConformite.esriAddIn
