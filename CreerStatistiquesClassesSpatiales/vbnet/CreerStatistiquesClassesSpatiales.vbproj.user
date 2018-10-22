@@ -12,6 +12,6 @@
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <StartArguments>"Database Connections\BDRS_PRO_BDG.sde\BDG_DBA.TBL_STATISTIQUE_ELEMENT_SOMMET" "Database Connections\BDRS_PRO_BDG.sde" BDG_DBA.nhn_hhyd_Manmade_1 DATASET_NAME # D:\BDG\Statistiques_mpo.log</StartArguments>
+    <StartArguments>TBL_STATISTIQUE_ELEMENT_SOMMET "Database Connections\BDRS_PRO_BDG_DBA.sde" # DATASET_NAME 021M05,021M06,021M07,021M08 D:\BDG\Statistiques.log</StartArguments>
   </PropertyGroup>
 </Project>

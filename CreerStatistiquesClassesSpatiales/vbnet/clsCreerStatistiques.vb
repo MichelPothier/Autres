@@ -397,8 +397,10 @@ Public Class clsCreerStatistiques
     End Function
 
     '''<summary>
-    ''' Fonction qui permet d'exécuter la validation des contraintes d'intégrité sélectionnées de la table 
-    ''' en fonction des découpages à traiter et retourner le résultat obtenu.
+    ''' Fonction qui permet d'exécuter le traitement de création des statistiques sur les classes spatiales contenues dans une Géodatabase.
+    ''' 
+    ''' Les statistiques sont écrites dans une table d'attributs d'une Géodatabase et correspondent au nombre d'éléments et de sommets 
+    ''' par classe spatiale et par identifiant de découpage. 
     '''</summary>
     '''
     '''<returns>Boolean qui indique si le traitement a été exécuté avec succès.</returns>
@@ -434,7 +436,7 @@ Public Class clsCreerStatistiques
             'Vérifier si le nom du fichier journal est présent
             If gsNomFichierJournal.Length > 0 Then
                 'Redéfinir les noms de fichier contenant le mot %DATE_TIME%
-                gsNomFichierJournal = gsNomFichierJournal.Replace("%DATE_TIME%", dDateDebut.ToString("yyyyMMdd_HHmmss"))
+                gsNomFichierJournal = gsNomFichierJournal.Replace("[DATE_TIME]", dDateDebut.ToString("yyyyMMdd_HHmmss"))
                 'Vérifier si les répertoires existent
                 If Not IO.Directory.Exists(IO.Path.GetDirectoryName(gsNomFichierJournal)) Then
                     'Créer le répertoire
@@ -463,11 +465,11 @@ Public Class clsCreerStatistiques
             'Écrire les statistiques d'utilisation
             Call EcrireStatistiqueUtilisation("clsCreerStatistiques.Executer " & Me.NomGeodatabaseClasses)
 
-            'Définir la table des statistiques
-            gpTableStatistiques = DefinirTableStatistiques(gsNomTableStatistiques)
-
             'Définir la Géodatabase des classes à traiter
             gpGeodatabaseClasses = CType(DefinirGeodatabase(gsNomGeodatabaseClasses), IFeatureWorkspace)
+
+            'Définir la table des statistiques
+            gpTableStatistiques = DefinirTableStatistiques(gsNomTableStatistiques)
 
             'Définir la liste des classes si aucune n'est spécifiée
             Call DefinirListeClasses(gpGeodatabaseClasses, gsListeClasses)
@@ -668,7 +670,7 @@ Public Class clsCreerStatistiques
             'Vérifier si des identifiants sont spécifiés
             If gsListeIdentifiants.Length > 0 Then
                 'Ajouter la requête pour les identifiants à traiter
-                pQueryFilter.WhereClause = pQueryFilter.WhereClause & " AND IDENTIFIANT IN ('" & gsListeIdentifiants.Replace(",", "','") & "')"""
+                pQueryFilter.WhereClause = pQueryFilter.WhereClause & " AND IDENTIFIANT IN ('" & gsListeIdentifiants.Replace(",", "','") & "')"
             End If
             'Interface pour créer les erreurs
             pUpdateCursor = pTableStatistiques.Update(pQueryFilter, True)
@@ -789,12 +791,26 @@ Public Class clsCreerStatistiques
         'Déclaration des variables de travail
         Dim pDataset As IDataset = Nothing          'Contient le nom de la classe ou de la Geodatabase.
         Dim pEnumDataset As IEnumDataset = Nothing  'Interface contenant la table des contraintes.
+        Dim pPropertySet As IPropertySet = Nothing  'Interface utilisée pour extraire l'usager de la BD SDE.
+        Dim pWorkspace As IWorkspace = Nothing      'Interface utilisé pour vérifier s'il s'agit d'une Géodatabase SDE.
+        Dim sNomClasse As String = ""               'Contient le nom de la classe.
+        Dim sUser As String = ""                    'Contient le nom de l'usager de la BD SDE.
 
         Try
             'Vérifier si aucune classe n'est spécifiée
             If sListeClasses.Length = 0 Then
                 'Interface pour extraire la liste des classes
                 pDataset = CType(pGeodatabaseClasses, IDataset)
+
+                'Interface pour vérifier s'il s'agit d'une Geédatabase SDE
+                pWorkspace = CType(pGeodatabaseClasses, IWorkspace)
+                'Vérifier s'il s'agit d'une Geédatabase SDE
+                If pWorkspace.WorkspaceFactory.WorkspaceType = esriWorkspaceType.esriRemoteDatabaseWorkspace Then
+                    'Interface pour extraire les propriétés de la Géodatabase SDE
+                    pPropertySet = pWorkspace.ConnectionProperties
+                    'Extraire le nom de l'usager de la BD
+                    sUser = CStr(pPropertySet.GetProperty("USER")).ToUpper
+                End If
 
                 'Extraire les classes spatiales
                 pEnumDataset = pDataset.Subsets
@@ -806,17 +822,24 @@ Public Class clsCreerStatistiques
                 Do Until pDataset Is Nothing
                     'Vérifier si le Dataset est une FeatureClass
                     If pDataset.Type = esriDatasetType.esriDTFeatureClass Then
-                        'Si c'est la première classe
-                        If sListeClasses.Length = 0 Then
-                            'Extraire le nom de la classe
-                            sListeClasses = pDataset.Name.ToUpper
+                        'Définir le nom de la classe
+                        sNomClasse = pDataset.Name.ToUpper
 
-                            'Si ce n'est pas la première classe
-                        Else
-                            'Extraire le nom de la classe
-                            sListeClasses = sListeClasses & "," & pDataset.Name.ToUpper
+                        'Vérifier s'il n'y a pas d'usager ou si le nom de la classe contient le nom de l'usager
+                        If sUser.Length = 0 Or sNomClasse.Contains(sUser) Then
+                            'Si c'est la première classe
+                            If sListeClasses.Length = 0 Then
+                                'Ajouter le nom de la classe
+                                sListeClasses = sNomClasse
+
+                                'Si ce n'est pas la première classe
+                            Else
+                                'Ajouter le nom de la classe
+                                sListeClasses = sListeClasses & "," & sNomClasse
+                            End If
                         End If
                     End If
+
                     'Extraire la prochaine classe
                     pDataset = pEnumDataset.Next
                 Loop
@@ -829,6 +852,8 @@ Public Class clsCreerStatistiques
             'Vider la mémoire
             pDataset = Nothing
             pEnumDataset = Nothing
+            pPropertySet = Nothing
+            pWorkspace = Nothing
         End Try
     End Sub
 

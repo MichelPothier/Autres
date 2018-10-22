@@ -21,15 +21,15 @@ Imports Microsoft.VisualBasic.FileIO
 ''' Les 11 paramètres de la ligne de commande du programme sont les suivants:
 ''' -------------------------------------------------------------------------
 ''' 1-Table des statistiques : Nom de la table de la table des statistiques dans laquelle l'information sera écrites.
-'''                            Obligatoire, Défaut : Database Connections\BDRS_PRO_BDG.sde\BDG_DBA.STATISTIQUE_IDENTIFIANT_CLASSE
+'''                            Obligatoire, Défaut : TBL_STATISTIQUE_ELEMENT_SOMMET
 ''' 2-Geodatabase des classes: Nom de la Géodatabase contenant les classes à traiter.
-'''                            Obligatoire, Défaut : 
-''' 3-Liste des classes      : Liste des classes à traiter.
+'''                            Obligatoire, Défaut : Database Connections\BDRS_PRO_BDG.sde
+''' 3-Liste des classes      : Liste des classes spatiales à traiter.
 '''                            Obligatoire, Défaut : 
 ''' 4-Attribut de découpage  : Nom de l'attribut du Layer de découpage dans lequel les identifiants seront utilisés pour effectuer le traitement.
 '''                            Optionnel, Défaut : DATASET_NAME
 ''' 5-Liste des identifiants : Liste des identifiants de découpage à traiter.
-'''                            Optionnel, Défaut : 
+'''                            Optionnel, Défaut : Tous les identifiants de découpage présents dans les classes spatiales.
 ''' 6-Fichier journal        : Nom du fichier journal dans lequel l'information sur l'exécution du traitement sera écrite.
 '''                            Optionnel, Défaut : 
 '''</summary>
@@ -43,13 +43,13 @@ Module modExecuter
     '''<summary> Interface d'initialisation des licences ESRI.</summary>
     Private m_AOLicenseInitializer As LicenseInitializer = New CreerStatistiquesClassesSpatiales.LicenseInitializer()
     '''<summary>Nom de la table contenant l'information sur les statistiques des classes.</summary>
-    Private m_NomTableStatistiques As String = "CONTRAINTE_INTEGRITE_SPATIALE"
+    Private m_NomTableStatistiques As String = "TBL_STATISTIQUE_ELEMENT_SOMMET"
     '''<summary>Nom de la Géodatabase contenant les classes à traiter.</summary>
-    Private m_NomGeodatabaseClasses As String = "Database Connections\BDRS_PRO_BDG.sde"
+    Private m_NomGeodatabaseClasses As String = "Database Connections\BDRS_PRO_BDG_DBA.sde"
     '''<summary>Liste des classes à traiter.</summary>
     Private m_ListeClasses As String = ""
     '''<summary>Nom de l'attribut de découpage dans lequel les identifiants seront utilisés pour effectuer le traitement.</summary>
-    Private m_NomAttributDecoupage As String = ""
+    Private m_NomAttributDecoupage As String = "DATASET_NAME"
     '''<summary>Liste des identifiants de découpage à traiter.</summary>
     Private m_ListeIdentifiants As String = ""
     '''<summary>Nom du fichier journal dans lequel l'exécution du traitement sera inscrit.</summary>
@@ -136,12 +136,15 @@ Module modExecuter
         Try
             'Vérifier si le paramètre de la table des statistiques est présent.
             If args.Length - 1 > 0 Then
-                'Définir le nom de la table des contraintes
-                m_NomTableStatistiques = args(1)
+                'Vérifier si le paramètre contient le nom de la table des statistiques
+                If args(1) <> "#" Then
+                    'Définir le nom de la table des statistiques
+                    m_NomTableStatistiques = args(1)
+                End If
 
             Else
                 'Retourner l'erreur
-                Err.Raise(-1, "ValiderParametreTableStatistiques", "ERREUR : Le paramètre de la table des statistiques est absent !")
+                Err.Raise(-1, "ValiderParametreTableStatistiques", "ERREUR : Le paramètre du nom de la table des statistiques est absent !")
             End If
 
         Catch ex As Exception
@@ -158,8 +161,11 @@ Module modExecuter
         Try
             'Vérifier si le paramètre de la Geodatabase des classes est présent.
             If args.Length - 1 > 1 Then
-                'Définir le nom de la Géodatabase des classes
-                m_NomGeodatabaseClasses = args(2)
+                'Vérifier si le paramètre contient le nom de la Géodatabase des classes
+                If args(2) <> "#" Then
+                    'Définir le nom de la Géodatabase des classes
+                    m_NomGeodatabaseClasses = args(2)
+                End If
 
             Else
                 'Retourner l'erreur
