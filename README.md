@@ -1,5 +1,5 @@
 # Autres
-Contient différents autres outils. / Contains various other tools. (ArcGis 10.5 / ArcMap / Add-in / Exe / Vb.Net)
+Contient différents autres outils. / Contains various other tools. (ArcGis 10.5 / ArcMap / Add-in / Exe / Vb.Net / ArcPy / Python / TBX)
 
 BarreNonConformite (ArcGis 10.5 / ArcMap / Add-in / Vb.Net)
 -Barre de menu utilisée dans ArcMap pour gérer les non-conformités des données BDG et RHN et gérer les réplicas pour la correction des données (CheckOut) à partir d'une Géodatabase SDE. 
@@ -26,3 +26,11 @@ CreerStatistiquesClassesSpatiales (ArcGis 10.5 / ArcMap / Exe / Vb.Net)
 ExporterClasseSpatiale (ArcGis 10.5 / ArcMap / Exe / Vb.Net)
 -Programme exécutable qui permet d'exporter une classe spatiale d'une Géodatabase vers une autre Géodatabase.
 -Executable program that allows you to export a spatial class from one Geodatabase to another Geodatabase.
+
+GeotraitementSIB (ArcGis 10.5 / ArcMap / ArcPy / Python / TBX)
+-Ensemble d'outils de Géotraitement nécessaires au projet SIB (Système d'Information sur les Bases de données) pour la gestion des métadonnées des données spatiales.
+-Set of Geoprocessing tools required for the SIB (Database Information System) project for the management of spatial data metadata.
+
+GeotraitementBDG (ArcGis 10.5 / ArcMap / ArcPy / Python / TBX)
+-Ensemble d'outils de Géotraitement nécessaires au projet BDG (Base de Données Géographique) pour la gestion des données spatiales.
+-Set of Geoprocessing tools needed for the BGD (Geographic Database) project for the management of spatial data.
